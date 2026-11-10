@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>विश्वकर्मा म्यूज़िकल्स | हस्तनिर्मित वाद्ययंत्र</title>
+  <style>
+    :root {
+      --primary: #7c2d12;
+      --accent: #d97706;
+      --bg: #fffbeb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --green: #15803d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* टॉप हेडर और कार्ट बार */
+    header {
+      background: var(--primary); color: #fff; padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .brand { font-size: 1.25rem; font-weight: 700; text-decoration: none; color: #fff; }
+    .cart-btn {
+      background: var(--accent); color: #fff; border: none; padding: 8px 16px;
+      border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.95rem;
+    }
+
+    /* मुख्य कंटेनर */
+    .container { max-width: 1100px; margin: 28px auto; padding: 0 16px; }
+    #loader { text-align: center; padding: 60px 20px; font-size: 1.2rem; color: var(--primary); font-weight: 600; }
+    #error-box {
+      display: none; background: #fef2f2; border: 1px solid #f87171; color: #991b1b;
+      padding: 24px; border-radius: 10px; text-align: center; margin-top: 20px;
+    }
+
+    /* प्रोडक्ट ग्रिड */
+    .product-grid {
+      display: none; grid-template-columns: 1fr 1fr; gap: 32px;
+      background: var(--card); padding: 28px; border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr; padding: 18px; } }
+
+    /* इमेज गैलरी */
+    .main-img-wrap {
+      width: 100%; height: 380px; border-radius: 10px; overflow: hidden;
+      border: 1px solid #e5e7eb; background: #f9fafb; display: flex; align-items: center; justify-content: center;
+    }
+    .main-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+    .thumb-row { display: flex; gap: 10px; margin-top: 12px; overflow-x: auto; }
+    .thumb-row img {
+      width: 70px; height: 70px; object-fit: cover; border-radius: 6px;
+      border: 2px solid transparent; cursor: pointer; background: #f3f4f6;
+    }
+    .thumb-row img.active { border-color: var(--accent); }
+
+    /* प्रोडक्ट विवरण */
+    .sku-tag { font-size: 0.85rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+    .product-title { font-size: 1.65rem; color: var(--primary); margin: 6px 0 12px; }
+    .badge-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .stock-badge {
+      background: #dcfce7; color: var(--green); padding: 4px 12px;
+      border-radius: 20px; font-size: 0.85rem; font-weight: 700;
+    }
+    .stock-badge.out { background: #fef3c7; color: #b45309; }
+    .gst-badge { font-size: 0.85rem; color: var(--muted); background: #f3f4f6; padding: 4px 10px; border-radius: 6px; }
+
+    .price-box { font-size: 2rem; font-weight: 800; color: var(--text); margin: 12px 0; }
+    .shipping-note { font-size: 0.88rem; color: var(--muted); margin-bottom: 18px; }
+    .short-desc { font-size: 1rem; color: #374151; margin-bottom: 20px; }
+
+    /* एक्शन बटन */
+    .action-row { display: flex; gap: 14px; margin: 22px 0; flex-wrap: wrap; }
+    .btn-primary, .btn-secondary {
+      flex: 1; min-width: 200px; padding: 14px 20px; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; cursor: pointer; text-align: center; text-decoration: none; border: none;
+    }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: #9a3412; }
+    .btn-secondary { background: var(--accent); color: #fff; }
+    .btn-secondary:hover { background: #b45309; }
+
+    /* विशेषताएं और स्पेसिफिकेशन्स */
+    .info-section { margin-top: 24px; border-top: 1px solid #e5e7eb; padding-top: 18px; }
+    .info-section h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 10px; }
+    .feature-list { list-style: none; }
+    .feature-list li {
+      padding: 6px 0 6px 24px; position: relative; font-size: 0.95rem;
+    }
+    .feature-list li::before {
+      content: "✔"; position: absolute; left: 0; color: var(--green); font-weight: bold;
+    }
+    .spec-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .spec-table td { padding: 8px 10px; border-bottom: 1px solid #f3f4f6; font-size: 0.92rem; }
+    .spec-table td:first-child { font-weight: 600; color: var(--muted); width: 40%; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://sites.google.com/view/vishwakarma-musicals/" class="brand">🎵 विश्वकर्मा म्यूज़िकल्स (अमानगंज)</a>
+    <button class="cart-btn" onclick="alert('आपके कार्ट में ' + getCartCount() + ' वाद्ययंत्र हैं।')">
+      🛒 कार्ट (<span id="cart-count">0</span>)
+    </button>
+  </header>
+
+  <div class="container">
+    <div id="loader">⏳ मास्टर शीट से वाद्ययंत्र का लाइव विवरण लोड हो रहा है...</div>
+    <div id="error-box"></div>
+
+    <div class="product-grid" id="product-container">
+      <!-- बायां कॉलम: फोटो और वीडियो -->
+      <div>
+        <div class="main-img-wrap">
+          <img id="main-image" src="" alt="वाद्ययंत्र फोटो">
+        </div>
+        <div class="thumb-row" id="gallery-thumbs"></div>
+        <div style="margin-top: 16px;">
+          <a id="video-link" href="#" target="_blank" style="color: var(--primary); font-weight: 600; font-size: 0.95rem;">
+            ▶️ YouTube पर इस वाद्ययंत्र की ध्वनि और डेमो देखें
+          </a>
+        </div>
+      </div>
+
+      <!-- दायां कॉलम: लाइव कीमत, स्टॉक और विवरण -->
+      <div>
+        <div class="sku-tag" id="prod-sku"></div>
+        <h1 class="product-title" id="prod-name"></h1>
+
+        <div class="badge-row">
+          <span class="stock-badge" id="prod-stock-badge"></span>
+          <span class="gst-badge">0% GST (कर-मुक्त हस्तशिल्प)</span>
+        </div>
+
+        <div class="price-box" id="prod-price"></div>
+        <p class="shipping-note">📦 पिनकोड के अनुसार वास्तविक कूरियर शुल्क अलग से जोड़ा जाएगा।</p>
+
+        <p class="short-desc" id="prod-desc"></p>
+
+        <div class="action-row">
+          <button class="btn-secondary" id="add-to-cart-btn">🛒 कार्ट में जोड़ें (Add to Cart)</button>
+          <a class="btn-primary" id="direct-order-btn" href="#" target="_blank">⚡ अभी ऑर्डर बुक करें</a>
+        </div>
+
+        <div class="info-section">
+          <h3>✨ मुख्य विशेषताएं (Key Features)</h3>
+          <ul class="feature-list" id="prod-features"></ul>
+        </div>
+
+        <div class="info-section">
+          <h3>📐 तकनीकी विवरण (Specifications)</h3>
+          <table class="spec-table" id="prod-specs"></table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. यहाँ अपना Google Apps Script Web App URL पेस्ट करें:
+    // =========================================================================
+    const SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycby8ubumcPpAu8ZLFO2kn8HlD8nd_jUBjwEJpmaHdc4zk4uvKJaKamwm4LhbEcS1b2o0/exec";
+
+    // आपका Google Order Form लिंक (सीधे बुकिंग के लिए):
+    const GOOGLE_FORM_BASE_URL = "https://docs.google.com/forms/d/e/YOUR_PUBLIC_FORM_ID/viewform";
+
+    let currentProduct = null;
+
+    // पेज लोड होते ही URL से ?slug=vm-h01 पढ़ें
+    window.addEventListener("DOMContentLoaded", () => {
+      updateCartBadge();
+      const params = new URLSearchParams(window.location.search);
+      const slug = (params.get("slug") || params.get("sku") || "vm-h01").trim().toLowerCase();
+      fetchProductFromSheet(slug);
+    });
+
+    async function fetchProductFromSheet(slug) {
+      const loader = document.getElementById("loader");
+      const errorBox = document.getElementById("error-box");
+      const container = document.getElementById("product-container");
+
+      try {
+        const response = await fetch(`${SCRIPT_API_URL}?slug=${encodeURIComponent(slug)}`);
+        const data = await response.json();
+
+        if (data.status !== "success" || !data.product) {
+          throw new Error(data.message || "यह उत्पाद अभी उपलब्ध नहीं है।");
+        }
+
+        currentProduct = data.product;
+        renderProduct(currentProduct);
+
+        loader.style.display = "none";
+        container.style.display = "grid";
+      } catch (err) {
+        loader.style.display = "none";
+        errorBox.style.display = "block";
+        errorBox.innerHTML = `<h3>⚠️ सूचना</h3><p>${err.message}</p><p style="margin-top:10px;">त्वरित सहायता के लिए <strong>9755088022</strong> पर व्हाट्सऐप या कॉल करें।</p>`;
+      }
+    }
+
+    function renderProduct(p) {
+      document.title = `${p.name} | विश्वकर्मा म्यूज़िकल्स`;
+      document.getElementById("prod-sku").textContent = `SKU: ${p.sku} | श्रेणी: ${p.category}`;
+      document.getElementById("prod-name").textContent = p.name;
+      document.getElementById("prod-price").textContent = `₹${Number(p.price).toLocaleString("en-IN")}`;
+      document.getElementById("prod-desc").textContent = p.shortDescription;
+
+      // स्टॉक बैज सेट करें
+      const badgeEl = document.getElementById("prod-stock-badge");
+      badgeEl.textContent = p.stockBadge || (p.liveStock > 0 ? `स्टॉक में उपलब्ध: ${p.liveStock} पीस` : "ऑर्डर पर निर्माण");
+      if (p.liveStock <= 0) badgeEl.classList.add("out");
+
+      // मुख्य फोटो और गैलरी थंबनेल सेट करें
+      const mainImg = document.getElementById("main-image");
+      mainImg.src = p.mainImage;
+
+      const galleryWrap = document.getElementById("gallery-thumbs");
+      galleryWrap.innerHTML = "";
+      const allImages = [p.mainImage, ...(p.galleryImages ? p.galleryImages.split(",") : [])]
+        .map(u => u.trim())
+        .filter((u, idx, arr) => u && arr.indexOf(u) === idx);
+
+      allImages.forEach((imgUrl, index) => {
+        const thumb = document.createElement("img");
+        thumb.src = imgUrl;
+        if (index === 0) thumb.classList.add("active");
+        thumb.onclick = () => {
+          mainImg.src = imgUrl;
+          document.querySelectorAll("#gallery-thumbs img").forEach(el => el.classList.remove("active"));
+          thumb.classList.add("active");
+        };
+        galleryWrap.appendChild(thumb);
+      });
+
+      // वीडियो लिंक
+      const videoLink = document.getElementById("video-link");
+      if (p.videoUrl) {
+        videoLink.href = p.videoUrl;
+      } else {
+        videoLink.style.display = "none";
+      }
+
+      // मुख्य विशेषताएं ('|' से विभाजित)
+      const featureList = document.getElementById("prod-features");
+      featureList.innerHTML = "";
+      if (p.keyFeatures) {
+        p.keyFeatures.split("|").forEach(item => {
+          const clean = item.trim();
+          if (clean) {
+            const li = document.createElement("li");
+            li.textContent = clean;
+            featureList.appendChild(li);
+          }
+        });
+      }
+
+      // तकनीकी विवरण ('|' और ':' से विभाजित)
+      const specTable = document.getElementById("prod-specs");
+      specTable.innerHTML = "";
+      if (p.specifications) {
+        p.specifications.split("|").forEach(row => {
+          const clean = row.trim();
+          if (clean) {
+            const tr = document.createElement("tr");
+            const parts = clean.split(":");
+            if (parts.length >= 2) {
+              tr.innerHTML = `<td>${parts[0].trim()}</td><td>${parts.slice(1).join(":").trim()}</td>`;
+            } else {
+              tr.innerHTML = `<td colspan="2">${clean}</td>`;
+            }
+            specTable.appendChild(tr);
+          }
+        });
+      }
+
+      // कार्ट बटन और डायरेक्ट ऑर्डर बटन
+      document.getElementById("add-to-cart-btn").onclick = () => addToCart(p);
+      document.getElementById("direct-order-btn").href = GOOGLE_FORM_BASE_URL;
+    }
+
+    // LocalStorage आधारित एड-टू-कार्ट सिस्टम
+    function addToCart(product) {
+      let cart = JSON.parse(localStorage.getItem("vm_cart") || "[]");
+      const existing = cart.find(item => item.sku === product.sku);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          sku: product.sku,
+          name: product.name,
+          price: product.price,
+          image: product.mainImage,
+          qty: 1
+        });
+      }
+      localStorage.setItem("vm_cart", JSON.stringify(cart));
+      updateCartBadge();
+      alert(`✅ "${product.name}" आपके कार्ट में जुड़ गया है!`);
+    }
+
+    function getCartCount() {
+      const cart = JSON.parse(localStorage.getItem("vm_cart") || "[]");
+      return cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    function updateCartBadge() {
+      document.getElementById("cart-count").textContent = getCartCount();
+    }
+  </script>
+</body>
+</html>
