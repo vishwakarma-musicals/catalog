@@ -615,7 +615,7 @@
                     <a href="https://sites.google.com/view/vishwakarma-musicals/Instruments" target="_blank" rel="noopener">वाद्य यंत्र</a>
                     <a href="https://sites.google.com/view/vishwakarma-musicals/Catalog" target="_blank" rel="noopener">कैटलॉग</a>
                     <a href="https://sites.google.com/view/vishwakarma-musicals/Workshop-and-Repairs" target="_blank" rel="noopener">वर्कशॉप व मरम्मत</a>
-                    <a href="https://sites.google.com/view/vishwakarma-musicals/Home%E0%A4%B0-%E0%A4%AC%E0%A4%B0-%E0%A4%AE" target="_blank" rel="noopener">हमारे बारे में</a>
+                    <a href="https://sites.google.com/view/vishwakarma-musicals/About-Us" target="_blank" rel="noopener">हमारे बारे में</a>
                     <a href="https://sites.google.com/view/vishwakarma-musicals/Contact-and-Shop" target="_blank" rel="noopener">संपर्क व दुकान</a>
                     <a href="https://sites.google.com/view/vishwakarma-musicals/Privacy-Policy" target="_blank" rel="noopener">गोपनीयता नीति</a>
                     <a href="https://sites.google.com/view/vishwakarma-musicals/Terms-and-Conditions" target="_blank" rel="noopener">नियम व शर्तें</a>
@@ -667,14 +667,230 @@
     <div id="toast-notification" class="toast-box"></div>
 
     <script>
-        const SCRIPT_API_URL = "https://script.google.com/macros/s/AKfycby0aLJWH9ga3Ipk0vJjYQcYpbcR_actox_BTwbKtN2JMzTZlwtbTKJyCXNWp38xomU3/exec";
+        // 1. सुरक्षित पब्लिक CSV डेटा स्रोत (Website_Catalog टैब - 22 सार्वजनिक कॉलम, 100% लागत/मुनाफ़ा गोपनीय)
+        const CATALOG_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-d_ef6VJovk65nJIr8VtLUFsId9EcruDOw_SYq3vl0_OACxCI-6ikNO8EID76KWFLvFuVpKgZilT1/pub?gid=954670530&single=true&output=csv";
         const SHOP_WHATSAPP_NUMBER = "919755088022";
+        const CACHE_KEY = "vm_catalog_cache_v8";
+        const CACHE_TTL_MS = 5 * 60 * 1000; // 5 मिनट की ऑटो-रिफ्रेश कैशिंग
+
+        // रिपेयर सर्विस या इमेज न होने पर रॉयल वर्कशॉप SVG बैनर
+        const DEFAULT_WORKSHOP_SVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+            `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+                <defs>
+                    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#281409"/>
+                        <stop offset="100%" stop-color="#140803"/>
+                    </linearGradient>
+                </defs>
+                <rect width="900" height="700" fill="url(#bg)"/>
+                <rect x="28" y="28" width="844" height="644" rx="20" fill="none" stroke="#e6b84d" stroke-width="4"/>
+                <text x="450" y="250" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="44" font-weight="bold">विश्वकर्मा म्यूज़िकल्स कार्यशाला</text>
+                <text x="450" y="320" text-anchor="middle" fill="#f5ede0" font-family="sans-serif" font-size="28">अमानगंज (पन्ना), मध्य प्रदेश • स्था. 1990</text>
+                <line x1="250" y1="360" x2="650" y2="360" stroke="#d4a340" stroke-width="2"/>
+                <text x="450" y="420" text-anchor="middle" fill="#fcd777" font-family="sans-serif" font-size="30" font-weight="bold">विशेषज्ञ वाद्ययंत्र मरम्मत एवं स्वर मिलान सेवा</text>
+                <text x="450" y="475" text-anchor="middle" fill="#f5ede0" font-family="sans-serif" font-size="22">मास्टर कारीगर: तुलसी दास विश्वकर्मा (35+ वर्षों का अनुभव)</text>
+            </svg>`
+        );
 
         let productData = null;
         let currentQty = 1;
         let isWishlisted = false;
 
-        // सुरक्षित और मजबूत LocalStorage कार्ट लॉजिक
+        // XSS सुरक्षा के लिए HTML एस्केप फंक्शन
+        function escapeHTML(str) {
+            return String(str || "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        // हिंदी और अंग्रेज़ी नाम को कोष्ठक से अलग करने का फंक्शन
+        function parseBilingualName(rawName) {
+            const full = String(rawName || "").trim();
+            const match = full.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
+            if (match) {
+                return { full, hindi: match[1].trim(), english: match[2].trim() };
+            }
+            return { full, hindi: full, english: "" };
+        }
+
+        // Google Drive इमेज के लिए ऑटोमैटिक फॉलबैक URL बनाना
+        function attachImageFallback(imgEl, originalUrl) {
+            if (!imgEl) return;
+            const cleanUrl = String(originalUrl || "").trim();
+            if (!cleanUrl) {
+                imgEl.src = DEFAULT_WORKSHOP_SVG;
+                return;
+            }
+            imgEl.src = cleanUrl;
+            imgEl.onerror = function() {
+                const idMatch = cleanUrl.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+                if (idMatch && !imgEl.dataset.triedLh3) {
+                    imgEl.dataset.triedLh3 = "1";
+                    imgEl.src = `https://lh3.googleusercontent.com/d/${idMatch[1]}=w800`;
+                } else {
+                    imgEl.onerror = null;
+                    imgEl.src = DEFAULT_WORKSHOP_SVG;
+                }
+            };
+        }
+
+        // RFC-4180 मानक CSV पार्सर (कोष्ठक, कॉमा व नई लाइनों के लिए 100% सुरक्षित)
+        function parseCSV(csvText) {
+            const rows = [];
+            let row = [];
+            let cur = "";
+            let inQuotes = false;
+
+            for (let i = 0; i < csvText.length; i++) {
+                const ch = csvText[i];
+                const next = csvText[i + 1];
+
+                if (inQuotes) {
+                    if (ch === '"' && next === '"') {
+                        cur += '"';
+                        i++;
+                    } else if (ch === '"') {
+                        inQuotes = false;
+                    } else {
+                        cur += ch;
+                    }
+                } else {
+                    if (ch === '"') {
+                        inQuotes = true;
+                    } else if (ch === ",") {
+                        row.push(cur.trim());
+                        cur = "";
+                    } else if (ch === "\n" || (ch === "\r" && next === "\n")) {
+                        if (ch === "\r") i++;
+                        row.push(cur.trim());
+                        if (row.some(cell => cell !== "")) rows.push(row);
+                        row = [];
+                        cur = "";
+                    } else if (ch !== "\r") {
+                        cur += ch;
+                    }
+                }
+            }
+            if (cur !== "" || row.length > 0) {
+                row.push(cur.trim());
+                if (row.some(cell => cell !== "")) rows.push(row);
+            }
+            return rows;
+        }
+
+        // हेडर नाम के आधार पर CSV पंक्तियों को प्रोडक्ट/सर्विस ऑब्जेक्ट्स में बदलना
+        function mapCSVToProducts(rows) {
+            if (!rows || rows.length < 2) return [];
+            const headers = rows[0].map(h => h.trim().toLowerCase());
+
+            const colIdx = (possibleNames) => {
+                for (const name of possibleNames) {
+                    const idx = headers.indexOf(name.toLowerCase());
+                    if (idx !== -1) return idx;
+                }
+                return -1;
+            };
+
+            const idxMap = {
+                sku: colIdx(["sku code", "sku"]),
+                name: colIdx(["item name", "name"]),
+                category: colIdx(["category"]),
+                hsn: colIdx(["hsn / sac code", "hsn"]),
+                gstRate: colIdx(["gst rate (%)", "gst rate"]),
+                price: colIdx(["final customer price (₹)", "price"]),
+                status: colIdx(["product_status", "status"]),
+                itemType: colIdx(["item_type"]),
+                liveStock: colIdx(["live_stock"]),
+                stockBadge: colIdx(["stock_badge"]),
+                mainImage: colIdx(["main_image_url"]),
+                galleryImages: colIdx(["gallery_images_url"]),
+                videoUrl: colIdx(["video_url"]),
+                shortDescription: colIdx(["short_description"]),
+                keyFeatures: colIdx(["key_features"]),
+                specifications: colIdx(["specifications"]),
+                slug: colIdx(["page_slug", "slug"]),
+                formOption: colIdx(["form_product_option"]),
+                mrp: colIdx(["mrp_price", "mrp"]),
+                subtitle: colIdx(["product_subtitle"]),
+                detailedDesc: colIdx(["detailed_description"]),
+                usesBenefits: colIdx(["uses_benefits"])
+            };
+
+            const getVal = (r, key) => (idxMap[key] !== -1 && r[idxMap[key]] !== undefined) ? String(r[idxMap[key]]).trim() : "";
+
+            const catalog = [];
+            for (let i = 1; i < rows.length; i++) {
+                const r = rows[i];
+                const sku = getVal(r, "sku");
+                const status = getVal(r, "status").toLowerCase();
+                if (!sku || status !== "active") continue;
+
+                const rawType = getVal(r, "itemType");
+                const isService = rawType.toLowerCase().includes("service");
+                const parsedName = parseBilingualName(getVal(r, "name"));
+                const rawPrice = Number(getVal(r, "price").replace(/[^\d.]/g, "")) || 0;
+                const rawMrp = Number(getVal(r, "mrp").replace(/[^\d.]/g, "")) || 0;
+                const gstVal = getVal(r, "gstRate") || (isService ? "18%" : "0%");
+
+                catalog.push({
+                    sku,
+                    name: parsedName.full,
+                    nameHindi: parsedName.hindi,
+                    nameEnglish: parsedName.english,
+                    category: getVal(r, "category"),
+                    hsn: getVal(r, "hsn"),
+                    gstRate: gstVal,
+                    price: rawPrice,
+                    status: getVal(r, "status"),
+                    itemType: isService ? "SERVICE" : "PRODUCT",
+                    isService,
+                    liveStock: Number(getVal(r, "liveStock")) || 0,
+                    stockBadge: getVal(r, "stockBadge"),
+                    mainImage: getVal(r, "mainImage"),
+                    galleryImages: getVal(r, "galleryImages"),
+                    videoUrl: getVal(r, "videoUrl"),
+                    shortDescription: getVal(r, "shortDescription"),
+                    keyFeatures: getVal(r, "keyFeatures"),
+                    specifications: getVal(r, "specifications"),
+                    slug: (getVal(r, "slug") || sku).toLowerCase(),
+                    formOption: getVal(r, "formOption"),
+                    mrp: rawMrp,
+                    subtitle: getVal(r, "subtitle"),
+                    detailedDesc: getVal(r, "detailedDesc"),
+                    usesBenefits: getVal(r, "usesBenefits")
+                });
+            }
+            return catalog;
+        }
+
+        // कैशिंग के साथ कैटलॉग डेटा प्राप्त करना
+        async function fetchCatalogData() {
+            try {
+                const cached = sessionStorage.getItem(CACHE_KEY);
+                if (cached) {
+                    const parsed = JSON.parse(cached);
+                    if (Date.now() - parsed.timestamp < CACHE_TTL_MS && Array.isArray(parsed.items) && parsed.items.length > 0) {
+                        return parsed.items;
+                    }
+                }
+            } catch (e) {}
+
+            const response = await fetch(CATALOG_CSV_URL, { cache: "no-store" });
+            if (!response.ok) throw new Error("नेटवर्क से कैटलॉग डेटा प्राप्त नहीं हो सका।");
+            const csvText = await response.text();
+            const rows = parseCSV(csvText);
+            const items = mapCSVToProducts(rows);
+
+            try {
+                sessionStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), items }));
+            } catch (e) {}
+            return items;
+        }
+
+        // सुरक्षित LocalStorage कार्ट लॉजिक
         let cartItems = [];
         try {
             const savedCart = localStorage.getItem("vm_cart_items");
@@ -702,41 +918,73 @@
             const mainContent = document.getElementById("product-overview");
 
             const params = new URLSearchParams(window.location.search);
-            const requestedSlug = (params.get("slug") || params.get("sku") || "vm-h01").trim().toLowerCase();
+            const rawParam = (params.get("slug") || params.get("sku") || "vm-h01").trim().toLowerCase();
+
+            // स्लग सुरक्षा जांच (केवल अक्षर, अंक और हाइफ़न अनुमत)
+            if (!/^[a-z0-9-]+$/.test(rawParam)) {
+                loader.style.display = "none";
+                errorBox.style.display = "block";
+                errorBox.innerHTML = `<h3>⚠️ अमान्य लिंक पैरामीटर</h3><p style="margin-top:8px;">दिया गया उत्पाद कोड सही प्रारूप में नहीं है।</p><p style="margin-top:10px;"><a href="?slug=vm-h01" style="color:var(--maroon-title);font-weight:700;text-decoration:underline;">मुख्य वाद्ययंत्र देखें →</a></p>`;
+                return;
+            }
 
             try {
-                const response = await fetch(`${SCRIPT_API_URL}?slug=${encodeURIComponent(requestedSlug)}`);
-                const data = await response.json();
+                const allItems = await fetchCatalogData();
+                const matched = allItems.find(item => item.slug === rawParam || item.sku.toLowerCase() === rawParam);
 
-                if (data.status !== "success" || !data.product) {
-                    throw new Error(data.message || "यह वाद्ययंत्र शीट में नहीं मिला।");
+                if (!matched) {
+                    throw new Error(`यह वाद्ययंत्र या सेवा (${escapeHTML(rawParam)}) वर्तमान कैटलॉग में उपलब्ध नहीं है।`);
                 }
 
-                productData = data.product;
+                productData = matched;
+
+                // उसी श्रेणी और प्रकार के संबंधित आइटम चुनना
+                const sameCategory = allItems.filter(i => i.sku !== matched.sku && i.itemType === matched.itemType && i.category === matched.category);
+                const sameTypeOther = allItems.filter(i => i.sku !== matched.sku && i.itemType === matched.itemType && i.category !== matched.category);
+                const relatedList = sameCategory.concat(sameTypeOther).slice(0, 3);
+
                 renderProductToDOM(productData);
-                renderRelatedProducts(data.related || []);
+                renderRelatedProducts(relatedList);
 
                 loader.style.display = "none";
                 mainContent.style.display = "block";
             } catch (err) {
                 loader.style.display = "none";
                 errorBox.style.display = "block";
-                errorBox.innerHTML = `<h3>⚠️ वाद्ययंत्र लोड नहीं हो सका</h3><p style="margin-top:8px;">${err.message}</p><p style="margin-top:10px;">सीधे ऑर्डर या जानकारी के लिए कॉल करें: <strong>+91 97550 88022</strong></p>`;
+                errorBox.innerHTML = `<h3>⚠️ विवरण लोड नहीं हो सका</h3><p style="margin-top:8px;">${escapeHTML(err.message)}</p><p style="margin-top:10px;">सीधे ऑर्डर या जानकारी के लिए कॉल करें: <strong>+91 97550 88022</strong></p>`;
             }
         }
 
         function renderProductToDOM(p) {
-            document.title = `${p.name} | विश्वकर्मा म्यूज़िकल्स`;
-            document.getElementById("breadcrumb-category").textContent = p.category || "वाद्ययंत्र संग्रह";
-            document.getElementById("breadcrumb-title").textContent = p.name;
-            document.getElementById("product-sku").textContent = p.sku;
-            document.getElementById("product-name").textContent = p.name;
-            document.getElementById("product-subtitle").textContent = p.subtitle || `${p.category} श्रेणी का हस्तनिर्मित एवं प्रमाणित वाद्ययंत्र`;
-            document.getElementById("product-short-desc").textContent = p.shortDescription || "";
+            document.title = `${p.nameHindi}${p.nameEnglish ? " (" + p.nameEnglish + ")" : ""} | विश्वकर्मा म्यूज़िकल्स`;
 
+            // डायनामिक Meta Description अपडेट
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) {
+                metaDesc.setAttribute("content", p.shortDescription || p.detailedDesc || p.subtitle || p.name);
+            }
+
+            // ब्रेडक्रम्ब अपडेट
+            const bcCat = document.getElementById("breadcrumb-category");
+            bcCat.textContent = p.isService ? "वर्कशॉप व मरम्मत सेवाएं" : (p.category || "वाद्ययंत्र संग्रह");
+            bcCat.href = p.isService
+                ? "https://sites.google.com/view/vishwakarma-musicals/Workshop-and-Repairs"
+                : "https://sites.google.com/view/vishwakarma-musicals/Instruments";
+            document.getElementById("breadcrumb-title").textContent = p.nameHindi;
+
+            // शीर्षक और उप-शीर्षक (हिंदी और अंग्रेज़ी अलग-अलग व स्पष्ट)
+            document.getElementById("product-sku").textContent = p.sku;
+            document.getElementById("product-name").textContent = p.nameHindi;
+            document.getElementById("product-subtitle").textContent = p.nameEnglish
+                ? `${p.nameEnglish} • ${p.subtitle || p.category}`
+                : (p.subtitle || `${p.category} श्रेणी का प्रमाणित कार्य`);
+            document.getElementById("product-short-desc").textContent = p.shortDescription || p.detailedDesc || "";
+
+            // मूल्य और GST विवरण
             document.getElementById("display-price").textContent = formatINR(p.price);
             document.getElementById("live-subtotal").textContent = formatINR(p.price * currentQty);
 
+            const isZeroGst = !p.gstRate || p.gstRate === "0%" || p.gstRate === "0";
             const mrpWrap = document.getElementById("mrp-wrapper");
             const discountEl = document.getElementById("display-discount");
             if (p.mrp && p.mrp > p.price) {
@@ -746,17 +994,49 @@
                 discountEl.textContent = `${pct}% की बचत`;
             } else {
                 mrpWrap.style.display = "none";
-                discountEl.textContent = (!p.gstRate || p.gstRate === "0%" || p.gstRate === "0") ? "0% GST (कर-मुक्त)" : `GST: ${p.gstRate}`;
+                discountEl.textContent = isZeroGst ? "0% GST (कर-मुक्त)" : `GST: ${p.gstRate} सहित`;
             }
-            document.getElementById("tax-note-text").textContent = "पिनकोड के अनुसार वास्तविक कूरियर भाड़ा अलग से जोड़ा जाएगा • सुरक्षित ट्रांजिट पैकेजिंग";
 
             const stockBar = document.getElementById("stock-status-bar");
-            document.getElementById("stock-status-text").textContent = p.stockBadge || (p.liveStock > 0 ? `स्टॉक में उपलब्ध: ${p.liveStock} पीस` : "ऑर्डर पर निर्माण (बुकिंग चालू)");
-            stockBar.classList.toggle("out-of-stock", Number(p.liveStock) <= 0);
+            const purchaseControls = document.querySelector(".purchase-controls");
+            const addToCartBtn = document.getElementById("add-to-cart-btn");
+            const buyNowBtn = document.getElementById("buy-now-btn");
+            const deliveryCard = document.querySelector(".delivery-card");
 
+            // PRODUCT बनाम SERVICE के अनुसार UI अनुकूलन
+            if (p.isService) {
+                document.getElementById("tax-note-text").textContent = `दर में ${p.gstRate} GST शामिल है • यह सेवा केवल अमानगंज (पन्ना) कार्यशाला में उपलब्ध है`;
+                document.getElementById("stock-status-text").textContent = "अमानगंज कार्यशाला में सेवा उपलब्ध (सुबह 9:00 से रात 9:00 बजे तक)";
+                stockBar.classList.remove("out-of-stock");
+
+                if (purchaseControls) purchaseControls.style.display = "none";
+                if (addToCartBtn) addToCartBtn.style.display = "none";
+                if (buyNowBtn) buyNowBtn.textContent = "📞 कार्यशाला में संपर्क / पूछताछ करें";
+                if (deliveryCard) {
+                    deliveryCard.innerHTML = `
+                        <h3 class="delivery-title">🛠️ कार्यशाला विज़िट एवं मरम्मत नियम</h3>
+                        <p class="pincode-result" style="color:var(--text-dark);">
+                            वाद्ययंत्र की सटीक स्वर मिलावट और मरम्मत की गुणवत्ता सुनिश्चित करने के लिए <strong>ऑनलाइन सर्विस बुकिंग नहीं की जाती है</strong>। कृपया अपना वाद्ययंत्र लेकर हमारी अमानगंज (पन्ना) दुकान पर पधारें।
+                        </p>
+                        <p style="margin-top:8px;font-size:0.9rem;color:var(--maroon-title);font-weight:700;">
+                            📍 पता: मकान नं. 109, हरदौल मंदिर के पास, शाला मोहल्ला, अमानगंज (पन्ना) • 📞 +91 97550 88022
+                        </p>
+                    `;
+                }
+            } else {
+                document.getElementById("tax-note-text").textContent = (isZeroGst ? "0% GST (कर-मुक्त मूल्य)" : `मूल्य में ${p.gstRate} GST शामिल है`) + " • पिनकोड के अनुसार वास्तविक कूरियर भाड़ा अलग से जोड़ा जाएगा";
+                document.getElementById("stock-status-text").textContent = p.stockBadge || (p.liveStock > 0 ? `स्टॉक में उपलब्ध: ${p.liveStock} पीस` : "ऑर्डर पर निर्माण (बुकिंग चालू)");
+                stockBar.classList.toggle("out-of-stock", Number(p.liveStock) <= 0);
+
+                if (purchaseControls) purchaseControls.style.display = "flex";
+                if (addToCartBtn) addToCartBtn.style.display = "inline-flex";
+                if (buyNowBtn) buyNowBtn.textContent = "⚡ अभी ऑर्डर करें";
+            }
+
+            // मुख्य इमेज और गैलरी रेंडरिंग (ऑटो फॉलबैक सहित)
             const mainImg = document.getElementById("main-product-image");
-            mainImg.src = p.mainImage;
-            mainImg.alt = p.name;
+            mainImg.alt = p.nameHindi;
+            attachImageFallback(mainImg, p.mainImage);
 
             const images = [p.mainImage, ...(p.galleryImages ? p.galleryImages.split(",") : [])]
                 .map(u => u.trim())
@@ -768,11 +1048,14 @@
                 const btn = document.createElement("button");
                 btn.type = "button";
                 btn.className = "thumb-btn" + (idx === 0 ? " active" : "");
-                btn.innerHTML = `<img src="${imgUrl}" alt="${p.name} ${idx + 1}">`;
+                const tImg = document.createElement("img");
+                tImg.alt = `${p.nameHindi} ${idx + 1}`;
+                attachImageFallback(tImg, imgUrl);
+                btn.appendChild(tImg);
                 btn.onclick = () => {
                     document.querySelectorAll(".thumb-btn").forEach(b => b.classList.remove("active"));
                     btn.classList.add("active");
-                    mainImg.src = imgUrl;
+                    attachImageFallback(mainImg, imgUrl);
                 };
                 thumbGallery.appendChild(btn);
             });
@@ -783,58 +1066,74 @@
                 videoThumb.href = p.videoUrl.trim();
                 videoThumb.target = "_blank";
                 videoThumb.rel = "noopener noreferrer";
-                videoThumb.setAttribute("aria-label", `${p.name} का YouTube वीडियो खोलें`);
-                videoThumb.innerHTML = `<span class="video-thumb-preview"><img src="${images[0]}" alt="${p.name} वीडियो थंबनेल"><span class="video-play" aria-hidden="true">▶</span></span><span class="video-thumb-label">YouTube वीडियो</span>`;
+                videoThumb.setAttribute("aria-label", `${p.nameHindi} का YouTube वीडियो खोलें`);
+                videoThumb.innerHTML = `<span class="video-thumb-preview"><img src="${escapeHTML(images[0])}" alt="${escapeHTML(p.nameHindi)} वीडियो थंबनेल"><span class="video-play" aria-hidden="true">▶</span></span><span class="video-thumb-label">YouTube वीडियो</span>`;
                 thumbGallery.appendChild(videoThumb);
             }
 
-            const featuresArr = p.keyFeatures ? p.keyFeatures.split("|").map(f => f.trim()).filter(Boolean) : [];
-            document.getElementById("highlights-list").innerHTML = featuresArr.map(f => `<li>${f}</li>`).join("");
+            // मुख्य विशेषताएं (यदि सर्विस में खाली हों तो Uses_Benefits से लें)
+            const rawFeatures = p.keyFeatures || p.usesBenefits || "";
+            const featuresArr = rawFeatures.split("|").map(f => f.trim()).filter(Boolean);
+            document.getElementById("highlights-list").innerHTML = featuresArr.map(f => `<li>${escapeHTML(f)}</li>`).join("");
 
-            document.getElementById("desc-tab-heading").textContent = `${p.name} — विस्तृत जानकारी`;
+            // विस्तृत विवरण टैब
+            document.getElementById("desc-tab-heading").textContent = `${p.nameHindi} — विस्तृत जानकारी`;
             const descParagraphs = p.detailedDesc
-                ? p.detailedDesc.split("|").map(para => `<p>${para.trim()}</p>`).join("")
-                : `<p>${p.shortDescription}</p><p>विश्वकर्मा म्यूज़िकल्स (अमानगंज) की कार्यशाला में इस वाद्ययंत्र के प्रत्येक हिस्से और स्वर ट्यूनिंग की बारीकी से जांच की जाती है।</p>`;
+                ? p.detailedDesc.split("|").map(para => `<p>${escapeHTML(para.trim())}</p>`).join("")
+                : `<p>${escapeHTML(p.shortDescription)}</p><p>विश्वकर्मा म्यूज़िकल्स (अमानगंज) की कार्यशाला में मास्टर कारीगर तुलसी दास विश्वकर्मा द्वारा प्रत्येक वाद्ययंत्र और सेवा की व्यक्तिगत रूप से जांच की जाती है।</p>`;
             document.getElementById("desc-tab-content").innerHTML = descParagraphs;
 
+            // उपयोग और फायदे टैब
             const benefitsContainer = document.getElementById("benefits-container");
             const benefitsSource = p.usesBenefits ? p.usesBenefits.split("|").map(b => b.trim()).filter(Boolean) : featuresArr;
             benefitsContainer.innerHTML = benefitsSource.map((item, idx) => {
-                const parts = item.split(":");
+                const cleanItem = item.replace(/^\d+\.\s*/, "");
+                const parts = cleanItem.split(":");
                 if (parts.length >= 2) {
-                    return `<div class="benefit-card"><h3>${idx + 1}. ${parts[0].trim()}</h3><p>${parts.slice(1).join(":").trim()}</p></div>`;
+                    return `<div class="benefit-card"><h3>${idx + 1}. ${escapeHTML(parts[0].trim())}</h3><p>${escapeHTML(parts.slice(1).join(":").trim())}</p></div>`;
                 }
-                return `<div class="benefit-card"><h3>विशेषता ${idx + 1}</h3><p>${item}</p></div>`;
+                return `<div class="benefit-card"><h3>विशेषता ${idx + 1}</h3><p>${escapeHTML(cleanItem)}</p></div>`;
             }).join("");
 
+            // तकनीकी स्पेसिफिकेशन्स टैब (सर्विस के लिए डिफ़ॉल्ट तालिका सहित)
             const specsContainer = document.getElementById("specs-container");
-            const specsArr = p.specifications ? p.specifications.split("|").map(s => s.trim()).filter(Boolean) : [];
+            const specsArr = p.specifications
+                ? p.specifications.split("|").map(s => s.trim()).filter(Boolean)
+                : [
+                    `सेवा कोड (SKU): ${p.sku}`,
+                    `SAC / HSN कोड: ${p.hsn || "998726"}`,
+                    `सेवा का प्रकार: कार्यशाला मरम्मत एवं स्वर मिलान (In-Store Service)`,
+                    `जीएसटी (GST): ${p.gstRate} (मूल्य में शामिल)`,
+                    `कार्यशाला स्थान: हरदौल मंदिर रोड, शाला मोहल्ला, अमानगंज (पन्ना)`
+                ];
             specsContainer.innerHTML = specsArr.map(row => {
                 const parts = row.split(":");
                 if (parts.length >= 2) {
-                    return `<div class="spec-row"><span class="spec-label">${parts[0].trim()}</span><span class="spec-value">${parts.slice(1).join(":").trim()}</span></div>`;
+                    return `<div class="spec-row"><span class="spec-label">${escapeHTML(parts[0].trim())}</span><span class="spec-value">${escapeHTML(parts.slice(1).join(":").trim())}</span></div>`;
                 }
-                return `<div class="spec-row"><span class="spec-label">विवरण</span><span class="spec-value">${row}</span></div>`;
+                return `<div class="spec-row"><span class="spec-label">विवरण</span><span class="spec-value">${escapeHTML(row)}</span></div>`;
             }).join("");
         }
 
         function renderRelatedProducts(list) {
             const grid = document.getElementById("related-products-grid");
+            const section = document.getElementById("related-products");
             if (!list.length) {
-                document.getElementById("related-products").style.display = "none";
+                section.style.display = "none";
                 return;
             }
+            section.style.display = "block";
             grid.innerHTML = list.map(item => `
                 <article class="product-card">
                     <div class="card-img-wrap">
-                        <span class="card-tag">${item.stockBadge || item.category}</span>
-                        <img src="${item.mainImage}" alt="${item.name}">
+                        <span class="card-tag">${escapeHTML(item.stockBadge || (item.isService ? "कार्यशाला सेवा" : item.category))}</span>
+                        <img src="${escapeHTML(item.mainImage || DEFAULT_WORKSHOP_SVG)}" alt="${escapeHTML(item.nameHindi)}" onerror="this.onerror=null;this.src='${DEFAULT_WORKSHOP_SVG}';">
                     </div>
                     <div class="card-body">
-                        <h3>${item.name}</h3>
-                        <p class="card-desc">${item.shortDescription || ""}</p>
+                        <h3>${escapeHTML(item.nameHindi)}</h3>
+                        <p class="card-desc">${escapeHTML(item.shortDescription || item.detailedDesc || item.subtitle || "")}</p>
                         <span class="card-price">${formatINR(item.price)}</span>
-                        <a href="?slug=${encodeURIComponent(item.slug || item.sku.toLowerCase())}" class="btn-card-action">वाद्ययंत्र देखें →</a>
+                        <a href="?slug=${encodeURIComponent(item.slug)}" class="btn-card-action">${item.isService ? "सेवा विवरण देखें →" : "वाद्ययंत्र देखें →"}</a>
                     </div>
                 </article>
             `).join("");
@@ -876,13 +1175,11 @@
         function renderCart() {
             try {
                 localStorage.setItem("vm_cart_items", JSON.stringify(cartItems));
-            } catch (e) {
-                console.error("कार्ट सेव करने में त्रुटि:", e);
-            }
+            } catch (e) {}
 
             const totalCount = cartItems.reduce((s, i) => s + Number(i.qty || 0), 0);
             const totalAmt = cartItems.reduce((s, i) => s + (Number(i.price || 0) * Number(i.qty || 0)), 0);
-            
+
             const countEl = document.getElementById("cart-count");
             const drawerTotalEl = document.getElementById("cart-drawer-total");
             if (countEl) countEl.textContent = totalCount;
@@ -898,8 +1195,8 @@
             box.innerHTML = cartItems.map((item, idx) => `
                 <div class="cart-item-row">
                     <div>
-                        <strong>${item.name || 'वाद्ययंत्र'}</strong>
-                        <p style="font-size:0.85rem; color:var(--text-muted-dark);">मात्रा: ${item.qty} × ${formatINR(item.price)}</p>
+                        <strong>${escapeHTML(item.name || "वाद्ययंत्र")}</strong>
+                        <p style="font-size:0.85rem; color:var(--text-muted-dark);">मात्रा: ${Number(item.qty)} × ${formatINR(item.price)}</p>
                     </div>
                     <div style="text-align: right;">
                         <strong>${formatINR(item.price * item.qty)}</strong>
@@ -921,23 +1218,23 @@
         const addToCartBtn = document.getElementById("add-to-cart-btn");
         if (addToCartBtn) {
             addToCartBtn.onclick = () => {
-                if (!productData) return;
+                if (!productData || productData.isService) return;
                 const qtyToAdd = Number(currentQty) || 1;
                 const existing = cartItems.find(i => i.sku === productData.sku);
-                
+
                 if (existing) {
                     existing.qty = Number(existing.qty) + qtyToAdd;
                 } else {
                     cartItems.push({
                         sku: productData.sku,
-                        name: productData.name,
+                        name: productData.nameHindi,
                         price: Number(productData.price),
                         qty: qtyToAdd
                     });
                 }
-                
+
                 renderCart();
-                showToast(`"${productData.name}" कार्ट में जोड़ दिया गया है!`);
+                showToast(`"${productData.nameHindi}" कार्ट में जोड़ दिया गया है!`);
                 openCart();
             };
         }
@@ -953,10 +1250,17 @@
         let activeOrderSummary = "";
         document.getElementById("buy-now-btn").onclick = () => {
             if (!productData) return;
-            activeOrderSummary = `${productData.sku}: ${productData.name} (मात्रा: ${currentQty}, मूल्य: ${formatINR(productData.price * currentQty)})`;
+            // यदि रिपेयर सर्विस है तो ऑनलाइन ऑर्डर फॉर्म के बजाय सीधे कार्यशाला WhatsApp पूछताछ खोलें
+            if (productData.isService) {
+                const svcMsg = `🙏 नमस्ते तुलसी दास जी (विश्वकर्मा म्यूज़िकल्स),\nमुझे इस मरम्मत सेवा के बारे में जानकारी चाहिए:\n🛠️ *सेवा:* ${productData.sku} - ${productData.nameHindi}\n💰 *अनुमानित शुल्क:* ${formatINR(productData.price)} (GST सहित)\nमैं अपना वाद्ययंत्र लेकर अमानगंज दुकान पर कब आ सकता हूँ?`;
+                window.open(`https://wa.me/${SHOP_WHATSAPP_NUMBER}?text=${encodeURIComponent(svcMsg)}`, "_blank");
+                return;
+            }
+            activeOrderSummary = `${productData.sku}: ${productData.nameHindi} (मात्रा: ${currentQty}, मूल्य: ${formatINR(productData.price * currentQty)})`;
             document.getElementById("order-summary-text").textContent = activeOrderSummary;
             orderModal.classList.add("open");
         };
+
         document.getElementById("drawer-checkout-btn").onclick = () => {
             if (!cartItems.length) return;
             closeCart();
@@ -980,32 +1284,54 @@
             e.target.reset();
         };
 
-        // अमानगंज (पन्ना, म.प्र. - 488441) से सटीक ज़ोन-वाइज पिनकोड डिलीवरी गणना
-        document.getElementById("check-pincode-btn").onclick = () => {
-            const pin = document.getElementById("pincode-input").value.trim();
-            const msgEl = document.getElementById("pincode-result-msg");
-            if (!/^[1-9][0-9]{5}$/.test(pin)) {
-                msgEl.style.color = "#b91c1c";
-                msgEl.textContent = "कृपया सही 6 अंकों का भारतीय पिनकोड दर्ज करें।";
-                return;
-            }
+        // ग्राहक समीक्षा फॉर्म सबमिट हैंडलर (सुरक्षित DOM रेंडरिंग)
+        const reviewForm = document.getElementById("review-form");
+        if (reviewForm) {
+            reviewForm.onsubmit = (e) => {
+                e.preventDefault();
+                const rName = document.getElementById("reviewer-name").value.trim();
+                const rCity = document.getElementById("reviewer-city").value.trim();
+                const rRating = Number(document.getElementById("reviewer-rating").value) || 5;
+                const rComment = document.getElementById("reviewer-comment").value.trim();
+                if (!rName || !rComment) return;
 
-            let deliveryDays = 5;
-            const firstDigit = pin.charAt(0);
-            if (firstDigit === "4" || firstDigit === "2" || firstDigit === "1") {
-                deliveryDays = 3; // म.प्र., छत्तीसगढ़, उत्तर प्रदेश व आसपास
-            } else if (firstDigit === "5" || firstDigit === "6" || firstDigit === "7") {
-                deliveryDays = 7; // दक्षिण व दूर के राज्य
-            } else {
-                deliveryDays = 5;
-            }
+                const starsStr = "★".repeat(rRating) + "☆".repeat(5 - rRating);
+                const card = document.createElement("article");
+                card.className = "review-card";
+                card.innerHTML = `<div class="review-header"><div><strong>${escapeHTML(rName)}</strong><span class="verified-tag">✔ ग्राहक समीक्षा • ${escapeHTML(rCity)}</span></div><span class="review-stars">${starsStr}</span></div><p>"${escapeHTML(rComment)}"</p>`;
+                document.getElementById("reviews-list-container").prepend(card);
+                reviewForm.reset();
+                showToast("आपकी समीक्षा सफलतापूर्वक जोड़ दी गई है!");
+            };
+        }
 
-            const d = new Date(); 
-            d.setDate(d.getDate() + deliveryDays);
-            
-            msgEl.style.color = "#0b6b36";
-            msgEl.innerHTML = `✔ पिनकोड <strong>${pin}</strong> पर Delhivery सेवा उपलब्ध है। सटीक अनुमानित डिलीवरी: <strong>${d.toLocaleDateString("hi-IN", { day: "numeric", month: "long", year: "numeric" })}</strong> तक (${deliveryDays} दिन)।`;
-        };
+        // पिनकोड डिलीवरी गणना
+        const checkPinBtn = document.getElementById("check-pincode-btn");
+        if (checkPinBtn) {
+            checkPinBtn.onclick = () => {
+                const pin = document.getElementById("pincode-input").value.trim();
+                const msgEl = document.getElementById("pincode-result-msg");
+                if (!/^[1-9][0-9]{5}$/.test(pin)) {
+                    msgEl.style.color = "#b91c1c";
+                    msgEl.textContent = "कृपया सही 6 अंकों का भारतीय पिनकोड दर्ज करें।";
+                    return;
+                }
+
+                let deliveryDays = 5;
+                const firstDigit = pin.charAt(0);
+                if (firstDigit === "4" || firstDigit === "2" || firstDigit === "1") {
+                    deliveryDays = 3;
+                } else if (firstDigit === "5" || firstDigit === "6" || firstDigit === "7") {
+                    deliveryDays = 7;
+                }
+
+                const d = new Date();
+                d.setDate(d.getDate() + deliveryDays);
+
+                msgEl.style.color = "#0b6b36";
+                msgEl.innerHTML = `✔ पिनकोड <strong>${escapeHTML(pin)}</strong> पर Delhivery सेवा उपलब्ध है। अनुमानित डिलीवरी: <strong>${escapeHTML(d.toLocaleDateString("hi-IN", { day: "numeric", month: "long", year: "numeric" }))}</strong> तक (${deliveryDays} दिन)।`;
+            };
+        }
 
         document.querySelectorAll(".tab-btn").forEach(btn => {
             btn.onclick = () => {
