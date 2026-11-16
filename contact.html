@@ -92,7 +92,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      zoom: 80%;
+    }
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
@@ -124,7 +127,7 @@
       border: none;
     }
 
-    /* UNIFIED TOP NAVIGATION BAR (IDENTICAL TO INDEX.HTML) */
+    /* UNIFIED TOP NAVIGATION BAR */
     .site-header {
       background: #160a04;
       position: fixed;
@@ -219,7 +222,7 @@
       margin-bottom: 16px;
       text-align: center;
       letter-spacing: 0.5px;
-      transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.72s ease !important;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .badge-tag:hover { transform: scale(1.04) translateY(-2px); }
 
@@ -256,13 +259,13 @@
     .sec-light {
       background-color: var(--bg-light);
       background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.9), transparent 66%),
-        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
+                        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
       color: var(--text-dark);
     }
     .sec-dark {
       background-color: var(--bg-dark);
       background-image: radial-gradient(ellipse at 50% 0%, rgba(125,78,30,.18), transparent 62%),
-        linear-gradient(145deg, #211006 0%, #120802 100%);
+                        linear-gradient(145deg, #211006 0%, #120802 100%);
       color: var(--text-light);
     }
 
@@ -293,7 +296,7 @@
       flex: 0 0 auto;
       border: none;
       font-family: inherit;
-      transition: transform 0.78s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.78s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease !important;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, filter 0.35s ease;
     }
     .btn:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: 3px; }
     .btn-gold {
@@ -400,7 +403,6 @@
       justify-content: center;
       align-items: stretch;
       gap: 24px;
-      transform: none !important;
     }
     .contact-grid .c-card-dark {
       background: var(--surface-dark-card);
@@ -414,19 +416,15 @@
       text-align: center;
       position: relative;
       z-index: 0;
-      transform: translateY(0) rotateX(0);
-      transition: transform 1.15s cubic-bezier(.22,1,.36,1), box-shadow 1.15s cubic-bezier(.22,1,.36,1), border-color .75s ease !important;
-      will-change: transform;
+      transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
       flex: 1 1 270px;
       max-width: 350px;
     }
     .contact-grid .c-card-dark:hover {
       z-index: 2;
-      transform: translateY(-8px) rotateX(1deg);
-      border-color: var(--gold-border) !important;
+      transform: translateY(-8px);
       box-shadow: 0 24px 42px rgba(35,17,5,.25), 0 8px 16px rgba(35,17,5,.13), 0 0 18px rgba(230,184,77,.28);
     }
-    .contact-grid .c-card-dark:not(:hover) { transform: translateY(0) rotateX(0); }
     .c-icon-box-light {
       width: 72px;
       height: 72px;
@@ -439,9 +437,9 @@
       font-size: 2.2rem;
       margin-bottom: 16px;
       box-shadow: 0 5px 0 rgba(115,76,10,.18), 0 10px 20px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.9);
-      transition: transform 1.15s cubic-bezier(.22,1,.36,1), box-shadow 1.15s cubic-bezier(.22,1,.36,1) !important;
+      transition: transform 0.35s ease;
     }
-    .c-card-dark:hover .c-icon-box-light { transform: translateY(-3px) rotateY(8deg); }
+    .c-card-dark:hover .c-icon-box-light { transform: translateY(-3px); }
     .c-card-dark h3 {
       font-size: 1.25rem;
       font-weight: 700;
@@ -508,13 +506,11 @@
       border: 2.5px solid var(--gold-border) !important;
       border-radius: 16px;
       overflow: hidden;
-      transform: translateY(0);
       box-shadow: 0 12px 24px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06);
-      transition: transform 1.15s cubic-bezier(.22,1,.36,1), box-shadow 1.15s cubic-bezier(.22,1,.36,1), border-color .75s ease !important;
+      transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
     }
     .faq-item-dark:hover {
       transform: translateY(-4px);
-      border-color: var(--gold-border) !important;
       box-shadow: 0 20px 34px rgba(0,0,0,.24), 0 0 16px rgba(230,184,77,.2);
     }
     .faq-item-dark summary {
@@ -534,7 +530,6 @@
       font-size: 1.6rem;
       line-height: 1;
       color: var(--gold-bright);
-      transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease !important;
     }
     .faq-item-dark[open] summary::after {
       content: "−";
@@ -548,7 +543,7 @@
       line-height: 1.7;
     }
 
-    /* 5. UNIFIED FOOTER WITH SOCIAL ICONS (IDENTICAL TO INDEX.HTML) */
+    /* 5. UNIFIED FOOTER WITH SOCIAL ICONS (FOOTER-ONLY WHATSAPP RULE) */
     .sec-footer-light-wrap {
       background-color: var(--bg-light);
       padding: 40px 0 24px;
@@ -578,7 +573,8 @@
       transition: color 0.2s, transform 0.2s;
       display: inline-block;
     }
-    .page-footer-nav-dark .pfn-links a:hover {
+    .page-footer-nav-dark .pfn-links a:hover,
+    .page-footer-nav-dark .pfn-links a.active {
       color: #ffffff !important;
       transform: translateY(-2px);
       text-decoration: underline;
@@ -623,7 +619,7 @@
       line-height: 1.6;
     }
 
-    /* UNIFIED CART DRAWER (IDENTICAL TO INDEX.HTML) */
+    /* UNIFIED CART DRAWER */
     .overlay-backdrop {
       position: fixed;
       inset: 0;
@@ -635,9 +631,9 @@
     .overlay-backdrop.open { display: block; }
     .cart-drawer {
       position: fixed;
-      top: 0; right: -420px;
+      top: 0; bottom: 0; right: -420px;
       width: 100%; max-width: 390px;
-      height: 100vh;
+      height: 100%;
       background: var(--surface-light);
       z-index: 250;
       display: flex;
@@ -665,7 +661,7 @@
     }
     .drawer-footer { padding: 18px 20px; border-top: 2px solid var(--gold-border); background: #f4e9db; }
 
-    /* MOBILE STICKY CTA BAR (IDENTICAL TO INDEX.HTML) */
+    /* MOBILE STICKY CTA BAR */
     .mobile-sticky-bar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -693,18 +689,6 @@
     }
     @media (min-width: 769px) { .mobile-sticky-bar { display: none !important; } }
 
-    @media (max-width: 600px) {
-      .btn { width: auto !important; max-width: 90% !important; }
-      .hero-trust-strip { flex-direction: column; align-items: center; gap: 14px; }
-      .c-card-dark { max-width: 100%; }
-      .contact-grid .c-card-dark:hover { transform: translateY(-5px); }
-      .map-embed-wrapper { height: 320px; }
-      .brand-name { font-size: 1rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
-  /* BATCH RESPONSIVE NAV UPDATE */
     @media (max-width: 860px) {
       .header-inner { gap: 10px; }
       .main-nav { min-width: 0; gap: 12px; }
@@ -713,23 +697,33 @@
       .brand-logo img { height: 40px; }
     }
     @media (max-width: 600px) {
+      .btn { width: auto !important; max-width: 90% !important; }
+      .hero-trust-strip { flex-direction: column; align-items: center; gap: 14px; }
+      .c-card-dark { max-width: 100%; }
+      .contact-grid .c-card-dark:hover { transform: translateY(-5px); }
+      .map-embed-wrapper { height: 320px; }
       .header-inner { gap: 8px; }
       .main-nav { min-width: 0; gap: 10px; }
       .main-nav a { font-size: 0.8rem; }
       .brand-logo img { height: 36px; }
+      .brand-name { font-size: 1rem; }
       .cart-trigger-btn { padding: 6px 9px; font-size: 0.78rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+    @media print {
+      html, body { zoom: 100% !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- UNIFIED TOP NAVIGATION BAR (IDENTICAL TO INDEX.HTML) -->
+  <!-- UNIFIED TOP NAVIGATION BAR -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo" aria-label="विश्वकर्मा म्यूज़िकल्स — होम">
-        <img src="favicon.webp"
-             id="site-logo-img"
-             alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
+        <img src="favicon.webp" id="site-logo-img" alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
         <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span>
       </a>
 
@@ -763,7 +757,7 @@
 
         <div class="btn-wrap-center" style="margin-bottom: 30px;">
           <a class="btn btn-gold" href="tel:+919755088022">📞 +91 97550 88022 पर कॉल करें</a>
-          <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener">🗺️ Maps नेविगेशन खोलें</a>
+          <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Maps नेविगेशन खोलें</a>
         </div>
 
         <div class="hero-trust-strip">
@@ -797,7 +791,7 @@
             अमानगंज, जिला पन्ना, मध्य प्रदेश – 488441
           </p>
           <div class="c-card-act">
-            <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener">🗺️ Maps पर रास्ता देखें</a>
+            <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Maps पर रास्ता देखें</a>
           </div>
         </article>
 
@@ -807,8 +801,8 @@
           <h3>फ़ोन व ईमेल संपर्क</h3>
           <p>
             सीधी कॉल करके बात करें व वाद्य संबंधित जानकारी प्राप्त करें।<br>
-            <strong>+91 97550 88022</strong><br>
-            <span style="font-size:0.88rem;color:var(--gold-bright);">ईमेल: info@vishwakarmamusicals.in</span>
+            <strong><a href="tel:+919755088022" style="color:#ffffff;">+91 97550 88022</a></strong><br>
+            <span style="font-size:0.88rem;color:var(--gold-bright);">ईमेल: <a href="mailto:info@vishwakarmamusicals.in" style="color:var(--gold-bright);text-decoration:underline;">info@vishwakarmamusicals.in</a></span>
           </p>
           <div class="c-card-act">
             <a class="btn btn-gold" href="tel:+919755088022">📞 कॉल करें</a>
@@ -845,11 +839,15 @@
 
       <div class="map-card-light">
         <div class="map-embed-wrapper">
-          <iframe src="https://maps.google.com/maps?q=24.4278711,80.0425885&hl=hi&z=17&output=embed" title="विश्वकर्मा म्यूज़िकल्स अमानगंज Google Maps लोकेशन" loading="lazy"></iframe>
+          <iframe src="https://maps.google.com/maps?q=24.4278711,80.0425885&hl=hi&z=17&output=embed"
+                  title="विश्वकर्मा म्यूज़िकल्स अमानगंज Google Maps लोकेशन"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen></iframe>
         </div>
 
         <div class="btn-wrap-center">
-          <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener">
+          <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">
             🗺️ Google Maps में रास्ता देखें
           </a>
         </div>
@@ -914,7 +912,7 @@
     </div>
   </section>
 
-  <!-- 5. UNIFIED FOOTER WITH SOCIAL ICONS (IDENTICAL TO INDEX.HTML) -->
+  <!-- 5. UNIFIED FOOTER WITH SOCIAL ICONS (WHATSAPP INCLUDED WITH SOCIAL BUTTONS) -->
   <footer class="sec-footer-light-wrap">
     <div class="container">
       <div class="page-footer-nav-dark">
@@ -931,30 +929,28 @@
         </div>
 
         <div class="social-links-footer">
-          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener" aria-label="YouTube">
+          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
-          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener" aria-label="Facebook">
+          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
           </a>
-          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener" aria-label="Instagram">
+          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
           <a class="social-icon-btn" href="https://wa.me/919755088022" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
             <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 2 131.5 2 253.9c0 39.1 10.2 77.3 29.6 111L0 480l118.3-31c32.6 17.8 69.4 27.2 105.4 27.2h.1c122.3 0 222.1-99.5 222.2-221.9 0-59.3-23.1-115.1-65.1-157.2zM223.9 438.7c-33 0-65.4-8.9-93.6-25.7l-6.7-4-70.2 18.4 18.7-68.4-4.4-7C49.1 322.2 39.9 288.4 39.9 253.9 39.9 152.7 122.7 69.8 223.9 69.8c49 0 95.1 19.1 129.8 53.9 34.6 34.7 53.7 80.8 53.7 129.8-.1 101.2-82.9 184.1-183.5 184.1zm101.1-138.2c-5.5-2.8-32.8-16.1-37.9-17.9-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.5-14.3 17.9-17.6 21.6-3.2 3.7-6.5 4.2-12 1.4-32.5-16.2-53.8-29-75.2-65.7-5.7-9.8 5.7-9.1 16.2-30.4 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.5-19.4 19-19.4 46.3 0 27.3 19.9 53.6 22.6 57.3 2.8 3.7 39.1 59.7 94.6 83.7 35.1 15.2 48.8 16.5 66.3 13.9 10.7-1.6 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-11.1-6.5z"/></svg>
           </a>
-
-
         </div>
 
         <p class="pfn-copy">
-          © 2026 विश्वकर्मा म्यूज़िकल्स, मकान नं. 109, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441 | फ़ोन: +91 97550 88022 | ईमेल: info@vishwakarmamusicals.in
+          © 2026 विश्वकर्मा म्यूज़िकल्स, मकान नं. 109, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441 | फ़ोन: <a href="tel:+919755088022" style="color:#f5ede0;">+91 97550 88022</a> | ईमेल: <a href="mailto:info@vishwakarmamusicals.in" style="color:#f5ede0;">info@vishwakarmamusicals.in</a>
         </p>
       </div>
     </div>
   </footer>
 
-  <!-- UNIFIED CART DRAWER (IDENTICAL TO INDEX.HTML) -->
+  <!-- UNIFIED CART DRAWER -->
   <div class="overlay-backdrop" id="cart-backdrop"></div>
   <aside class="cart-drawer" id="cart-drawer">
     <div class="drawer-header">
@@ -971,14 +967,66 @@
     </div>
   </aside>
 
-  <!-- MOBILE STICKY CTA BAR (IDENTICAL TO INDEX.HTML) -->
+  <!-- MOBILE STICKY CTA BAR -->
   <div class="mobile-sticky-bar">
     <a class="btn btn-gold" href="tel:+919755088022">📞 विशेषज्ञ को कॉल करें</a>
-    <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener" style="background:linear-gradient(180deg,#3d2315 0%,#201109 100%);color:#fbf6ee !important;border:2px solid var(--gold-border);">🗺️ रास्ता देखें</a>
+    <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(180deg,#3d2315 0%,#201109 100%);color:#fbf6ee !important;border:2px solid var(--gold-border);">🗺️ रास्ता देखें</a>
   </div>
 
-  <script src="assets/js/cart-ui.js"></script>
+  <!-- SELF-CONTAINED LOGO FALLBACK & CART ENGINE -->
   <script>
+    window.VMCartUI = {
+      storageKey: "vm_cart_items_v1",
+      readCart: function () {
+        try {
+          const raw = localStorage.getItem(this.storageKey);
+          const items = raw ? JSON.parse(raw) : [];
+          return Array.isArray(items) ? items.filter(i => i && i.sku) : [];
+        } catch (e) { return []; }
+      },
+      syncDrawer: function () {
+        const items = this.readCart();
+        const count = items.reduce((s, i) => s + (Number(i.qty) || 1), 0);
+        const total = items.reduce((s, i) => s + ((Number(i.price) || 0) * (Number(i.qty) || 1)), 0);
+        const countEl = document.getElementById("header-cart-count");
+        const totalEl = document.getElementById("cart-total-display");
+        const box = document.getElementById("cart-items-box");
+        const checkoutLink = document.querySelector("#cart-drawer .drawer-footer a.btn");
+        if (countEl) countEl.textContent = String(count);
+        if (totalEl) totalEl.textContent = "₹" + Number(total || 0).toLocaleString("en-IN");
+        if (checkoutLink) {
+          checkoutLink.href = items.length > 0
+            ? ("product.html?slug=" + encodeURIComponent(String(items[0].sku).toLowerCase()))
+            : "instruments.html";
+        }
+        if (!box) return;
+        if (!items.length) {
+          box.innerHTML = '<p style="text-align:center;color:#4a3424;padding:24px 0;">आपका कार्ट अभी खाली है।</p>';
+          return;
+        }
+        box.innerHTML = items.map((item, idx) => `
+          <div class="cart-item-row">
+            <div>
+              <strong style="color:#8a2a0c;display:block;">${item.name || item.sku}</strong>
+              <span style="font-size:0.86rem;color:#4a3424;">कोड: ${item.sku} | मात्रा: ${item.qty} × ₹${Number(item.price || 0).toLocaleString("en-IN")}</span>
+            </div>
+            <button type="button" data-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+          </div>
+        `).join("");
+        box.querySelectorAll("button[data-idx]").forEach(btn => {
+          btn.onclick = () => {
+            const idx = Number(btn.getAttribute("data-idx"));
+            const current = this.readCart();
+            if (idx >= 0 && idx < current.length) {
+              current.splice(idx, 1);
+              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
+              this.syncDrawer();
+            }
+          };
+        });
+      }
+    };
+
     const LOGO_EMBLEM_SVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
       `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 88">
         <rect x="3" y="3" width="254" height="82" rx="14" fill="#241107" stroke="#e6b84d" stroke-width="3"/>
@@ -992,6 +1040,9 @@
         this.onerror = null;
         this.src = LOGO_EMBLEM_SVG;
       };
+      if (logoEl.complete && logoEl.naturalWidth === 0) {
+        logoEl.src = LOGO_EMBLEM_SVG;
+      }
     }
 
     // Unified Cart Drawer Sync
@@ -1011,8 +1062,11 @@
       document.getElementById("cart-drawer").classList.remove("open");
       document.getElementById("cart-backdrop").classList.remove("open");
     };
+    window.addEventListener("storage", function (event) {
+      if (event.key === window.VMCartUI.storageKey) syncCartDrawer();
+    });
 
-    syncCartDrawer();
+    document.addEventListener("DOMContentLoaded", syncCartDrawer);
   </script>
 </body>
 </html>

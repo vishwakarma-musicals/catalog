@@ -5,18 +5,17 @@
   <link rel="icon" type="image/png" href="favicon.png" sizes="48x48">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>आधिकारिक कैटलॉग, मूल्य सूची व डाउनलोड केंद्र | विश्वकर्मा म्यूज़िकल्स अमानगंज</title>
-  <meta name="description" content="विश्वकर्मा म्यूज़िकल्स अमानगंज (पन्ना) का आधिकारिक A4 वाद्ययंत्र कैटलॉग, 26 वाद्ययंत्रों की मूल्य सूची, 20 वर्कशॉप मरम्मत सेवा दर पत्रक, वाद्य रख-रखाव गाइड और विज़िटिंग कार्ड डाउनलोड करें।">
+  <title>आधिकारिक कैटलॉग, रख-रखाव गाइड व विज़िटिंग कार्ड डाउनलोड | विश्वकर्मा म्यूज़िकल्स अमानगंज</title>
+  <meta name="description" content="विश्वकर्मा म्यूज़िकल्स, अमानगंज (पन्ना) का आधिकारिक वाद्य कैटलॉग, हारमोनियम धोंकनी व ढोलक रख-रखाव गाइड, कार्यशाला मरम्मत नियम व डिजिटल विज़िटिंग कार्ड।">
   <link rel="canonical" href="https://vishwakarmamusicals.in/downloads.html">
 
-  <!-- Schema.org Structured Data (WebPage + MusicStore) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "आधिकारिक कैटलॉग एवं डाउनलोड केंद्र",
+    "name": "आधिकारिक डाउनलोड केंद्र",
     "url": "https://vishwakarmamusicals.in/downloads.html",
-    "description": "विश्वकर्मा म्यूज़िकल्स के आधिकारिक A4 वाद्ययंत्र कैटलॉग, मूल्य सूची, रिपेयर रेट कार्ड और मार्केटिंग सामग्री डाउनलोड करने का केंद्र।",
+    "description": "विश्वकर्मा म्यूज़िकल्स अमानगंज का वाद्य कैटलॉग, रख-रखाव निर्देशिका और डिजिटल विज़िटिंग कार्ड डाउनलोड केंद्र।",
     "publisher": {
       "@type": "MusicStore",
       "name": "विश्वकर्मा म्यूज़िकल्स",
@@ -38,14 +37,6 @@
         "postalCode": "488441",
         "addressCountry": "IN"
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-        ],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
       "sameAs": [
         "https://www.youtube.com/@vishwakarmamusicals",
         "https://www.facebook.com/vishwakarmamusicalsamanganj/",
@@ -63,30 +54,26 @@
     :root {
       --bg-light: #fbf7f0;
       --surface-light: #ffffff;
-      --surface-light-card: #fffcf7;
       --text-dark: #1f1107;
       --text-muted-dark: #4a3424;
-      --border-inverse-light: #2c160a;
       --bg-dark: #190c05;
       --surface-dark: #27140a;
       --surface-dark-card: #281409;
       --text-light: #ffffff;
       --text-muted-light: #f5ede0;
-      --border-inverse-dark: #fbf6ee;
       --gold: #d4a340;
       --gold-bright: #fcd777;
       --gold-deep: #94651a;
       --gold-border: #e6b84d;
       --maroon: #73230a;
       --maroon-title: #8a2a0c;
-      --star: #f59e0b;
       --radius: 18px;
-      --depth-shadow: 0 18px 36px rgba(35, 17, 5, 0.22), 0 5px 12px rgba(35, 17, 5, 0.12);
+      --depth-shadow: 0 16px 30px rgba(35, 17, 5, 0.18), 0 5px 12px rgba(35, 17, 5, 0.11);
       --depth-shadow-hover: 0 24px 42px rgba(35, 17, 5, 0.25), 0 8px 16px rgba(35, 17, 5, 0.13);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; zoom: 80%; }
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
@@ -96,7 +83,6 @@
       padding-top: 64px;
       padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
       overflow-x: hidden;
-      perspective: 1400px;
     }
     @media (min-width: 769px) { body { padding-bottom: 0; } }
 
@@ -108,7 +94,7 @@
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; height: auto; display: block; }
     .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-    section { padding: clamp(56px, 8vw, 88px) 0; position: relative; isolation: isolate; }
+    section { padding: clamp(54px, 8vw, 84px) 0; position: relative; isolation: isolate; }
 
     .gold-section-divider {
       height: 3px;
@@ -118,7 +104,7 @@
       border: none;
     }
 
-    /* UNIFIED TOP NAVIGATION BAR (IDENTICAL TO INDEX.HTML) */
+    /* UNIFIED TOP NAVIGATION BAR */
     .site-header {
       background: #160a04;
       position: fixed;
@@ -134,17 +120,8 @@
       min-height: 64px;
       gap: 16px;
     }
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    .brand-logo img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-    }
+    .brand-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-logo img { height: 44px; width: auto; object-fit: contain; }
     .brand-name {
       font-family: 'Tiro Devanagari Hindi', serif;
       color: var(--gold-bright);
@@ -172,12 +149,7 @@
       color: var(--gold-bright);
       border-bottom-color: var(--gold-bright);
     }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .cart-trigger-btn {
       display: inline-flex;
       align-items: center;
@@ -200,7 +172,7 @@
       font-weight: 800;
     }
 
-    /* BADGES, HEADINGS & BUTTONS */
+    /* BADGES & BUTTONS */
     .badge-tag {
       display: inline-flex;
       align-items: center;
@@ -211,326 +183,239 @@
       padding: 6px 22px;
       border-radius: 999px;
       margin-bottom: 16px;
-      text-align: center;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 0 rgba(80, 45, 8, 0.18), 0 8px 14px rgba(35, 17, 5, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.75);
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .badge-tag:hover { transform: scale(1.04) translateY(-2px); }
-
-    .sec-dark .badge-tag, .hero .badge-tag {
+    .hero .badge-tag, .sec-dark .badge-tag {
       color: #ffffff;
       background: linear-gradient(180deg, #3d2314 0%, #201109 100%);
       border: 1.5px solid var(--gold-border);
-      box-shadow: inset 0 1px 2px rgba(255, 235, 190, 0.45), inset 0 -2px 3px rgba(0, 0, 0, 0.8), 0 6px 14px rgba(0, 0, 0, 0.5);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
     }
     .sec-light .badge-tag {
       color: #2b170c;
       background: linear-gradient(180deg, #fcedd8 0%, #ebd4b5 100%);
       border: 2px solid var(--gold-border);
-      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), inset 0 -2px 3px rgba(138, 86, 27, 0.3), 0 5px 12px rgba(44, 22, 10, 0.18);
     }
 
-    .sec-head { text-align: center; max-width: 780px; margin: 0 auto 46px; }
+    .sec-light {
+      background-color: var(--bg-light);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.92), transparent 66%),
+                        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
+      color: var(--text-dark);
+    }
+    .sec-dark {
+      background-color: var(--bg-dark);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(125,78,30,.18), transparent 62%),
+                        linear-gradient(145deg, #211006 0%, #120802 100%);
+      color: var(--text-light);
+    }
+
+    .sec-head { text-align: center; max-width: 780px; margin: 0 auto 44px; }
     .sec-light .sec-head h2 {
       font-size: clamp(2rem, 4.5vw, 2.75rem);
       color: var(--maroon-title);
       margin-bottom: 12px;
-      text-shadow: 0 1px 0 rgba(255,255,255,.26), 0 4px 0 rgba(70,31,8,.14), 0 9px 18px rgba(0,0,0,.20);
     }
     .sec-light .sec-head p { font-size: 1.05rem; color: var(--text-muted-dark); }
     .sec-dark .sec-head h2 {
       font-size: clamp(2rem, 4.5vw, 2.75rem);
       color: #ffffff;
       margin-bottom: 12px;
-      text-shadow: 0 2px 0 rgba(0,0,0,.3), 0 7px 18px rgba(0,0,0,.62);
     }
     .sec-dark .sec-head p { font-size: 1.05rem; color: var(--text-muted-light); }
-
-    .sec-light {
-      background-color: var(--bg-light);
-      background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.92), transparent 66%),
-        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
-      color: var(--text-dark);
-    }
-    .sec-dark {
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(ellipse at 50% 0%, rgba(125,78,30,.20), transparent 62%),
-        linear-gradient(145deg, #211006 0%, #120802 100%);
-      color: var(--text-light);
-    }
 
     .btn-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 16px;
+      gap: 14px 18px;
       align-items: center;
       justify-content: center;
-      width: 100%;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 46px;
-      padding: 10px 22px;
+      gap: 10px;
+      min-height: 48px;
+      padding: 10px 26px;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 0.94rem;
+      font-size: 0.96rem;
       cursor: pointer;
       text-align: center;
-      user-select: none;
       border: none;
       font-family: inherit;
-      box-shadow: 0 5px 0 rgba(48,28,8,.55), 0 10px 18px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.6);
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease, filter 0.32s ease;
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.04);
-      box-shadow: 0 8px 0 rgba(48,28,8,.48), 0 16px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.68);
-    }
-    .btn:active {
-      transform: translateY(3px);
-      box-shadow: 0 2px 0 rgba(48,28,8,.55), 0 4px 8px rgba(0,0,0,.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
     .btn-gold {
       background: linear-gradient(180deg, #fce09b 0%, #d89f31 55%, #b1791a 100%);
       color: #1a0e04 !important;
       border: 1px solid #734c0a;
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+      box-shadow: 0 5px 0 #734c0a, 0 8px 18px rgba(0, 0, 0, 0.4);
     }
+    .btn-gold:hover { transform: translateY(-2px); }
     .btn-outline {
       background: linear-gradient(180deg, #3d2315 0%, #201109 100%);
       color: #fbf6ee !important;
       border: 2px solid var(--gold-border);
     }
-    .sec-light .btn-outline {
-      background: linear-gradient(180deg, #ffffff 0%, #f4e9db 100%);
-      color: #2b170c !important;
-      border: 2px solid var(--gold-border);
-    }
+    .btn-outline:hover { transform: translateY(-2px); }
 
-    /* 1. HERO SECTION */
+    /* HERO */
     .hero {
-      padding: clamp(68px, 10vw, 112px) 0 clamp(58px, 8vw, 92px);
-      background-color: #1a0e06;
-      background-image:
-        radial-gradient(circle at center, rgba(212, 163, 64, 0.22) 0%, rgba(25, 12, 5, 0.92) 75%),
-        url('https://drive.google.com/thumbnail?id=1KqvKy-8ZF5uIYTYGacpgte4PGL1GVyBS&sz=w1200');
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
+      padding: clamp(58px, 8vw, 96px) 0;
+      background: radial-gradient(circle at center, rgba(212, 163, 64, 0.22) 0%, rgba(18, 9, 4, 0.92) 76%), #1a0e06;
+      border-bottom: 2px solid var(--gold-deep);
       text-align: center;
-      box-shadow: inset 0 -16px 32px rgba(0,0,0,.26), 0 12px 30px rgba(25,12,5,.34);
     }
-    .hero-center-box { max-width: 920px; margin: 0 auto; }
     .hero-title {
-      font-size: clamp(2.4rem, 6vw, 4.1rem);
+      font-size: clamp(2.2rem, 5.2vw, 3.8rem);
       color: #ffffff;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 6px 24px rgba(0,0,0,0.95);
+      margin-bottom: 14px;
     }
     .hero-desc {
-      font-size: clamp(1.05rem, 2.2vw, 1.22rem);
-      color: #ffffff;
-      max-width: 840px;
-      margin: 0 auto 32px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.95);
-    }
-    .hero-trust-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 18px 28px;
-      padding-top: 20px;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.96rem;
-    }
-    .hero-trust-strip span.icon { color: var(--gold-bright); margin-right: 6px; }
-
-    /* 2. FEATURED MASTER CATALOGUE SHOWCASE */
-    .featured-catalog-box {
-      background: linear-gradient(145deg, #2d170b 0%, #170a04 100%);
-      border: 3px solid var(--gold-border);
-      border-radius: 22px;
-      padding: clamp(26px, 4.5vw, 44px);
-      box-shadow: var(--depth-shadow);
-      display: grid;
-      grid-template-columns: 0.9fr 1.3fr;
-      gap: 34px;
-      align-items: center;
-      color: var(--text-light);
-    }
-    .catalog-preview-card {
-      background: linear-gradient(160deg, #241107 0%, #140803 100%);
-      border: 2.5px solid var(--gold-bright);
-      outline: 1px solid rgba(252, 215, 119, 0.4);
-      outline-offset: -8px;
-      border-radius: 16px;
-      padding: 28px 20px;
-      text-align: center;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.65);
-    }
-    .catalog-preview-badge {
-      display: inline-block;
-      background: rgba(252, 215, 119, 0.15);
-      color: var(--gold-bright);
-      border: 1px solid var(--gold-border);
-      padding: 4px 14px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .catalog-preview-title {
-      font-size: 1.85rem;
-      color: var(--gold-bright);
-      margin-bottom: 6px;
-    }
-    .catalog-preview-sub {
-      font-size: 0.95rem;
+      max-width: 820px;
+      margin: 0 auto 28px;
       color: #f5ede0;
-      margin-bottom: 14px;
-    }
-    .catalog-meta-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 16px 0 20px;
-    }
-    .meta-pill {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--gold-border);
-      color: var(--gold-bright);
-      padding: 5px 14px;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 700;
-    }
-    .catalog-feature-list {
-      list-style: none;
-      margin-bottom: 24px;
-    }
-    .catalog-feature-list li {
-      margin-bottom: 8px;
-      color: var(--text-muted-light);
-      font-size: 0.96rem;
-    }
-    .catalog-feature-list li::before {
-      content: "❖ ";
-      color: var(--gold-bright);
-      font-weight: 700;
+      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
     }
 
-    /* 3. DOWNLOADABLE MARKETING & WORKSHOP MATERIALS GRID */
+    /* DOWNLOAD CARDS GRID */
     .downloads-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: stretch;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 26px;
     }
-    .dcard-dark {
+    .dl-card-dark {
       background: var(--surface-dark-card);
       border: 2.5px solid var(--gold-border);
-      border-radius: 20px;
-      overflow: hidden;
+      border-radius: var(--radius);
+      padding: 30px 24px;
       box-shadow: var(--depth-shadow);
       display: flex;
       flex-direction: column;
-      flex: 1 1 310px;
-      max-width: 360px;
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
-    }
-    .dcard-dark:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--depth-shadow-hover), 0 0 22px rgba(230, 184, 77, 0.35);
-    }
-    .dcard-top-banner {
-      background: linear-gradient(145deg, #fffdf8 0%, #f3e4c8 100%);
-      border-bottom: 2px solid var(--gold-border);
-      padding: 22px 18px;
       text-align: center;
-      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .dcard-icon-circle {
-      width: 64px;
-      height: 64px;
+    .dl-card-dark:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--depth-shadow-hover);
+    }
+    .dl-icon-circle {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 16px;
       border-radius: 50%;
-      background: #281409;
-      border: 2px solid var(--gold-border);
-      color: var(--gold-bright);
+      background: #ffffff;
+      border: 2.5px solid var(--gold-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.9rem;
-      margin: 0 auto 10px;
-      box-shadow: 0 6px 14px rgba(35, 17, 5, 0.25);
+      font-size: 2.1rem;
     }
-    .dcard-format-badge {
+    .dl-tag {
       display: inline-block;
-      background: var(--maroon-title);
-      color: #ffffff;
-      font-size: 0.75rem;
+      margin: 0 auto 10px;
+      font-size: 0.78rem;
       font-weight: 700;
+      color: #1a0e04;
+      background: linear-gradient(180deg, #fce09b 0%, #d89f31 100%);
       padding: 3px 12px;
       border-radius: 999px;
-      border: 1px solid var(--gold-border);
     }
-    .dcard-body {
-      padding: 22px 20px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      text-align: center;
-    }
-    .dcard-title {
-      font-size: 1.24rem;
+    .dl-card-dark h3 {
+      font-size: 1.32rem;
       font-weight: 700;
       color: var(--gold-bright);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
-    .dcard-desc {
-      font-size: 0.9rem;
+    .dl-card-dark p {
+      font-size: 0.95rem;
       color: var(--text-muted-light);
-      margin-bottom: 14px;
-      line-height: 1.6;
+      margin-bottom: 22px;
       flex-grow: 1;
+      line-height: 1.7;
     }
-    .dcard-specs {
-      background: #190c05;
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 0.83rem;
-      margin-bottom: 18px;
-      border: 1px dashed rgba(243, 198, 93, 0.4);
-      text-align: left;
-      list-style: none;
-    }
-    .dcard-specs li {
-      color: #ffffff;
-      margin-bottom: 4px;
-      line-height: 1.45;
-    }
-    .dcard-specs li:last-child { margin-bottom: 0; }
-    .dcard-specs li::before {
-      content: "✓ ";
-      color: var(--gold-bright);
-      font-weight: 700;
-    }
-    .dcard-actions {
-      margin-top: auto;
+    .dl-actions {
       display: flex;
       flex-direction: column;
       gap: 10px;
+      align-items: center;
     }
-    .dcard-actions .btn { width: 100%; }
 
-    /* 4. UNIFIED FOOTER WITH 4 SOCIAL ICONS (YOUTUBE, FACEBOOK, INSTAGRAM, WHATSAPP) */
+    /* PRINTABLE MAINTENANCE & VISITING CARD PREVIEW */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .care-sheet-light {
+      background: #ffffff;
+      border: 2.5px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--depth-shadow);
+    }
+    .care-sheet-light h3 {
+      color: var(--maroon-title);
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      border-bottom: 1.5px dashed var(--gold-border);
+      padding-bottom: 10px;
+    }
+    .care-list { list-style: none; }
+    .care-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 12px;
+      color: var(--text-muted-dark);
+      font-size: 0.96rem;
+    }
+    .care-list li::before {
+      content: "❖";
+      position: absolute;
+      left: 0;
+      color: var(--gold-deep);
+    }
+    .care-list li strong { color: var(--text-dark); }
+
+    .visiting-card-box {
+      background: linear-gradient(145deg, #2b1509 0%, #140803 100%);
+      border: 3px solid var(--gold-border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      color: #ffffff;
+      box-shadow: var(--depth-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .vc-top {
+      border-bottom: 1px dashed rgba(252, 215, 119, 0.4);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+    .vc-top h3 {
+      color: var(--gold-bright);
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .vc-sub { font-size: 0.92rem; color: #f5ede0; }
+    .vc-body { font-size: 0.94rem; color: #f5ede0; line-height: 1.75; }
+    .vc-body strong { color: var(--gold-bright); }
+    .vc-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(252, 215, 119, 0.4);
+      font-size: 0.85rem;
+      color: var(--gold-bright);
+    }
+
+    /* UNIFIED FOOTER WITH SOCIAL ICONS (FOOTER-ONLY WHATSAPP RULE) */
     .sec-footer-light-wrap { background-color: var(--bg-light); padding: 40px 0 24px; }
     .page-footer-nav-dark {
       padding: 38px 24px 32px;
@@ -538,7 +423,7 @@
       background: #0d0703 !important;
       border-radius: var(--radius);
       text-align: center;
-      box-shadow: 0 -10px 28px rgba(0,0,0,.34), inset 0 1px 0 rgba(230,184,77,.45);
+      box-shadow: 0 0 20px rgba(230,184,77,.4), 0 10px 28px rgba(44,22,10,.22);
       max-width: 1140px;
       margin: 0 auto;
     }
@@ -559,7 +444,7 @@
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
     }
     .social-icon-btn svg { width: 18px; height: 18px; fill: currentColor; }
-    .social-icon-btn:hover { background: var(--gold-bright); color: #1a0e04; transform: translateY(-3px); box-shadow: 0 6px 14px rgba(252, 215, 119, 0.3); }
+    .social-icon-btn:hover { background: var(--gold-bright); color: #1a0e04; transform: translateY(-3px); }
     .pfn-copy {
       font-size: 0.88rem;
       color: #f5ede0 !important;
@@ -581,9 +466,9 @@
     .overlay-backdrop.open { display: block; }
     .cart-drawer {
       position: fixed;
-      top: 0; right: -420px;
+      top: 0; bottom: 0; right: -420px;
       width: 100%; max-width: 390px;
-      height: 100vh;
+      height: 100%;
       background: var(--surface-light);
       z-index: 250;
       display: flex;
@@ -617,14 +502,12 @@
       bottom: 0; left: 0; right: 0;
       z-index: 180;
       background: rgba(26, 14, 6, 0.96);
-      backdrop-filter: blur(8px);
       border-top: 1.5px solid var(--gold-deep);
       padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 12px;
-      box-shadow: 0 -8px 24px rgba(0,0,0,.28);
     }
     .mobile-sticky-bar a {
       flex: 1;
@@ -636,67 +519,20 @@
       justify-content: center;
     }
     @media (min-width: 769px) { .mobile-sticky-bar { display: none !important; } }
-
-    /* DYNAMIC PRINT AREA FOR MARKETING DOCUMENTS */
-    #printable-sheet-area { display: none; }
-
+    @media (max-width: 900px) { .guide-grid { grid-template-columns: 1fr; } }
     @media print {
-      body > *:not(#printable-sheet-area) { display: none !important; }
-      html, body {
-        background: #ffffff !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        color: #1f1107 !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-      #printable-sheet-area {
-        display: block !important;
-        width: 190mm;
-        margin: 0 auto;
-        padding: 8mm;
-        border: 2.5px solid #73230a;
-        outline: 1px solid #94651a;
-        outline-offset: -5px;
-        background: #fffdf9;
-      }
-    }
-
-    @media (max-width: 860px) {
-      .featured-catalog-box { grid-template-columns: 1fr; text-align: center; }
-      .catalog-meta-pills { justify-content: center; }
-      .catalog-feature-list { text-align: left; max-width: 520px; margin: 0 auto 24px; }
-    }
-    @media (max-width: 600px) {
-      .dcard-dark { max-width: 100%; }
-      .brand-name { font-size: 1rem; }
-    }
-  /* BATCH RESPONSIVE NAV UPDATE */
-    @media (max-width: 860px) {
-      .header-inner { gap: 10px; }
-      .main-nav { min-width: 0; gap: 12px; }
-      .main-nav a { font-size: 0.84rem; }
-      .brand-logo { gap: 8px; }
-      .brand-logo img { height: 40px; }
-    }
-    @media (max-width: 600px) {
-      .header-inner { gap: 8px; }
-      .main-nav { min-width: 0; gap: 10px; }
-      .main-nav a { font-size: 0.8rem; }
-      .brand-logo img { height: 36px; }
-      .cart-trigger-btn { padding: 6px 9px; font-size: 0.78rem; }
+      html, body { zoom: 100% !important; padding: 0 !important; background: #ffffff !important; }
+      .site-header, .sec-footer-light-wrap, .mobile-sticky-bar, .no-print { display: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- UNIFIED TOP NAVIGATION BAR (IDENTICAL TO INDEX.HTML) -->
+  <!-- UNIFIED TOP NAVIGATION BAR -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo" aria-label="विश्वकर्मा म्यूज़िकल्स — होम">
-        <img src="favicon.webp"
-             id="site-logo-img"
-             alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
+        <img src="favicon.webp" id="site-logo-img" alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
         <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span>
       </a>
 
@@ -721,235 +557,124 @@
   <!-- 1. HERO SECTION -->
   <section class="hero">
     <div class="container">
-      <div class="hero-center-box">
-        <span class="badge-tag">꧁༺ आधिकारिक कैटलॉग एवं प्रचार सामग्री ༻꧂</span>
-        <h1 class="hero-title">कैटलॉग, मूल्य सूची व डाउनलोड केंद्र</h1>
-        <p class="hero-desc">
-          विश्वकर्मा म्यूज़िकल्स के २६ हस्तनिर्मित वाद्ययंत्रों का सचित्र A4 कैटलॉग, २० वर्कशॉप रिपेयर सेवाओं की आधिकारिक दर सूची, वाद्य रख-रखाव मार्गदर्शिका और दुकान परिचय पत्रक यहाँ से सीधे देखें या PDF के रूप में डाउनलोड करें।
-        </p>
-
-        <div class="btn-wrap" style="margin-bottom: 24px;">
-          <a class="btn btn-gold" href="catalog.html">📖 संपूर्ण A4 कैटलॉग बुक खोलें</a>
-          <a class="btn btn-outline" href="#marketing-downloads">📥 अन्य प्रचार सामग्री डाउनलोड करें ↓</a>
-        </div>
-
-        <div class="hero-trust-strip">
-          <div><span class="icon">✓</span> A4 प्रिंट-रेडी PDF फॉर्मेट</div>
-          <div><span class="icon">✓</span> 100% पारदर्शी कार्यशाला दरें</div>
-          <div><span class="icon">✓</span> भजन मंडलियों व संस्थानों हेतु उपयोगी</div>
-        </div>
+      <span class="badge-tag">꧁ आधिकारिक दस्तावेज़ व मार्गदर्शिका केंद्र ꧂</span>
+      <h1 class="hero-title">डाउनलोड एवं प्रिंट संसाधन केंद्र</h1>
+      <p class="hero-desc">
+        विश्वकर्मा म्यूज़िकल्स का आधिकारिक वाद्य यंत्र कैटलॉग, हारमोनियम धोंकनी व ढोलक रख-रखाव निर्देशिका, कार्यशाला मरम्मत नियम तथा डिजिटल विज़िटिंग कार्ड सीधे देखें व PDF में सेव करें।
+      </p>
+      <div class="btn-wrap no-print">
+        <a class="btn btn-gold" href="catalog.html">📜 संपूर्ण कैटलॉग खोलें व PDF सेव करें</a>
+        <a class="btn btn-outline" href="tel:+919755088022">📞 +91 97550 88022 पर सीधे कॉल करें</a>
       </div>
     </div>
   </section>
 
   <hr class="gold-section-divider">
 
-  <!-- 2. FEATURED A4 MASTER CATALOGUE SHOWCASE -->
+  <!-- 2. DOWNLOADABLE RESOURCES -->
   <section class="sec-light">
     <div class="container">
       <div class="sec-head">
-        <span class="badge-tag">❖ मुख्य प्रकाशन ❖</span>
-        <h2>आधिकारिक वाद्ययंत्र एवं रिपेयर कैटलॉग (A4 बुक)</h2>
-        <p>शास्त्रीय और बुंदेली लोक वाद्य संग्रह का २९-पृष्ठीय संपूर्ण सचित्र संस्करण।</p>
+        <span class="badge-tag">❖ आधिकारिक फाइलें व मार्गदर्शिकाएँ ❖</span>
+        <h2>ग्राहकों एवं संगीत साधकों के लिए उपयोगी दस्तावेज़</h2>
+        <p>सभी दस्तावेज़ प्रिंट-अनुकूल (A4 Ready) हैं जिन्हें आप अपने मोबाइल या कंप्यूटर में PDF के रूप में सुरक्षित रख सकते हैं।</p>
       </div>
 
-      <div class="featured-catalog-box">
-        <div class="catalog-preview-card">
-          <span class="catalog-preview-badge">❖ स्था. १९९० • अमानगंज (पन्ना) ❖</span>
-          <div style="font-size:3.2rem;margin:10px 0;">🪗</div>
-          <h3 class="catalog-preview-title">विश्वकर्मा म्यूज़िकल्स</h3>
-          <p class="catalog-preview-sub">आधिकारिक A4 वाद्ययंत्र एवं रिपेयर कैटलॉग</p>
-          <div style="height:2px;width:75%;margin:12px auto;background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);"></div>
-          <p style="font-size:0.86rem;color:#f5ede0;margin-bottom:14px;">
-            संस्थापक एवं मुख्य काष्ठ व सुर शिल्पी:<br>
-            <strong style="color:var(--gold-bright);font-size:1.05rem;">श्री तुलसी दास विश्वकर्मा</strong>
+      <div class="downloads-grid">
+        <!-- Card 1 -->
+        <article class="dl-card-dark">
+          <div class="dl-icon-circle" aria-hidden="true">📜</div>
+          <span class="dl-tag">A4 प्रिंट व PDF रेडी</span>
+          <h3>आधिकारिक वाद्य एवं सेवा कैटलॉग</h3>
+          <p>
+            स्केल चेंजर हारमोनियम, सफ़री हारमोनियम, शीशम ढोलक, तबला, झीका, मंजीरा, बांसुरी तथा अमानगंज कार्यशाला की मरम्मत सेवाओं की संपूर्ण सूची।
           </p>
-          <div style="font-size:0.8rem;color:var(--gold-bright);font-weight:700;">
-            कुल २९ A4 पृष्ठ • २६ वाद्ययंत्र • २० रिपेयर सेवाएँ
+          <div class="dl-actions">
+            <a class="btn btn-gold" href="catalog.html">कैटलॉग खोलें व प्रिंट करें →</a>
           </div>
-        </div>
+        </article>
 
-        <div>
-          <span class="badge-tag" style="margin-bottom:12px;">✦ संपूर्ण डिजिटल एवं प्रिंट-रेडी कैटलॉग ✦</span>
-          <h3 style="font-size:clamp(1.65rem,3.4vw,2.2rem);color:var(--gold-bright);margin-bottom:10px;">
-            एक ही पुस्तिका में हमारे सभी वाद्ययंत्रों और सेवाओं का पूर्ण विवरण
-          </h3>
-          <p style="color:var(--text-muted-light);margin-bottom:14px;">
-            इस कैटलॉग में प्रत्येक वाद्ययंत्र (हारमोनियम, सफ़री हारमोनियम, नट-बोल्ट व रस्सी ढोलक, शास्त्रीय तबला, झीका, असम बांसुरी, कांसा मंजीरा, डमरू आदि) का अलग-अलग A4 पृष्ठ पर फोटो, लकड़ी व सामग्री विवरण और कार्यशाला मूल्य दिया गया है।
+        <!-- Card 2 -->
+        <article class="dl-card-dark">
+          <div class="dl-icon-circle" aria-hidden="true">🪗</div>
+          <span class="dl-tag">रख-रखाव निर्देशिका</span>
+          <h3>वाद्य यंत्र सुरक्षा एवं मौसम देखभाल गाइड</h3>
+          <p>
+            हारमोनियम की धोंकनी और पीतल रीड्स को नमी से बचाने तथा ढोलक व तबले के प्राकृतिक चमड़े के पुड़ों की उम्र बढ़ाने के प्रामाणिक शिल्प नियम।
           </p>
-
-          <div class="catalog-meta-pills">
-            <span class="meta-pill">📄 २९ A4 पृष्ठ</span>
-            <span class="meta-pill">🎵 २६ प्रमाणित वाद्ययंत्र</span>
-            <span class="meta-pill">🛠️ २० रिपेयर सेवाएँ</span>
-            <span class="meta-pill">🖨️ 1-Click PDF सेव</span>
+          <div class="dl-actions">
+            <a class="btn btn-gold" href="#maintenance-guide">नीचे निर्देशिका पढ़ें ↓</a>
           </div>
+        </article>
 
-          <ul class="catalog-feature-list">
-            <li>प्रत्येक वाद्ययंत्र के लिए समर्पित A4 पृष्ठ, मॉडल कोड (SKU) और मुख्य विशेषताएँ।</li>
-            <li>हारमोनियम धोंकनी, 440Hz सुर मिलान, ढोलक पुड़ा और तबला रिपेयरिंग (`VM-R20`) की जानकारी।</li>
-            <li>मानस मंडलियों, संगीत विद्यालयों और मंदिर ट्रस्टों में साझा करने व प्रिंट करने के लिए उपयुक्त।</li>
-          </ul>
-
-          <div class="btn-wrap" style="justify-content:flex-start;">
-            <a class="btn btn-gold" href="catalog.html">📖 कैटलॉग ऑनलाइन पढ़ें व PDF डाउनलोड करें →</a>
-            <a class="btn btn-outline" href="tel:+919755088022">📞 +91 97550 88022 पर पूछें</a>
+        <!-- Card 3 -->
+        <article class="dl-card-dark">
+          <div class="dl-icon-circle" aria-hidden="true">🪪</div>
+          <span class="dl-tag">संपर्क कार्ड</span>
+          <h3>डिजिटल विज़िटिंग कार्ड (vCard व प्रिंट)</h3>
+          <p>
+            मुख्य शिल्पकार श्री तुलसी दास विश्वकर्मा का सीधा फ़ोन नंबर, आधिकारिक ईमेल, कार्यशाला पता और GSTIN विवरण एक क्लिक में अपने फ़ोन में सेव करें।
+          </p>
+          <div class="dl-actions">
+            <button type="button" class="btn btn-gold" id="download-vcard-btn">📥 संपर्क (.vcf) फ़ोन में सेव करें</button>
           </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
   <hr class="gold-section-divider">
 
-  <!-- 3. MARKETING MATERIALS & RATE CARDS DOWNLOAD GRID -->
-  <section id="marketing-downloads" class="sec-dark">
+  <!-- 3. MAINTENANCE GUIDE & DIGITAL VISITING CARD -->
+  <section class="sec-dark" id="maintenance-guide">
     <div class="container">
       <div class="sec-head">
-        <span class="badge-tag">❖ प्रचार सामग्री व सूचना पत्रक ❖</span>
-        <h2>अन्य उपयोगी पत्रक एवं मार्केटिंग सामग्री</h2>
-        <p>नीचे दिए गए किसी भी पत्रक को एक क्लिक में A4 PDF के रूप में सेव या प्रिंट करें।</p>
+        <span class="badge-tag">✦ शिल्पकार के विशेष सुझाव ✦</span>
+        <h2>वाद्य रख-रखाव नियम एवं डिजिटल विज़िटिंग कार्ड</h2>
+        <p>आपके वाद्य यंत्रों का मधुर सुर और मज़बूती वर्षों तक बनाए रखने के लिए आवश्यक सावधानियाँ।</p>
       </div>
 
-      <div class="downloads-grid">
+      <div class="guide-grid">
+        <!-- Maintenance Guide -->
+        <div class="care-sheet-light">
+          <h3>वाद्य यंत्र रख-रखाव एवं कार्यशाला नीति</h3>
+          <ul class="care-list">
+            <li><strong>हारमोनियम व सफ़री हारमोनियम:</strong> बजाने के बाद स्टॉपर बंद रखें और धोंकनी को पूरी तरह अंदर दबाकर लॉक करें। वाद्य को कभी भी नमी वाली दीवार या सीधी तेज़ धूप में न रखें।</li>
+            <li><strong>ढोलक व तबला पुड़े:</strong> वर्षा ऋतु में अत्यधिक नमी से बचाने के लिए वाद्य को सूखे कपड़े या कवर में रखें। तान कसने के बाद लंबे समय तक बिना बजाए अत्यधिक तनाव में न छोड़ें।</li>
+            <li><strong>झीका, मंजीरा व बांसुरी:</strong> उपयोग के बाद सूखे सूती कपड़े से पोंछकर रखें ताकि पीतल/कांसा की चमक और बांसुरी की प्राकृतिक नमी संतुलित बनी रहे।</li>
+            <li><strong>कूरियर व मरम्मत नियम:</strong> Delhivery One कूरियर शिपिंग केवल नए वाद्य यंत्रों के ऑर्डर पर उपलब्ध है। किसी भी प्रकार की मरम्मत या सुर मिलान के लिए वाद्य लेकर स्वयं अमानगंज कार्यशाला में आना अनिवार्य है।</li>
+            <li><strong>ऑर्डर एवं भुगतान नियम:</strong> नए वाद्य यंत्र की कार्यशाला तैयारी या डिस्पैच से पहले UPI अथवा HDFC Bank Transfer द्वारा अग्रिम/पूर्ण भुगतान अनिवार्य है।</li>
+          </ul>
+          <div style="margin-top:16px;" class="no-print">
+            <button type="button" class="btn btn-gold" onclick="window.print()">🖨️ इस गाइड को प्रिंट / PDF सेव करें</button>
+          </div>
+        </div>
 
-        <!-- Card 1: 26 Instruments Price List -->
-        <article class="dcard-dark">
-          <div class="dcard-top-banner">
-            <div class="dcard-icon-circle">📋</div>
-            <span class="dcard-format-badge">A4 PDF / Print Sheet</span>
+        <!-- Digital Visiting Card -->
+        <aside class="visiting-card-box">
+          <div class="vc-top">
+            <span style="font-size:0.82rem;letter-spacing:1px;color:var(--gold-bright);">स्थापित 1990 • 35+ वर्षों की परंपरा</span>
+            <h3>विश्वकर्मा म्यूज़िकल्स</h3>
+            <p class="vc-sub">मुख्य शिल्पकार: <strong>तुलसी दास विश्वकर्मा</strong></p>
           </div>
-          <div class="dcard-body">
-            <h3 class="dcard-title">२६ वाद्ययंत्रों की संक्षिप्त मूल्य सूची</h3>
-            <p class="dcard-desc">
-              सभी २६ वाद्ययंत्रों के मॉडल कोड (SKU), श्रेणी और कार्यशाला मूल्य की एक-पृष्ठीय (Single-Page A4) सारणी।
-            </p>
-            <ul class="dcard-specs">
-              <li>हारमोनियम व सफ़री हारमोनियम (5 मॉडल)</li>
-              <li>शीशम व आम ढोलक एवं तबला (5 मॉडल)</li>
-              <li>बांसुरी, झीका, खड़ताल, मंजीरा व कवर्स (16 मॉडल)</li>
-            </ul>
-            <div class="dcard-actions">
-              <button type="button" class="btn btn-gold" onclick="printMarketingDoc('price-list')">🖨️ मूल्य सूची PDF डाउनलोड / प्रिंट करें</button>
-            </div>
-          </div>
-        </article>
 
-        <!-- Card 2: 20 Workshop Repair Rate Card -->
-        <article class="dcard-dark">
-          <div class="dcard-top-banner">
-            <div class="dcard-icon-circle">🛠️</div>
-            <span class="dcard-format-badge">A4 Service Rate Card</span>
+          <div class="vc-body">
+            <p><strong>विशेषज्ञता:</strong> हारमोनियम, सफ़री हारमोनियम, शीशम ढोलक, तबला, झीका, मंजीरा, बांसुरी व संपूर्ण वाद्य मरम्मत एवं 440Hz सुर मिलान।</p>
+            <p style="margin-top:10px;"><strong>सीधा कॉल:</strong> +91 97550 88022</p>
+            <p><strong>आधिकारिक ईमेल:</strong> info@vishwakarmamusicals.in</p>
+            <p><strong>वेबसाइट:</strong> www.vishwakarmamusicals.in</p>
+            <p style="margin-top:10px;"><strong>कार्यशाला पता:</strong> मकान नं. 109, शाला मोहल्ला, वार्ड नं. 10, हरदौल मंदिर के बगल में, अमानगंज, जिला पन्ना (म.प्र.) - 488441</p>
           </div>
-          <div class="dcard-body">
-            <h3 class="dcard-title">वर्कशॉप मरम्मत सेवा दर पत्रक</h3>
-            <p class="dcard-desc">
-              अमानगंज कार्यशाला में उपलब्ध सभी २० मरम्मत और सुर मिलान सेवाओं (`VM-R01` से `VM-R20`) की पारदर्शी दर सूची।
-            </p>
-            <ul class="dcard-specs">
-              <li>हारमोनियम 440Hz ट्यूनिंग व धोंकनी रिपेयरिंग</li>
-              <li>ढोलक नया पुड़ा फिटिंग व मसाला भराई</li>
-              <li>तबला रिपेयरिंग, बद्धी खिंचाई व पुड़ी सेटिंग (VM-R20)</li>
-            </ul>
-            <div class="dcard-actions">
-              <button type="button" class="btn btn-gold" onclick="printMarketingDoc('repair-rates')">🖨️ रिपेयर रेट-कार्ड PDF डाउनलोड करें</button>
-            </div>
-          </div>
-        </article>
 
-        <!-- Card 3: Instrument Care & Maintenance Guide -->
-        <article class="dcard-dark">
-          <div class="dcard-top-banner">
-            <div class="dcard-icon-circle">🛡️</div>
-            <span class="dcard-format-badge">A4 Care & Maintenance Guide</span>
+          <div class="vc-footer">
+            GSTIN: 23BSDPV5529B1ZV • प्रतिदिन सुबह 9:00 से रात 9:00 बजे तक
           </div>
-          <div class="dcard-body">
-            <h3 class="dcard-title">वाद्ययंत्र रख-रखाव एवं सुरक्षा मार्गदर्शिका</h3>
-            <p class="dcard-desc">
-              वर्षा, नमी और गर्मी के मौसम में हारमोनियम की धोंकनी, रीड्स और ढोलक/तबले के पुड़ों को सुरक्षित रखने के नियम।
-            </p>
-            <ul class="dcard-specs">
-              <li>धोंकनी व पीतल रीड्स को नमी से बचाने के उपाय</li>
-              <li>ढोलक व तबला पुड़ों के तनाव और मसाले की देखभाल</li>
-              <li>६ माह की सीमित कारीगरी वारंटी के नियम</li>
-            </ul>
-            <div class="dcard-actions">
-              <button type="button" class="btn btn-gold" onclick="printMarketingDoc('care-guide')">🖨️ रख-रखाव गाइड PDF डाउनलोड करें</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 4: Official Visiting Card & Shop Direction Sheet -->
-        <article class="dcard-dark">
-          <div class="dcard-top-banner">
-            <div class="dcard-icon-circle">🪪</div>
-            <span class="dcard-format-badge">Business Profile & Address Card</span>
-          </div>
-          <div class="dcard-body">
-            <h3 class="dcard-title">आधिकारिक परिचय एवं दुकान पता पत्रक</h3>
-            <p class="dcard-desc">
-              दुकान का पूरा पता, लैंडमार्क (हरदौल मंदिर के बगल में), कार्य समय, फ़ोन नंबर और GSTIN विवरण वाला आधिकारिक पत्रक।
-            </p>
-            <ul class="dcard-specs">
-              <li>पता: मकान नं. 109, वार्ड नं. 10, शाला मोहल्ला, अमानगंज</li>
-              <li>सीधा फ़ोन संपर्क: +91 97550 88022</li>
-              <li>GSTIN: 23BSDPV5529B1ZV • सातों दिन (9 AM – 9 PM)</li>
-            </ul>
-            <div class="dcard-actions">
-              <button type="button" class="btn btn-gold" onclick="printMarketingDoc('visiting-card')">🖨️ परिचय व पता पत्रक डाउनलोड करें</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 5: Google Review & Rating Poster -->
-        <article class="dcard-dark">
-          <div class="dcard-top-banner">
-            <div class="dcard-icon-circle">⭐</div>
-            <span class="dcard-format-badge">A4 Store Review Poster</span>
-          </div>
-          <div class="dcard-body">
-            <h3 class="dcard-title">Google समीक्षा एवं रेटिंग पोस्टर</h3>
-            <p class="dcard-desc">
-              ग्राहकों द्वारा Google Business Profile पर ५-स्टार समीक्षा साझा करने के लिए प्रिंट करने योग्य A4 स्टोर पोस्टर।
-            </p>
-            <ul class="dcard-specs">
-              <li>5.0★ सत्यापित Google Business Profile रेटिंग</li>
-              <li>दुकान व कार्यशाला में लगाने हेतु A4 पोस्टर लेआउट</li>
-              <li>सीधा Google Review लिंक विवरण सहित</li>
-            </ul>
-            <div class="dcard-actions">
-              <button type="button" class="btn btn-gold" onclick="printMarketingDoc('review-poster')">🖨️ रिव्यू पोस्टर PDF डाउनलोड करें</button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 6: Institutional & Bhajan Mandali Order Guide -->
-        <article class="dcard-dark">
-          <div class="dcard-top-banner">
-            <div class="dcard-icon-circle">🏛️</div>
-            <span class="dcard-format-badge">B2B / Mandali Quotation Info</span>
-          </div>
-          <div class="dcard-body">
-            <h3 class="dcard-title">भजन मंडली व संस्थान ऑर्डर मार्गदर्शिका</h3>
-            <p class="dcard-desc">
-              संगीत विद्यालयों, मंदिर ट्रस्टों, आश्रमों और भजन मंडलियों के लिए अधिकृत Zoho GST बिलिंग व होम डिलीवरी प्रक्रिया पत्रक।
-            </p>
-            <ul class="dcard-specs">
-              <li>अधिकृत Zoho GST कोटेशन एवं इनवॉइस प्रक्रिया</li>
-              <li>Delhivery कूरियर वजन स्लैब व सुरक्षित पैकेजिंग मानक</li>
-              <li>कस्टम स्केल ट्यूनिंग व थोक ऑर्डर संपर्क विवरण</li>
-            </ul>
-            <div class="dcard-actions">
-              <button type="button" class="btn btn-gold" onclick="printMarketingDoc('mandali-guide')">🖨️ मंडली ऑर्डर गाइड डाउनलोड करें</button>
-            </div>
-          </div>
-        </article>
-
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- 4. UNIFIED FOOTER WITH 4 SOCIAL ICONS (YOUTUBE, FACEBOOK, INSTAGRAM, WHATSAPP) -->
+  <!-- UNIFIED FOOTER WITH SOCIAL ICONS (WHATSAPP INCLUDED WITH SOCIAL BUTTONS) -->
   <footer class="sec-footer-light-wrap">
     <div class="container">
       <div class="page-footer-nav-dark">
@@ -966,24 +691,19 @@
         </div>
 
         <div class="social-links-footer">
-          <!-- 1. YouTube Icon -->
-          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener" aria-label="YouTube">
+          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
-          <!-- 2. Facebook Icon -->
-          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener" aria-label="Facebook">
+          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
           </a>
-          <!-- 3. Instagram Icon -->
-          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener" aria-label="Instagram">
+          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
           <a class="social-icon-btn" href="https://wa.me/919755088022" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
             <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 2 131.5 2 253.9c0 39.1 10.2 77.3 29.6 111L0 480l118.3-31c32.6 17.8 69.4 27.2 105.4 27.2h.1c122.3 0 222.1-99.5 222.2-221.9 0-59.3-23.1-115.1-65.1-157.2zM223.9 438.7c-33 0-65.4-8.9-93.6-25.7l-6.7-4-70.2 18.4 18.7-68.4-4.4-7C49.1 322.2 39.9 288.4 39.9 253.9 39.9 152.7 122.7 69.8 223.9 69.8c49 0 95.1 19.1 129.8 53.9 34.6 34.7 53.7 80.8 53.7 129.8-.1 101.2-82.9 184.1-183.5 184.1zm101.1-138.2c-5.5-2.8-32.8-16.1-37.9-17.9-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.5-14.3 17.9-17.6 21.6-3.2 3.7-6.5 4.2-12 1.4-32.5-16.2-53.8-29-75.2-65.7-5.7-9.8 5.7-9.1 16.2-30.4 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.5-19.4 19-19.4 46.3 0 27.3 19.9 53.6 22.6 57.3 2.8 3.7 39.1 59.7 94.6 83.7 35.1 15.2 48.8 16.5 66.3 13.9 10.7-1.6 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-11.1-6.5z"/></svg>
           </a>
-
-
-</div>
+        </div>
 
         <p class="pfn-copy">
           © 2026 विश्वकर्मा म्यूज़िकल्स, मकान नं. 109, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441 | फ़ोन: +91 97550 88022 | ईमेल: info@vishwakarmamusicals.in
@@ -1012,20 +732,104 @@
   <!-- MOBILE STICKY CTA BAR -->
   <div class="mobile-sticky-bar">
     <a class="btn btn-gold" href="tel:+919755088022">📞 विशेषज्ञ को कॉल करें</a>
-    <a class="btn btn-outline" href="catalog.html">📖 A4 कैटलॉग खोलें</a>
+    <a class="btn btn-outline" href="instruments.html">🎵 वाद्य संग्रह देखें</a>
   </div>
 
-  <!-- HIDDEN PRINT CONTAINER FOR INSTANT A4 MARKETING SHEETS -->
-  <div id="printable-sheet-area" aria-hidden="true"></div>
-
-  <script src="assets/js/cart-ui.js"></script>
+  <!-- SELF-CONTAINED CART & VCARD DOWNLOAD SCRIPT -->
   <script>
-    // Unified Cart Drawer Sync
-    function syncCartDrawer() {
-      window.VMCartUI.syncDrawer();
+    window.VMCartUI = {
+      storageKey: "vm_cart_items_v1",
+      readCart: function () {
+        try {
+          const raw = localStorage.getItem(this.storageKey);
+          const items = raw ? JSON.parse(raw) : [];
+          return Array.isArray(items) ? items.filter(i => i && i.sku) : [];
+        } catch (e) { return []; }
+      },
+      syncDrawer: function () {
+        const items = this.readCart();
+        const count = items.reduce((s, i) => s + (Number(i.qty) || 1), 0);
+        const total = items.reduce((s, i) => s + ((Number(i.price) || 0) * (Number(i.qty) || 1)), 0);
+        const countEl = document.getElementById("header-cart-count");
+        const totalEl = document.getElementById("cart-total-display");
+        const box = document.getElementById("cart-items-box");
+        const checkoutLink = document.querySelector("#cart-drawer .drawer-footer a.btn");
+        if (countEl) countEl.textContent = String(count);
+        if (totalEl) totalEl.textContent = "₹" + Number(total || 0).toLocaleString("en-IN");
+        if (checkoutLink) {
+          checkoutLink.href = items.length > 0
+            ? ("product.html?slug=" + encodeURIComponent(String(items[0].sku).toLowerCase()))
+            : "instruments.html";
+        }
+        if (!box) return;
+        if (!items.length) {
+          box.innerHTML = '<p style="text-align:center;color:#4a3424;padding:24px 0;">आपका कार्ट अभी खाली है।</p>';
+          return;
+        }
+        box.innerHTML = items.map((item, idx) => `
+          <div class="cart-item-row">
+            <div>
+              <strong style="color:#8a2a0c;display:block;">${item.name || item.sku}</strong>
+              <span style="font-size:0.86rem;color:#4a3424;">कोड: ${item.sku} | मात्रा: ${item.qty} × ₹${Number(item.price || 0).toLocaleString("en-IN")}</span>
+            </div>
+            <button type="button" data-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+          </div>
+        `).join("");
+        box.querySelectorAll("button[data-idx]").forEach(btn => {
+          btn.onclick = () => {
+            const idx = Number(btn.getAttribute("data-idx"));
+            const current = this.readCart();
+            if (idx >= 0 && idx < current.length) {
+              current.splice(idx, 1);
+              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
+              this.syncDrawer();
+            }
+          };
+        });
+      }
+    };
+
+    const LOGO_EMBLEM_SVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 88">
+        <rect x="3" y="3" width="254" height="82" rx="14" fill="#241107" stroke="#e6b84d" stroke-width="3"/>
+        <text x="130" y="54" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="28" font-weight="bold">🎵 विश्वकर्मा</text>
+      </svg>`
+    );
+
+    const logoEl = document.getElementById("site-logo-img");
+    if (logoEl) {
+      logoEl.onerror = function () { this.onerror = null; this.src = LOGO_EMBLEM_SVG; };
     }
+
+    document.getElementById("download-vcard-btn").onclick = () => {
+      const vcard = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:Vishwakarma;Tulsidas;;;",
+        "FN:Vishwakarma Musicals (Tulsidas Vishwakarma)",
+        "ORG:Vishwakarma Musicals",
+        "TITLE:Master Craftsman & Proprietor",
+        "TEL;TYPE=WORK,VOICE:+919755088022",
+        "EMAIL;TYPE=PREF,INTERNET:info@vishwakarmamusicals.in",
+        "URL:https://vishwakarmamusicals.in",
+        "ADR;TYPE=WORK:;;House No. 109, Shala Mohalla, Ward No. 10, Near Hardaul Temple;Amanganj, District Panna;Madhya Pradesh;488441;India",
+        "NOTE:Handmade Harmonium, Safri Harmonium, Sheesham Dholak, Tabla, Jheeka & Workshop Repairing (Est. 1990) | GSTIN: 23BSDPV5529B1ZV",
+        "END:VCARD"
+      ].join("\r\n");
+
+      const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Vishwakarma_Musicals_Amanganj.vcf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    };
+
     document.getElementById("open-cart-btn").onclick = () => {
-      syncCartDrawer();
+      window.VMCartUI.syncDrawer();
       document.getElementById("cart-drawer").classList.add("open");
       document.getElementById("cart-backdrop").classList.add("open");
     };
@@ -1038,166 +842,9 @@
       document.getElementById("cart-backdrop").classList.remove("open");
     };
 
-    syncCartDrawer();
-
-    // Built-in A4 Marketing & Rate Sheet Generator
-    function printMarketingDoc(docType) {
-      const printBox = document.getElementById("printable-sheet-area");
-      const headerBanner = `
-        <div style="text-align:center;border-bottom:2px solid #73230a;padding-bottom:10px;margin-bottom:14px;">
-          <div style="font-size:0.85rem;font-weight:700;color:#73230a;">❖ स्था. १९९० • GSTIN: 23BSDPV5529B1ZV ❖</div>
-          <h1 style="font-size:2rem;color:#8a2a0c;margin:4px 0;">विश्वकर्मा म्यूज़िकल्स</h1>
-          <p style="font-size:0.92rem;font-weight:700;color:#1f1107;">संस्थापक एवं मुख्य काष्ठ व सुर शिल्पी: श्री तुलसी दास विश्वकर्मा</p>
-          <p style="font-size:0.85rem;color:#4a3424;">📍 मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) – 488441</p>
-          <p style="font-size:0.86rem;font-weight:700;color:#8a2a0c;">📞 संपर्क: +91 97550 88022 | ✉️ info@vishwakarmamusicals.in | 🌐 vishwakarmamusicals.in</p>
-        </div>
-      `;
-
-      const footerBanner = `
-        <div style="margin-top:16px;padding-top:8px;border-top:1px dashed #73230a;display:flex;justify-content:space-between;font-size:0.8rem;color:#4a3424;">
-          <span>© 2026 विश्वकर्मा म्यूज़िकल्स, अमानगंज (पन्ना)</span>
-          <span>कार्य समय: प्रतिदिन सुबह 9:00 से रात 9:00 बजे तक (सातों दिन खुली)</span>
-        </div>
-      `;
-
-      if (docType === "price-list") {
-        printBox.innerHTML = `
-          ${headerBanner}
-          <h2 style="text-align:center;color:#8a2a0c;font-size:1.35rem;margin-bottom:10px;">आधिकारिक २६ वाद्ययंत्र मूल्य सूची (A4 Rate Sheet)</h2>
-          <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
-            <thead>
-              <tr style="background:#281409;color:#fcd777;">
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:left;">कोड</th>
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:left;">वाद्ययंत्र का नाम</th>
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:left;">मुख्य विवरण</th>
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:right;">मूल्य (₹)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-H01</td><td style="padding:5px 8px;border:1px solid #d4a340;">बेस-मेल कॉन्सर्ट हारमोनियम</td><td style="padding:5px 8px;border:1px solid #d4a340;">39 चाबियां, 2-लाइन ब्रास रीड्स, एयरटाइट धोंकनी</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹13,000</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-H02</td><td style="padding:5px 8px;border:1px solid #d4a340;">सफ़री पोर्टेबल मिनी हारमोनियम</td><td style="padding:5px 8px;border:1px solid #d4a340;">हल्का सफ़री मॉडल (~6.5 किग्रा), एयरटाइट धोंकनी</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹9,900</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-H03</td><td style="padding:5px 8px;border:1px solid #d4a340;">सूटकेस फोल्डिंग हारमोनियम</td><td style="padding:5px 8px;border:1px solid #d4a340;">स्टेज फोल्डिंग मॉडल, 7-पर्दी एयरटाइट धोंकनी</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹14,500</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-H04</td><td style="padding:5px 8px;border:1px solid #d4a340;">पारंपरिक पैरदान हारमोनियम</td><td style="padding:5px 8px;border:1px solid #d4a340;">फुट-पैडल धोंकनी लिंकेज, अखंड संकीर्तन विशेष</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹17,500</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-H05</td><td style="padding:5px 8px;border:1px solid #d4a340;">स्केल चेंजर कॉन्सर्ट हारमोनियम</td><td style="padding:5px 8px;border:1px solid #d4a340;">3-लाइन रीड्स, कपलर व एयरटाइट धोंकनी</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹24,500</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-D01</td><td style="padding:5px 8px;border:1px solid #d4a340;">नट-बोल्ट पक्की शीशम ढोलक</td><td style="padding:5px 8px;border:1px solid #d4a340;">लाल शीशम खोल, हैवी नट-बोल्ट (पाना सहित)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹3,800</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-D02</td><td style="padding:5px 8px;border:1px solid #d4a340;">शुद्ध आम की लकड़ी की ढोलक</td><td style="padding:5px 8px;border:1px solid #d4a340;">सूती रस्सी व पीतल छल्ले, पारंपरिक लोक स्वर</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹2,600</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-D03</td><td style="padding:5px 8px;border:1px solid #d4a340;">धमाका मसाला डीप बेस ढोलक</td><td style="padding:5px 8px;border:1px solid #d4a340;">पंडाल व कीर्तन विशेष गहरी बेस थाप</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹4,200</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-T01</td><td style="padding:5px 8px;border:1px solid #d4a340;">शास्त्रीय कॉन्सर्ट तबला जोड़ी</td><td style="padding:5px 8px;border:1px solid #d4a340;">भारी पीतल डग्गा + शीशम दायाँ (संपूर्ण सेट)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹7,500</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-T02</td><td style="padding:5px 8px;border:1px solid #d4a340;">एकल भारी पीतल बायाँ / डग्गा</td><td style="padding:5px 8px;border:1px solid #d4a340;">ठोस पीतल बॉडी, गहरी मींड़</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹4,200</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-F01 / F02</td><td style="padding:5px 8px;border:1px solid #d4a340;">असम बांसुरी (Middle C / Bass G)</td><td style="padding:5px 8px;border:1px solid #d4a340;">440Hz ट्यून्ड प्राकृतिक असम बांस</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹550 / ₹850</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-F03 / F04</td><td style="padding:5px 8px;border:1px solid #d4a340;">पीतल एवं स्टील बांसुरी</td><td style="padding:5px 8px;border:1px solid #d4a340;">मौसम से सुरक्षित टिकाऊ बांसुरी</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹450 / ₹380</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-J01 / J02</td><td style="padding:5px 8px;border:1px solid #d4a340;">बुंदेली झीका (लकड़ी/फाइबर)</td><td style="padding:5px 8px;border:1px solid #d4a340;">फाग व संकीर्तन विशेष झीका</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹450 / ₹380</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-K01 / K02</td><td style="padding:5px 8px;border:1px solid #d4a340;">खड़ताल (लकड़ी/फाइबर)</td><td style="padding:5px 8px;border:1px solid #d4a340;">पीतल व स्टील झिल्लियों सहित</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹380 / ₹320</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-M01 / M02</td><td style="padding:5px 8px;border:1px solid #d4a340;">पीतल व कांसा झांझ-मंजीरा</td><td style="padding:5px 8px;border:1px solid #d4a340;">शुद्ध ढलवां पीतल एवं कांसा (Bell Metal)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹650 / ₹950</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-O01 / O02</td><td style="padding:5px 8px;border:1px solid #d4a340;">लकड़ी डमरू एवं फाइबर डफली</td><td style="padding:5px 8px;border:1px solid #d4a340;">प्राकृतिक पुड़े व पीतल झिल्लियाँ</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹350 / ₹480</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-G01 / A01</td><td style="padding:5px 8px;border:1px solid #d4a340;">घुंघरू पट्टी एवं गद्देदार वाद्य कवर्स</td><td style="padding:5px 8px;border:1px solid #d4a340;">वेलवेट घुंघरू पट्टी व वाटर-रेजिस्टेंट बैग</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹750 / ₹650</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-O03 / O04</td><td style="padding:5px 8px;border:1px solid #d4a340;">माउथ ऑर्गन एवं इलेक्ट्रॉनिक कीबोर्ड</td><td style="padding:5px 8px;border:1px solid #d4a340;">24-होल हारमोनिका व मल्टी-टोन कीबोर्ड</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹650 / ₹6,500</td></tr>
-            </tbody>
-          </table>
-          ${footerBanner}
-        `;
-      } else if (docType === "repair-rates") {
-        printBox.innerHTML = `
-          ${headerBanner}
-          <h2 style="text-align:center;color:#8a2a0c;font-size:1.35rem;margin-bottom:10px;">कार्यशाला मरम्मत एवं सुर मिलान सेवा दर पत्रक (20 Services)</h2>
-          <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
-            <thead>
-              <tr style="background:#281409;color:#fcd777;">
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:left;">सेवा कोड</th>
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:left;">मरम्मत / ट्यूनिंग सेवा का नाम</th>
-                <th style="padding:6px 8px;border:1px solid #d4a340;text-align:right;">मानक शुल्क (GST सहित)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R01</td><td style="padding:5px 8px;border:1px solid #d4a340;">हारमोनियम मानक ट्यूनिंग व सुर मिलान (440Hz)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹708</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R02</td><td style="padding:5px 8px;border:1px solid #d4a340;">हारमोनियम धोंकनी लीकेज रिपेयरिंग व सीलिंग</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹590</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R03</td><td style="padding:5px 8px;border:1px solid #d4a340;">हारमोनियम चाबी लेवलिंग व स्प्रिंग सेटिंग</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹531</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R04</td><td style="padding:5px 8px;border:1px solid #d4a340;">हारमोनियम नई 7-फोल्ड धोंकनी प्रतिस्थापन</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹1,416</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R05</td><td style="padding:5px 8px;border:1px solid #d4a340;">हारमोनियम कपलर व स्टॉपर मैकेनिज्म रिपेयर</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹649</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R06</td><td style="padding:5px 8px;border:1px solid #d4a340;">पुराना हारमोनियम संपूर्ण जीर्णोद्धार (Full Restoration)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹2,124</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R07</td><td style="padding:5px 8px;border:1px solid #d4a340;">हारमोनियम वुड पॉलिश व ब्रास हार्डवेयर फिटिंग</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹1,121</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R08</td><td style="padding:5px 8px;border:1px solid #d4a340;">ढोलक नया पुड़ा फिटिंग (चाटी या बेस साइड)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹649</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R09</td><td style="padding:5px 8px;border:1px solid #d4a340;">ढोलक मसाला भराई व डीप-बेस संतुलन</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹413</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R10</td><td style="padding:5px 8px;border:1px solid #d4a340;">ढोलक दोनों साइड नए पुड़े व संपूर्ण बंधाई</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹1,180</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R11 / R12</td><td style="padding:5px 8px;border:1px solid #d4a340;">रस्सी ढोलक डोरी खिंचाई / नट-बोल्ट ढोलक हार्डवेयर रिपेयर</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹472 / ₹531</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R13</td><td style="padding:5px 8px;border:1px solid #d4a340;">ढोलक खोल दरार मरम्मत व शीशम पॉलिश</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹590</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R14 / R15</td><td style="padding:5px 8px;border:1px solid #d4a340;">बांसुरी धागा बाइंडिंग / झीका व खड़ताल झिल्ली नवीनीकरण</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹236</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R16 / R17</td><td style="padding:5px 8px;border:1px solid #d4a340;">डमरू दोनों पुड़ी बंधाई / डफली खाल फिटिंग</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹295 / ₹354</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R18 / R19</td><td style="padding:5px 8px;border:1px solid #d4a340;">घुंघरू पट्टी पिरोई / मंजीरा डोरी व पॉलिश सफाई</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹295 / ₹177</td></tr>
-              <tr><td style="padding:5px 8px;border:1px solid #d4a340;">VM-R20</td><td style="padding:5px 8px;border:1px solid #d4a340;">तबला रिपेयरिंग, बद्धी खिंचाई व पुड़ी सेटिंग (Tabla Repair)</td><td style="padding:5px 8px;border:1px solid #d4a340;text-align:right;font-weight:700;">₹708</td></tr>
-            </tbody>
-          </table>
-          ${footerBanner}
-        `;
-      } else if (docType === "care-guide") {
-        printBox.innerHTML = `
-          ${headerBanner}
-          <h2 style="text-align:center;color:#8a2a0c;font-size:1.4rem;margin-bottom:12px;">वाद्ययंत्र रख-रखाव एवं सुरक्षा मार्गदर्शिका</h2>
-          <div style="border:1.5px solid #d4a340;padding:14px;border-radius:10px;margin-bottom:12px;">
-            <h3 style="color:#8a2a0c;margin-bottom:6px;">१. हारमोनियम एवं सफ़री हारमोनियम की देखभाल</h3>
-            <p>• हारमोनियम को कभी भी सीलन भरी दीवार या गीले फर्श के सीधे संपर्क में न रखें।</p>
-            <p>• वादन के बाद धोंकनी के लॉक (क्लिप) को तुरंत बंद करने के बजाय पूरी हवा निकल जाने दें, ताकि धोंकनी के चमड़े पर अनावश्यक दबाव न पड़े।</p>
-            <p>• धूल व नमी से बचाने के लिए हमेशा गद्देदार कवर (बैग) में रखें और उसमें कपूर या सिलिका जेल की पुड़िया रखें।</p>
-          </div>
-          <div style="border:1.5px solid #d4a340;padding:14px;border-radius:10px;margin-bottom:12px;">
-            <h3 style="color:#8a2a0c;margin-bottom:6px;">२. ढोलक एवं तबला के पुड़ों की सुरक्षा</h3>
-            <p>• वर्षा ऋतु में रस्सी ढोलक या तबले को बहुत अधिक कसकर न छोड़ें; नमी से चमड़े के पुड़ों में खिंचाव आता है।</p>
-            <p>• तबले की स्याही पर पसीने या गीले हाथ न लगाएँ और वादन के बाद पुड़ी पर फाइबर/लकड़ी की टिकली (ढक्कन) अवश्य लगाएँ।</p>
-          </div>
-          <div style="border:1.5px solid #d4a340;padding:14px;border-radius:10px;">
-            <h3 style="color:#8a2a0c;margin-bottom:6px;">३. ६ माह की सीमित कारीगरी वारंटी</h3>
-            <p>• नए वाद्ययंत्र की खरीद से ६ माह तक सामान्य ट्यूनिंग व समायोजन पर लेबर चार्ज कार्यशाला में निःशुल्क रहता है (सामग्री व्यय वास्तविक अनुसार)।</p>
-          </div>
-          ${footerBanner}
-        `;
-      } else if (docType === "visiting-card") {
-        printBox.innerHTML = `
-          ${headerBanner}
-          <div style="border:3px solid #8a2a0c;border-radius:16px;padding:24px;text-align:center;margin:20px 0;background:#fffdf8;">
-            <h2 style="color:#8a2a0c;font-size:1.7rem;margin-bottom:8px;">आधिकारिक व्यावसायिक परिचय पत्रक</h2>
-            <p style="font-size:1.1rem;font-weight:700;margin-bottom:12px;">तुलसी दास विश्वकर्मा (संस्थापक एवं मुख्य काष्ठ व सुर शिल्पी)</p>
-            <p style="margin-bottom:10px;"><strong>निर्माण एवं विक्रय:</strong> हारमोनियम, सफ़री हारमोनियम, नट-बोल्ट व रस्सी ढोलक, तबला, झीका, असम बांसुरी, खड़ताल, कांसा मंजीरा, डमरू व वाद्य कवर्स।</p>
-            <p style="margin-bottom:14px;"><strong>कार्यशाला मरम्मत सेवाएँ:</strong> हारमोनियम 440Hz सुर मिलान, धोंकनी रिपेयरिंग, ढोलक पुड़ा फिटिंग, मसाला भराई एवं तबला रिपेयरिंग।</p>
-            <div style="background:#fcedd8;border:1.5px solid #d4a340;padding:14px;border-radius:10px;font-weight:700;">
-              📍 पता: मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) – 488441<br>
-              📞 संपर्क: +91 97550 88022 | ✉️ info@vishwakarmamusicals.in<br>
-              🕒 समय: प्रतिदिन सुबह 9:00 से रात 9:00 बजे तक (सातों दिन खुली)
-            </div>
-          </div>
-          ${footerBanner}
-        `;
-      } else if (docType === "review-poster") {
-        printBox.innerHTML = `
-          ${headerBanner}
-          <div style="border:3px solid #8a2a0c;border-radius:18px;padding:28px;text-align:center;margin:16px 0;">
-            <div style="font-size:2.4rem;color:#f59e0b;letter-spacing:4px;">★★★★★</div>
-            <h2 style="color:#8a2a0c;font-size:1.85rem;margin:8px 0;">आपका विश्वास ही हमारी पहचान है!</h2>
-            <p style="font-size:1.05rem;margin-bottom:16px;">यदि आपको विश्वकर्मा म्यूज़िकल्स के वाद्ययंत्रों की आवाज़ और हमारी कारीगरी पसंद आई हो, तो कृपया Google पर अपनी 5-स्टार समीक्षा (Review) अवश्य साझा करें।</p>
-            <div style="background:#fcedd8;border:2px dashed #8a2a0c;padding:16px;border-radius:12px;margin:16px auto;max-width:480px;">
-              <strong>Google पर सर्च करें:</strong><br>
-              <span style="font-size:1.3rem;color:#8a2a0c;font-weight:800;">Vishwakarma Musicals Amanganj</span><br>
-              <span>या हमारी वेबसाइट <strong>vishwakarmamusicals.in</strong> पर जाएँ।</span>
-            </div>
-            <p style="font-weight:700;color:#1f1107;">धन्यवाद! — तुलसी दास विश्वकर्मा (+91 97550 88022)</p>
-          </div>
-          ${footerBanner}
-        `;
-      } else {
-        printBox.innerHTML = `
-          ${headerBanner}
-          <h2 style="text-align:center;color:#8a2a0c;font-size:1.4rem;margin-bottom:12px;">भजन मंडली, मंदिर ट्रस्ट एवं संस्थान ऑर्डर मार्गदर्शिका</h2>
-          <div style="border:1.5px solid #d4a340;padding:16px;border-radius:12px;line-height:1.8;">
-            <p><strong>१. सीधा परामर्श एवं वाद्य चयन:</strong> मानस मंडलियों, भजन मंडलियों, संगीत विद्यालयों और मंदिर ट्रस्टों के लिए विशेष रूप से जाँचे गए हारमोनियम, सफ़री हारमोनियम, पक्की शीशम ढोलक, तबला, झीका और शुद्ध कांसा मंजीरा उपलब्ध हैं।</p>
-            <p><strong>२. अधिकृत Zoho GST बिलिंग:</strong> प्रत्येक संस्थागत व व्यक्तिगत ऑर्डर के लिए अधिकृत Zoho कोटेशन और GST इनवॉइस (GSTIN: 23BSDPV5529B1ZV) प्रदान किया जाता है।</p>
-            <p><strong>३. सुरक्षित Delhivery होम डिलीवरी:</strong> पूरे भारत में मल्टी-लेयर फोम व मजबूत बॉक्स पैकिंग के साथ Delhivery कूरियर से डोरस्टेप डिलीवरी की सुविधा उपलब्ध है।</p>
-            <p><strong>४. ऑर्डर बुक करने हेतु संपर्क:</strong> सीधे मुख्य कारीगर श्री तुलसी दास विश्वकर्मा जी से <strong>+91 97550 88022</strong> पर बात करें।</p>
-          </div>
-          ${footerBanner}
-        `;
-      }
-
-      window.print();
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+      window.VMCartUI.syncDrawer();
+    });
   </script>
 </body>
 </html>

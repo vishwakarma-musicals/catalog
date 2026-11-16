@@ -92,7 +92,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      zoom: 80%;
+    }
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
@@ -258,13 +261,13 @@
     .sec-light {
       background-color: var(--bg-light);
       background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.92), transparent 66%),
-        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
+                        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
       color: var(--text-dark);
     }
     .sec-dark {
       background-color: var(--bg-dark);
       background-image: radial-gradient(ellipse at 50% 0%, rgba(125,78,30,.20), transparent 62%),
-        linear-gradient(145deg, #211006 0%, #120802 100%);
+                        linear-gradient(145deg, #211006 0%, #120802 100%);
       color: var(--text-light);
     }
 
@@ -445,6 +448,7 @@
       flex: 1 1 250px;
       max-width: 270px;
       position: relative;
+      cursor: pointer;
       transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
     }
     .pcard-dark-in-light:hover {
@@ -912,9 +916,9 @@
     .overlay-backdrop.open { display: block; }
     .cart-drawer {
       position: fixed;
-      top: 0; right: -420px;
+      top: 0; bottom: 0; right: -420px;
       width: 100%; max-width: 390px;
-      height: 100vh;
+      height: 100%;
       background: var(--surface-light);
       z-index: 250;
       display: flex;
@@ -977,7 +981,6 @@
       .pcard-dark-in-light, .svc-card-light-in-dark, .usp-card-dark, .vcard-dark, .review-card-dark, .guide-box-light { max-width: 100%; }
       .brand-name { font-size: 1rem; }
     }
-  /* BATCH RESPONSIVE NAV UPDATE */
     @media (max-width: 860px) {
       .header-inner { gap: 10px; }
       .main-nav { min-width: 0; gap: 12px; }
@@ -1000,8 +1003,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo" aria-label="विश्वकर्मा म्यूज़िकल्स — होम">
-        <img src="favicon.webp"
-             alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
+        <img src="favicon.webp" alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
         <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span>
       </a>
 
@@ -1081,7 +1083,7 @@
 
   <hr class="gold-section-divider">
 
-  <!-- 3. FEATURED INSTRUMENTS (ALL 12 CARDS WITH LIVE SHEET PRICE SYNC) -->
+  <!-- 3. FEATURED INSTRUMENTS (ALL 12 CARDS WITH MASTER SHEET PRICES & ADD TO CART CTA) -->
   <section id="instruments" class="sec-light">
     <div class="container">
       <div class="sec-head">
@@ -1106,7 +1108,7 @@
               <li>2-लाइन प्रीमियम ब्रास रीड्स (Bass/Male)</li>
               <li>डबल फोल्ड एयरटाइट धोंकनी</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-h01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-h01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1114,7 +1116,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-D01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1EN6lY4px46uxS3YKRcgsBEBQETVOWRRz&sz=w600" data-drive-id="1EN6lY4px46uxS3YKRcgsBEBQETVOWRRz" alt="नट-बोल्ट पक्की शीशम ढोलक" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-D01">₹3,800</span>
+            <span class="pcard-price-pill" data-price-sku="VM-D01">₹5,800</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">ढोलक</span>
@@ -1125,7 +1127,7 @@
               <li>हैवी स्टील नट-बोल्ट ट्यूनिंग</li>
               <li>बकरे के चमड़े के जाँचे हुए पुड़े</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-d01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-d01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1133,7 +1135,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-M02">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=151ndyYOpuYqx4W1RBRJrIKS_sieHR0Ls&sz=w600" data-drive-id="151ndyYOpuYqx4W1RBRJrIKS_sieHR0Ls" alt="शुद्ध ढलवां कांसा झांझ-मंजीरा" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-M02">₹950</span>
+            <span class="pcard-price-pill" data-price-sku="VM-M02">₹750</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">सहायक सामग्री</span>
@@ -1144,7 +1146,7 @@
               <li>दीर्घकालीन गूंज (Long Sustain)</li>
               <li>विभिन्न वज़न विकल्पों में उपलब्ध</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-m02">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-m02">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1152,7 +1154,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-J01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1R2Rt51Lw_TRSmIfIKSOOlvk76YFBnSkI&sz=w600" data-drive-id="1R2Rt51Lw_TRSmIfIKSOOlvk76YFBnSkI" alt="झीका: लकड़ी व पीतल झिल्ली" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-J01">₹450</span>
+            <span class="pcard-price-pill" data-price-sku="VM-J01">₹400</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">बुंदेली फाग वाद्य</span>
@@ -1163,7 +1165,7 @@
               <li>पीतल की झिल्लियाँ – गूंजदार खनक</li>
               <li>फाग व होली उत्सव विशेष</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-j01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-j01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1171,7 +1173,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-T01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1dmnEt6SxEpEaNZx8xHPPfUGbJvbE0TEE&sz=w600" data-drive-id="1dmnEt6SxEpEaNZx8xHPPfUGbJvbE0TEE" alt="शास्त्रीय कॉन्सर्ट तबला जोड़ी" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-T01">₹7,500</span>
+            <span class="pcard-price-pill" data-price-sku="VM-T01">₹6,500</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">तबला</span>
@@ -1182,7 +1184,7 @@
               <li>सीजन्ड शीशम दायाँ (सटीक पिच ट्यून्ड)</li>
               <li>गद्दी, बीड़ा, हथौड़ी व कवर सहित</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-t01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-t01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1190,7 +1192,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-F01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1PT0oXshUW_7ZEC7KtENCfJcE3T7NsADt&sz=w600" data-drive-id="1PT0oXshUW_7ZEC7KtENCfJcE3T7NsADt" alt="असम बांसुरी: मध्यम सी-स्केल" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-F01">₹550</span>
+            <span class="pcard-price-pill" data-price-sku="VM-F01">₹250</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">बांसुरी</span>
@@ -1201,7 +1203,7 @@
               <li>सीजन्ड प्राकृतिक असमिया बांस</li>
               <li>सुरक्षित धागा बाइंडिंग</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-f01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-f01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1209,7 +1211,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-O01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1cWSPbfFq24HJikqz5v18XyfIF6A88Ifm&sz=w600" data-drive-id="1cWSPbfFq24HJikqz5v18XyfIF6A88Ifm" alt="पारंपरिक लकड़ी का डमरू" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-O01">₹350</span>
+            <span class="pcard-price-pill" data-price-sku="VM-O01">₹300</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">शिव आराधना</span>
@@ -1220,7 +1222,7 @@
               <li>शोधित प्राकृतिक चमड़े के पुड़े</li>
               <li>शिव मंदिर व संकीर्तन विशेष</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1228,7 +1230,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-K01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1jD6UtEznC6lGy8Kw4NoqOXDgrupRvbLe&sz=w600" data-drive-id="1jD6UtEznC6lGy8Kw4NoqOXDgrupRvbLe" alt="खड़ताल: लकड़ी व पीतल झिल्ली" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-K01">₹380</span>
+            <span class="pcard-price-pill" data-price-sku="VM-K01">₹350</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">लोक वाद्य</span>
@@ -1239,7 +1241,7 @@
               <li>पीतल की खनकती झिल्लियाँ</li>
               <li>आरामदायक व सुगम ग्रिप</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-k01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-k01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1247,7 +1249,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-G01">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1TXxXqHm4PIQ63WyWUSsrp9iodHHeiweX&sz=w600" data-drive-id="1TXxXqHm4PIQ63WyWUSsrp9iodHHeiweX" alt="शास्त्रीय घुंघरू पट्टी (पैरों के घुंघरू)" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-G01">₹750</span>
+            <span class="pcard-price-pill" data-price-sku="VM-G01">₹350</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">सहायक सामग्री</span>
@@ -1258,7 +1260,7 @@
               <li>आरामदायक गद्देदार वेलवेट पट्टी</li>
               <li>विभिन्न घुंघरू संख्या विकल्पों में उपलब्ध</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-g01">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-g01">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1266,7 +1268,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-O02">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1kuaJ5Vi9f6mpUALgF_2DPZqNYFZ0BHNO&sz=w1200" data-drive-id="1kuaJ5Vi9f6mpUALgF_2DPZqNYFZ0BHNO" alt="पारंपरिक फाइबर डफली" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-O02">₹480</span>
+            <span class="pcard-price-pill" data-price-sku="VM-O02">₹450</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">लोक ताल वाद्य</span>
@@ -1277,7 +1279,7 @@
               <li>पीतल झिल्लियों से युक्त तीखी खनक</li>
               <li>हल्की व हाथ में पकड़ने में सुगम</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o02">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o02">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1285,7 +1287,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-O04">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1Y2feKZXICK7B56P5HIbs9qQg_sb1c70x&sz=w1200" data-drive-id="1Y2feKZXICK7B56P5HIbs9qQg_sb1c70x" alt="इलेक्ट्रॉनिक कीबोर्ड" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-O04">₹6,500</span>
+            <span class="pcard-price-pill" data-price-sku="VM-O04">₹5,310</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">आधुनिक सुरीला वाद्य</span>
@@ -1296,7 +1298,7 @@
               <li>इनबिल्ट रिदम व टोन लाइब्रेरी</li>
               <li>प्रैक्टिस व स्टेज उपयोग हेतु उपयुक्त</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o04">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o04">कार्ट में जोड़ें</a></div>
           </div>
         </article>
 
@@ -1304,7 +1306,7 @@
         <article class="pcard-dark-in-light" data-sku="VM-O03">
           <div class="pcard-img-box-white">
             <img src="https://drive.google.com/thumbnail?id=1MwIcIYpv2SUQvp6sJm2Lz0-07eC8Wf4H&sz=w1200" data-drive-id="1MwIcIYpv2SUQvp6sJm2Lz0-07eC8Wf4H" alt="माउथ ऑर्गन (हारमोनिका)" width="270" height="220" loading="lazy" decoding="async">
-            <span class="pcard-price-pill" data-price-sku="VM-O03">₹650</span>
+            <span class="pcard-price-pill" data-price-sku="VM-O03">₹649</span>
           </div>
           <div class="pcard-body">
             <span class="pcard-tag-gold">आधुनिक सुरीला वाद्य</span>
@@ -1315,7 +1317,7 @@
               <li>एयरटाइट कॉपर प्लेट रीड्स</li>
               <li>स्पष्ट स्वर व आसान ब्लोइंग</li>
             </ul>
-            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o03">🎵 कीमत व उपलब्धता देखें</a></div>
+            <div class="pcard-act"><a class="btn btn-gold" href="product.html?slug=vm-o03">कार्ट में जोड़ें</a></div>
           </div>
         </article>
       </div>
@@ -1491,8 +1493,8 @@
       </div>
 
       <div class="btn-wrap" style="margin-top: 36px;">
-        <a class="btn btn-gold" href="https://search.google.com/local/writereview?placeid=ChIJWeMrsbdTgjkRzfmS6sob0vo" target="_blank" rel="noopener">⭐ अपना अनुभव साझा करें</a>
-        <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener">🗺️ Google Maps पर समीक्षाएँ देखें</a>
+        <a class="btn btn-gold" href="https://search.google.com/local/writereview?placeid=ChIJWeMrsbdTgjkRzfmS6sob0vo" target="_blank" rel="noopener noreferrer">⭐ अपना अनुभव साझा करें</a>
+        <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Google Maps पर समीक्षाएँ देखें</a>
       </div>
     </div>
   </section>
@@ -1613,7 +1615,7 @@
       <div class="btn-wrap">
         <a class="btn btn-outline" href="contact.html">📍 संपर्क व दुकान पेज देखें</a>
         <a class="btn btn-gold" href="tel:+919755088022">📞 दुकान पर सीधे कॉल करें</a>
-        <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener">🗺️ Google Maps पर नेविगेट करें</a>
+        <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Google Maps पर नेविगेट करें</a>
       </div>
     </div>
   </section>
@@ -1635,20 +1637,18 @@
         </div>
 
         <div class="social-links-footer">
-          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener" aria-label="YouTube">
+          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </a>
-          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener" aria-label="Facebook">
+          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
           </a>
-          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener" aria-label="Instagram">
+          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
           <a class="social-icon-btn" href="https://wa.me/919755088022" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
             <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 2 131.5 2 253.9c0 39.1 10.2 77.3 29.6 111L0 480l118.3-31c32.6 17.8 69.4 27.2 105.4 27.2h.1c122.3 0 222.1-99.5 222.2-221.9 0-59.3-23.1-115.1-65.1-157.2zM223.9 438.7c-33 0-65.4-8.9-93.6-25.7l-6.7-4-70.2 18.4 18.7-68.4-4.4-7C49.1 322.2 39.9 288.4 39.9 253.9 39.9 152.7 122.7 69.8 223.9 69.8c49 0 95.1 19.1 129.8 53.9 34.6 34.7 53.7 80.8 53.7 129.8-.1 101.2-82.9 184.1-183.5 184.1zm101.1-138.2c-5.5-2.8-32.8-16.1-37.9-17.9-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.5-14.3 17.9-17.6 21.6-3.2 3.7-6.5 4.2-12 1.4-32.5-16.2-53.8-29-75.2-65.7-5.7-9.8 5.7-9.1 16.2-30.4 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.5-19.4 19-19.4 46.3 0 27.3 19.9 53.6 22.6 57.3 2.8 3.7 39.1 59.7 94.6 83.7 35.1 15.2 48.8 16.5 66.3 13.9 10.7-1.6 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-11.1-6.5z"/></svg>
           </a>
-
-
         </div>
 
         <p class="pfn-copy">
@@ -1681,9 +1681,134 @@
     <a class="btn btn-outline" href="instruments.html" style="background:linear-gradient(180deg,#3d2315 0%,#201109 100%);color:#fbf6ee !important;border:2px solid var(--gold-border);">🎵 वाद्य संग्रह देखें</a>
   </div>
 
-  <script src="assets/js/cart-ui.js"></script>
+  <!-- SELF-CONTAINED CART, CARD INTERACTION & LIVE SHEET PRICE SYNC SCRIPT -->
   <script>
-    const CATALOG_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-d_ef6VJovk65nJIr8VtLUFsId9EcruDOw_SYq3vl0_OACxCI-6ikNO8EID76KWFLvFuVpKgZilT1/pub?gid=954670530&single=true&output=csv";
+    const ORDER_API_URL = "https://script.google.com/macros/s/AKfycbxOntEhYAhu3qXTpIjz4fkjXfM7DXjsoM0n40ZnNAikiDacWN1ukj5D8Jge8pcuz_H6/exec";
+
+    const MASTER_BASELINE_PRICES = {
+      "VM-H01": 13000, "VM-H02": 9900, "VM-H03": 14800, "VM-H04": 17500, "VM-H05": 22000,
+      "VM-D01": 5800,  "VM-D02": 3500, "VM-D03": 6200,  "VM-T01": 6500,  "VM-T02": 3800,
+      "VM-F01": 250,   "VM-F02": 350,  "VM-F03": 450,   "VM-F04": 400,   "VM-J01": 400,
+      "VM-J02": 250,   "VM-O01": 300,  "VM-K01": 350,   "VM-K02": 250,   "VM-M01": 450,
+      "VM-M02": 750,   "VM-G01": 350,  "VM-O02": 450,   "VM-O03": 649,   "VM-O04": 5310,
+      "VM-A01": 472
+    };
+
+    window.VMCartUI = {
+      storageKey: "vm_cart_items_v1",
+      readCart: function () {
+        try {
+          const raw = localStorage.getItem(this.storageKey);
+          return raw ? this.normalizeItems(JSON.parse(raw)) : [];
+        } catch (e) { return []; }
+      },
+      normalizeItems: function (items) {
+        if (!Array.isArray(items)) return [];
+        return items.filter(i => i && i.sku).map(i => ({
+          sku: String(i.sku).trim(),
+          name: String(i.name || i.sku).trim(),
+          price: Number(i.price) || 0,
+          qty: Math.max(1, Math.min(10000, Number(i.qty) || 1)),
+          weightGrams: Number(i.weightGrams) || 5000
+        }));
+      },
+      summarize: function (items) {
+        const list = this.normalizeItems(items);
+        return {
+          count: list.reduce((s, i) => s + i.qty, 0),
+          total: list.reduce((s, i) => s + i.price * i.qty, 0)
+        };
+      },
+      addItem: function (sku, name, price) {
+        const items = this.readCart();
+        const existing = items.find(i => i.sku === sku);
+        if (existing) {
+          existing.qty = Math.min(10000, existing.qty + 1);
+          if (price > 0) existing.price = price;
+        } else {
+          items.push({
+            sku: sku,
+            name: name,
+            price: price,
+            qty: 1,
+            weightGrams: sku === "VM-H02" ? 6500 : (sku.startsWith("VM-H") ? 9500 : ((sku.startsWith("VM-D") || sku.startsWith("VM-T") || sku === "VM-O04") ? 5500 : 800))
+          });
+        }
+        try { localStorage.setItem(this.storageKey, JSON.stringify(items)); } catch (e) {}
+        this.syncDrawer();
+      },
+      syncDrawer: function () {
+        const items = this.readCart();
+        const summary = this.summarize(items);
+        const countEl = document.getElementById("header-cart-count");
+        const totalEl = document.getElementById("cart-total-display");
+        const box = document.getElementById("cart-items-box");
+        const checkoutLink = document.querySelector("#cart-drawer .drawer-footer a.btn");
+        if (countEl) countEl.textContent = String(summary.count);
+        if (totalEl) totalEl.textContent = "₹" + Number(summary.total || 0).toLocaleString("en-IN");
+        if (checkoutLink && items.length > 0) {
+          checkoutLink.href = "product.html?slug=" + encodeURIComponent(items[0].sku.toLowerCase());
+        }
+        if (!box) return;
+        if (!items.length) {
+          box.innerHTML = '<p style="text-align:center;color:#4a3424;padding:24px 0;">आपका कार्ट अभी खाली है।</p>';
+          return;
+        }
+        box.innerHTML = items.map((item, idx) => `
+          <div class="cart-item-row">
+            <div>
+              <strong style="color:#8a2a0c;display:block;">${item.name}</strong>
+              <span style="font-size:0.86rem;color:#4a3424;">कोड: ${item.sku} | मात्रा: ${item.qty} × ₹${Number(item.price).toLocaleString("en-IN")}</span>
+            </div>
+            <button type="button" data-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+          </div>
+        `).join("");
+        box.querySelectorAll("button[data-idx]").forEach(btn => {
+          btn.onclick = () => {
+            const idx = Number(btn.getAttribute("data-idx"));
+            const current = this.readCart();
+            if (idx >= 0 && idx < current.length) {
+              current.splice(idx, 1);
+              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
+              this.syncDrawer();
+            }
+          };
+        });
+      }
+    };
+
+    // Card Interaction: Clicking "कार्ट में जोड़ें" button adds to cart & opens drawer; clicking anywhere else on card opens product page
+    document.querySelectorAll('.pcard-dark-in-light').forEach(card => {
+      const sku = (card.getAttribute("data-sku") || "").trim().toUpperCase();
+      const btn = card.querySelector('.pcard-act a.btn');
+      const productUrl = (btn && btn.getAttribute("href") && btn.getAttribute("href").indexOf("product.html") !== -1)
+        ? btn.getAttribute("href")
+        : ("product.html?slug=" + encodeURIComponent(sku.toLowerCase()));
+
+      card.style.cursor = "pointer";
+
+      if (btn) {
+        btn.textContent = "कार्ट में जोड़ें";
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const titleEl = card.querySelector(".pcard-title-light");
+          const pillEl = card.querySelector(".pcard-price-pill");
+          const name = titleEl ? titleEl.innerText.trim() : sku;
+          const price = pillEl ? (Number(String(pillEl.innerText).replace(/[^\d.]/g, "")) || MASTER_BASELINE_PRICES[sku] || 0) : (MASTER_BASELINE_PRICES[sku] || 0);
+          if (sku) {
+            window.VMCartUI.addItem(sku, name, price);
+            document.getElementById("cart-drawer").classList.add("open");
+            document.getElementById("cart-backdrop").classList.add("open");
+          }
+        });
+      }
+
+      card.addEventListener("click", function (e) {
+        if (e.target.closest('.pcard-act a.btn')) return;
+        window.location.href = productUrl;
+      });
+    });
 
     function buildFallbackSVG(title) {
       return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
@@ -1727,30 +1852,37 @@
       document.getElementById("cart-backdrop").classList.remove("open");
     };
 
+    function applyPriceMap(priceObj) {
+      Object.keys(priceObj).forEach(sku => {
+        const val = Number(priceObj[sku]);
+        if (val > 0) {
+          document.querySelectorAll(`[data-price-sku="${sku}"]`).forEach(pill => {
+            pill.textContent = "₹" + val.toLocaleString("en-IN");
+          });
+        }
+      });
+    }
+
     async function syncLivePrices() {
+      applyPriceMap(MASTER_BASELINE_PRICES);
+      syncCartDrawer();
       try {
-        const res = await fetch(CATALOG_CSV_URL);
+        const res = await fetch(ORDER_API_URL, { method: "GET", cache: "no-store" });
         if (!res.ok) return;
-        const text = await res.text();
-        text.split(/\r?\n/).forEach(line => {
-          const match = line.match(/^(VM-[A-Z0-9]+),/i);
-          if (match) {
-            const sku = match[1].toUpperCase();
-            const pill = document.querySelector(`[data-price-sku="${sku}"]`);
-            if (pill) {
-              const cells = line.split(",");
-              const rawPrice = Number(String(cells[5] || "").replace(/[^\d.]/g, ""));
-              if (rawPrice > 0) {
-                pill.textContent = "₹" + rawPrice.toLocaleString("en-IN");
-              }
-            }
-          }
-        });
+        const json = await res.json();
+        if (json && Array.isArray(json.items)) {
+          const liveMap = {};
+          json.items.forEach(item => {
+            const sku = String(item["SKU Code"] || item["sku"] || "").trim().toUpperCase();
+            const rawPrice = Number(String(item["Final Customer Price (₹)"] || item["price"] || "").replace(/[^\d.]/g, ""));
+            if (sku && rawPrice > 0) liveMap[sku] = rawPrice;
+          });
+          applyPriceMap(liveMap);
+        }
       } catch (e) {}
     }
 
-    syncCartDrawer();
-    syncLivePrices();
+    document.addEventListener("DOMContentLoaded", syncLivePrices);
   </script>
 </body>
 </html>
