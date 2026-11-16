@@ -9,6 +9,7 @@
   <meta name="description" content="विश्वकर्मा म्यूज़िकल्स, अमानगंज से हस्तनिर्मित वाद्ययंत्र खरीदें। शुद्ध 440Hz स्वर ट्यूनिंग, एयरटाइट धोंकनी, पारदर्शी Zoho बिलिंग और पूरे भारत में सुरक्षित Delhivery होम डिलीवरी।">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://vishwakarmamusicals.in/product.html">
+  <script id="dynamic-product-schema" type="application/ld+json">{}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +47,7 @@
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
       background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.92), transparent 66%),
-        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
+                        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
       color: var(--text-dark);
       line-height: 1.8;
       -webkit-font-smoothing: antialiased;
@@ -67,16 +68,6 @@
     .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
     section { position: relative; isolation: isolate; }
 
-    .gold-section-divider {
-      height: 3px;
-      width: 100%;
-      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
-      margin: 0;
-      border: none;
-      filter: drop-shadow(0 2px 4px rgba(148, 101, 26, 0.5));
-    }
-
-    /* UNIFIED TOP NAVIGATION BAR */
     .site-header {
       background: #160a04;
       position: fixed;
@@ -92,17 +83,8 @@
       min-height: 64px;
       gap: 16px;
     }
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    .brand-logo img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-    }
+    .brand-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .brand-logo img { height: 44px; width: auto; object-fit: contain; }
     .brand-name {
       font-family: 'Tiro Devanagari Hindi', serif;
       color: var(--gold-bright);
@@ -130,12 +112,7 @@
       color: var(--gold-bright);
       border-bottom-color: var(--gold-bright);
     }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .cart-trigger-btn {
       display: inline-flex;
       align-items: center;
@@ -158,7 +135,6 @@
       font-weight: 800;
     }
 
-    /* BREADCRUMB BAR */
     .breadcrumb-bar {
       background: var(--surface-dark);
       color: #f5ede0;
@@ -166,27 +142,12 @@
       border-bottom: 1px solid var(--gold-deep);
       font-size: 0.9rem;
     }
-    .breadcrumb-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-    .breadcrumb-list li::after {
-      content: "›";
-      margin-left: 8px;
-      color: var(--gold-bright);
-    }
+    .breadcrumb-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .breadcrumb-list li::after { content: "›"; margin-left: 8px; color: var(--gold-bright); }
     .breadcrumb-list li:last-child::after { content: ""; }
-    .breadcrumb-list a {
-      color: var(--gold-bright);
-      font-weight: 600;
-      text-decoration: none;
-    }
+    .breadcrumb-list a { color: var(--gold-bright); font-weight: 600; text-decoration: none; }
     .breadcrumb-list a:hover { text-decoration: underline; }
 
-    /* LOADER & ERROR STATE */
     #page-loader {
       text-align: center;
       padding: 80px 20px;
@@ -219,11 +180,7 @@
     }
     #product-overview { display: none; }
 
-    /* PRODUCT MAIN LAYOUT */
-    .product-main {
-      max-width: none;
-      padding: 0 0 clamp(40px, 6vw, 80px);
-    }
+    .product-main { max-width: none; padding: 0 0 clamp(40px, 6vw, 80px); }
     .product-grid {
       display: grid;
       grid-template-columns: 1fr 1.08fr;
@@ -252,12 +209,7 @@
       transition: transform 0.35s ease;
     }
     .main-image:hover { transform: scale(1.02); }
-    .thumbnail-list {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 14px auto 0;
-    }
+    .thumbnail-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px auto 0; }
     .thumb-btn {
       position: relative;
       border: 2px solid var(--gold-border);
@@ -268,18 +220,9 @@
       padding: 0;
       box-shadow: 0 4px 10px rgba(35, 17, 5, 0.12);
     }
-    .thumb-btn img {
-      width: 100%;
-      height: 76px;
-      object-fit: cover;
-      display: block;
-      opacity: 0.75;
-    }
+    .thumb-btn img { width: 100%; height: 76px; object-fit: cover; display: block; opacity: 0.75; }
     .thumb-btn.active img, .thumb-btn:hover img { opacity: 1; }
-    .thumb-btn.active {
-      border-color: var(--maroon-title);
-      box-shadow: 0 0 0 2px var(--gold-bright);
-    }
+    .thumb-btn.active { border-color: var(--maroon-title); box-shadow: 0 0 0 2px var(--gold-bright); }
     .video-thumb { display: block; text-decoration: none; }
     .video-thumb-preview { position: relative; display: block; }
     .video-thumb-preview img { filter: brightness(0.68); }
@@ -302,7 +245,6 @@
       background: #fcedd8;
     }
 
-    /* PRODUCT INFO COLUMN */
     .product-info { width: 100%; }
     .product-meta-top {
       display: flex;
@@ -332,17 +274,8 @@
       color: var(--maroon-title);
       margin-bottom: 8px;
     }
-    .product-subtitle {
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: var(--text-muted-dark);
-      margin-bottom: 12px;
-    }
-    .short-description {
-      color: var(--text-muted-dark);
-      margin-bottom: 22px;
-      font-size: 1.02rem;
-    }
+    .product-subtitle { font-size: 1.08rem; font-weight: 700; color: var(--text-muted-dark); margin-bottom: 12px; }
+    .short-description { color: var(--text-muted-dark); margin-bottom: 22px; font-size: 1.02rem; }
 
     .price-box {
       background: linear-gradient(135deg, #fffdf8 0%, #f7eddb 100%);
@@ -353,12 +286,7 @@
       box-shadow: 0 10px 24px rgba(62, 34, 13, 0.12);
     }
     .price-main-row { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; }
-    .current-price {
-      font-size: 2.4rem;
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-weight: 700;
-      color: var(--maroon-title);
-    }
+    .current-price { font-size: 2.4rem; font-family: 'Tiro Devanagari Hindi', serif; font-weight: 700; color: var(--maroon-title); }
     .mrp-price { font-size: 1.05rem; color: var(--text-muted-dark); display: none; }
     .discount-badge {
       background: #e8f7ee;
@@ -401,28 +329,10 @@
       margin-bottom: 24px;
       box-shadow: var(--depth-shadow);
     }
-    .section-mini-title {
-      font-size: 1.15rem;
-      margin-bottom: 12px;
-      color: var(--maroon-title);
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-weight: 700;
-    }
+    .section-mini-title { font-size: 1.15rem; margin-bottom: 12px; color: var(--maroon-title); font-family: 'Tiro Devanagari Hindi', serif; font-weight: 700; }
     .highlights-list { list-style: none; }
-    .highlights-list li {
-      position: relative;
-      padding-left: 24px;
-      margin-bottom: 10px;
-      font-size: 0.96rem;
-      color: var(--text-muted-dark);
-    }
-    .highlights-list li::before {
-      content: "❖";
-      position: absolute;
-      left: 0;
-      color: var(--gold-deep);
-      font-weight: bold;
-    }
+    .highlights-list li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 0.96rem; color: var(--text-muted-dark); }
+    .highlights-list li::before { content: "❖"; position: absolute; left: 0; color: var(--gold-deep); font-weight: bold; }
 
     .purchase-controls {
       display: flex;
@@ -442,35 +352,11 @@
       background: #fff;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-    .qty-btn {
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: #fcedd8;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: var(--maroon-title);
-    }
-    #product-qty {
-      width: 48px;
-      height: 40px;
-      border: none;
-      text-align: center;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      background: transparent;
-    }
+    .qty-btn { width: 40px; height: 40px; border: none; background: #fcedd8; font-size: 1.2rem; font-weight: 700; cursor: pointer; color: var(--maroon-title); }
+    #product-qty { width: 48px; height: 40px; border: none; text-align: center; font-size: 1.05rem; font-weight: 700; color: var(--text-dark); background: transparent; }
     .subtotal-preview { font-size: 1.1rem; font-weight: 700; color: var(--maroon-title); }
 
-    /* BUTTONS */
-    .cta-buttons-group {
-      display: grid;
-      grid-template-columns: 1.3fr 1.1fr auto;
-      gap: 12px;
-      margin-bottom: 26px;
-    }
+    .cta-buttons-group { display: grid; grid-template-columns: 1.3fr 1.1fr auto; gap: 12px; margin-bottom: 26px; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -515,11 +401,7 @@
       color: var(--maroon-title);
       box-shadow: 0 4px 0 #1e0e05, 0 6px 16px rgba(0, 0, 0, 0.16), inset 0 1px 0 #ffffff;
     }
-    .btn-wishlist.active {
-      background: var(--maroon-title);
-      color: #fff;
-      border-color: var(--gold-bright);
-    }
+    .btn-wishlist.active { background: var(--maroon-title); color: #fff; border-color: var(--gold-bright); }
     .btn-outline {
       background: linear-gradient(180deg, #3d2315 0%, #201109 100%);
       color: #fbf6ee !important;
@@ -534,22 +416,9 @@
       margin-bottom: 22px;
       box-shadow: var(--depth-shadow);
     }
-    .delivery-title {
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-      color: var(--maroon-title);
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-weight: 700;
-    }
+    .delivery-title { font-size: 1.1rem; margin-bottom: 12px; color: var(--maroon-title); font-family: 'Tiro Devanagari Hindi', serif; font-weight: 700; }
     .pincode-checker { display: flex; gap: 10px; margin-bottom: 10px; }
-    .pincode-checker input {
-      flex: 1;
-      padding: 12px 16px;
-      border: 2px solid var(--gold-border);
-      border-radius: 999px;
-      font-family: inherit;
-      font-size: 0.95rem;
-    }
+    .pincode-checker input { flex: 1; padding: 12px 16px; border: 2px solid var(--gold-border); border-radius: 999px; font-family: inherit; font-size: 0.95rem; }
     .pincode-checker button {
       background: linear-gradient(180deg, #fce09b 0%, #d89f31 100%);
       color: #1a0e04;
@@ -576,7 +445,6 @@
     }
     .assurance-item strong { color: var(--maroon-title); display: block; font-size: 0.9rem; margin-bottom: 2px; }
 
-    /* TABS SECTION */
     .product-details-section, .related-products-section {
       width: min(1180px, calc(100% - 40px));
       margin-left: auto;
@@ -590,12 +458,7 @@
       box-shadow: var(--depth-shadow);
       overflow: hidden;
     }
-    .tabs-header {
-      display: flex;
-      background: #f4e9db;
-      border-bottom: 2.5px solid var(--gold-border);
-      overflow-x: auto;
-    }
+    .tabs-header { display: flex; background: #f4e9db; border-bottom: 2.5px solid var(--gold-border); overflow-x: auto; }
     .tab-btn {
       padding: 18px 28px;
       background: none;
@@ -608,19 +471,10 @@
       border-bottom: 4px solid transparent;
       white-space: nowrap;
     }
-    .tab-btn.active {
-      color: var(--maroon-title);
-      background: var(--surface-light);
-      border-bottom-color: var(--gold-bright);
-    }
+    .tab-btn.active { color: var(--maroon-title); background: var(--surface-light); border-bottom-color: var(--gold-bright); }
     .tab-panel { display: none; padding: 36px; color: var(--text-dark); }
     .tab-panel.active { display: block; }
-    .tab-panel h2 {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      color: var(--maroon-title);
-      margin-bottom: 18px;
-      font-size: 1.8rem;
-    }
+    .tab-panel h2 { font-family: 'Tiro Devanagari Hindi', serif; color: var(--maroon-title); margin-bottom: 18px; font-size: 1.8rem; }
     .tab-panel p { margin-bottom: 16px; line-height: 1.8; color: var(--text-muted-dark); }
 
     .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 18px; }
@@ -632,56 +486,22 @@
       border-radius: 14px;
       box-shadow: 0 8px 20px rgba(44,22,10,0.1);
     }
-    .benefit-card h3 {
-      color: var(--maroon-title);
-      font-family: 'Tiro Devanagari Hindi', serif;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
+    .benefit-card h3 { color: var(--maroon-title); font-family: 'Tiro Devanagari Hindi', serif; margin-bottom: 10px; font-size: 1.2rem; }
     .benefit-card p { color: var(--text-muted-dark); font-size: 0.95rem; margin-bottom: 0; }
 
-    .specs-list-wrapper {
-      border: 2.5px solid var(--gold-border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(44,22,10,0.1);
-    }
-    .spec-row {
-      display: grid;
-      grid-template-columns: 35% 65%;
-      padding: 16px 20px;
-      border-bottom: 1.5px solid rgba(230,184,77,0.3);
-    }
+    .specs-list-wrapper { border: 2.5px solid var(--gold-border); border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 20px rgba(44,22,10,0.1); }
+    .spec-row { display: grid; grid-template-columns: 35% 65%; padding: 16px 20px; border-bottom: 1.5px solid rgba(230,184,77,0.3); }
     .spec-row:nth-child(even) { background: #fffdf8; }
     .spec-row:last-child { border-bottom: none; }
     .spec-label { font-weight: 700; color: var(--maroon-title); }
     .spec-value { color: var(--text-muted-dark); }
 
-    /* REVIEWS & RELATED PRODUCTS */
     .reviews-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 36px; }
     .big-rating-score { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
-    .score-number {
-      font-size: 3.5rem;
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-weight: 700;
-      color: var(--maroon-title);
-      line-height: 1;
-    }
-    .add-review-form {
-      background: #fffdf8;
-      padding: 24px;
-      border-radius: var(--radius);
-      border: 2px solid var(--gold-border);
-      box-shadow: 0 8px 20px rgba(44,22,10,0.1);
-    }
+    .score-number { font-size: 3.5rem; font-family: 'Tiro Devanagari Hindi', serif; font-weight: 700; color: var(--maroon-title); line-height: 1; }
+    .add-review-form { background: #fffdf8; padding: 24px; border-radius: var(--radius); border: 2px solid var(--gold-border); box-shadow: 0 8px 20px rgba(44,22,10,0.1); }
     .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
-      color: var(--maroon-title);
-    }
+    .form-group label { display: block; font-weight: 700; margin-bottom: 6px; font-size: 0.95rem; color: var(--maroon-title); }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       padding: 12px 14px;
@@ -716,12 +536,7 @@
 
     .related-products-section { margin-top: 60px; }
     .section-header-row { text-align: center; margin-bottom: 32px; }
-    .section-header-row h2 {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      color: var(--maroon-title);
-      margin-bottom: 8px;
-    }
+    .section-header-row h2 { font-family: 'Tiro Devanagari Hindi', serif; font-size: clamp(2rem, 4vw, 2.75rem); color: var(--maroon-title); margin-bottom: 8px; }
     .section-header-row p { font-size: 1.05rem; color: var(--text-muted-dark); }
     .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
     .product-card {
@@ -735,13 +550,7 @@
       transition: transform 0.3s ease;
     }
     .product-card:hover { transform: translateY(-6px); }
-    .card-img-wrap {
-      position: relative;
-      background: #fff;
-      height: 220px;
-      border-bottom: 2px solid var(--gold-border);
-      overflow: hidden;
-    }
+    .card-img-wrap { position: relative; background: #fff; height: 220px; border-bottom: 2px solid var(--gold-border); overflow: hidden; }
     .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .card-tag {
       position: absolute;
@@ -755,22 +564,9 @@
       border-radius: 999px;
     }
     .card-body { padding: 20px 18px; display: flex; flex-direction: column; flex: 1; text-align: center; }
-    .card-body h3 {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: var(--gold-bright);
-      margin-bottom: 10px;
-    }
+    .card-body h3 { font-family: 'Tiro Devanagari Hindi', serif; font-size: 1.18rem; font-weight: 700; color: var(--gold-bright); margin-bottom: 10px; }
     .card-desc { font-size: 0.88rem; color: var(--text-muted-light); margin-bottom: 14px; flex: 1; line-height: 1.55; }
-    .card-price {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--gold-bright);
-      display: block;
-      margin-bottom: 14px;
-      font-family: 'Tiro Devanagari Hindi', serif;
-    }
+    .card-price { font-size: 1.35rem; font-weight: 700; color: var(--gold-bright); display: block; margin-bottom: 14px; font-family: 'Tiro Devanagari Hindi', serif; }
     .btn-card-action {
       width: 100%;
       padding: 12px;
@@ -785,7 +581,6 @@
       box-shadow: 0 4px 0 #734c0a;
     }
 
-    /* UNIFIED FOOTER */
     .sec-footer-light-wrap { background-color: var(--bg-light); padding: 40px 0 24px; border-top: none; }
     .page-footer-nav-dark {
       padding: 38px 24px 32px;
@@ -822,7 +617,6 @@
       padding-top: 16px;
     }
 
-    /* DRAWERS & MODALS */
     .overlay-backdrop, .modal-overlay {
       position: fixed;
       inset: 0;
@@ -858,30 +652,11 @@
       font-family: 'Tiro Devanagari Hindi', serif;
       font-size: 1.2rem;
     }
-    .close-drawer-btn, .close-modal-btn {
-      background: none;
-      border: none;
-      color: var(--gold-bright);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+    .close-drawer-btn, .close-modal-btn { background: none; border: none; color: var(--gold-bright); font-size: 1.5rem; cursor: pointer; }
     .drawer-body { padding: 20px; flex: 1; overflow-y: auto; }
-    .cart-item-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1.5px solid rgba(230,184,77,0.25);
-    }
+    .cart-item-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1.5px solid rgba(230,184,77,0.25); }
     .drawer-footer { padding: 20px; border-top: 2px solid var(--gold-border); background: #f4e9db; }
-    .cart-total-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--maroon-title);
-      margin-bottom: 14px;
-    }
+    .cart-total-row { display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: var(--maroon-title); margin-bottom: 14px; }
     .full-width-btn { width: 100%; max-width: 100% !important; }
 
     .zoom-modal-content {
@@ -935,7 +710,6 @@
     }
     .toast-box.show { opacity: 1; transform: translateY(0); }
 
-    /* MOBILE STICKY CTA BAR */
     .mobile-sticky-bar {
       position: fixed;
       bottom: 0; left: 0; right: 0;
@@ -961,10 +735,7 @@
       justify-content: center;
     }
     @media (min-width: 769px) { .mobile-sticky-bar { display: none !important; } }
-
-    @media (max-width: 992px) {
-      .product-grid, .reviews-layout, .related-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 992px) { .product-grid, .reviews-layout, .related-grid { grid-template-columns: 1fr; } }
     @media (max-width: 860px) {
       .header-inner { gap: 10px; }
       .main-nav { min-width: 0; gap: 12px; }
@@ -989,13 +760,10 @@
 </head>
 <body>
 
-  <!-- UNIFIED TOP NAVIGATION BAR -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo" aria-label="विश्वकर्मा म्यूज़िकल्स — होम">
-        <img src="favicon.webp"
-             id="site-logo-img"
-             alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
+        <img src="favicon.webp" id="site-logo-img" alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
         <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span>
       </a>
 
@@ -1027,7 +795,6 @@
     </div>
   </nav>
 
-  <!-- लोडर और एरर कंटेनर -->
   <div class="container">
     <div id="page-loader">
       <div class="spinner"></div>
@@ -1037,7 +804,6 @@
     <div id="page-error"></div>
   </div>
 
-  <!-- मुख्य प्रोडक्ट सेक्शन -->
   <main class="container product-main" id="product-overview">
     <div class="product-grid">
       <section class="product-gallery">
@@ -1100,7 +866,7 @@
           <button type="button" class="btn btn-wishlist" id="wishlist-toggle-btn" aria-label="पसंदीदा सूची में जोड़ें"><span id="wishlist-heart-icon">♡</span></button>
         </div>
 
-        <div class="delivery-card">
+        <div class="delivery-card" id="delivery-card-box">
           <h3 class="delivery-title">🚚 डिलीवरी और डिस्पैच की जानकारी</h3>
           <div class="pincode-checker">
             <input type="text" id="pincode-input" placeholder="6 अंकों का पिनकोड दर्ज करें" maxlength="6" inputmode="numeric">
@@ -1114,7 +880,7 @@
         <div class="assurance-grid">
           <div class="assurance-item"><span>🛡️</span><div><strong>शुद्ध स्वर प्रमाणित</strong><p>व्यक्तिगत ट्यूनिंग व धोंकनी जांच</p></div></div>
           <div class="assurance-item"><span>📦</span><div><strong>सुरक्षित पैकेजिंग</strong><p>मजबूत फोम व बॉक्स पैकिंग</p></div></div>
-          <div class="assurance-item"><span>🧾</span><div><strong>पारदर्शी बिलिंग</strong><p>अधिकृत Zoho इनवॉइस</p></div></div>
+          <div class="assurance-item"><span>🧾</span><div><strong>पारदर्शी बिलिंग</strong><p>अधिकृत Zoho इनवॉइस व 6 माह वारंटी</p></div></div>
         </div>
       </section>
     </div>
@@ -1185,7 +951,6 @@
     </section>
   </main>
 
-  <!-- UNIFIED FOOTER (DIRECT VOICE CALL POLICY COMPLIANT) -->
   <footer class="sec-footer-light-wrap">
     <div class="container">
       <div class="page-footer-nav-dark">
@@ -1223,7 +988,6 @@
     </div>
   </footer>
 
-  <!-- UNIFIED CART DRAWER -->
   <div class="overlay-backdrop" id="cart-backdrop"></div>
   <aside class="cart-drawer" id="cart-drawer">
     <div class="drawer-header">
@@ -1240,7 +1004,6 @@
     </div>
   </aside>
 
-  <!-- IMAGE ZOOM MODAL -->
   <div class="modal-overlay" id="zoom-modal">
     <div class="zoom-modal-content">
       <button type="button" class="close-modal-btn" id="close-zoom-btn" style="position:absolute;top:12px;right:16px;">✕</button>
@@ -1249,7 +1012,6 @@
     </div>
   </div>
 
-  <!-- DIRECT WEBSITE ORDER MODAL -->
   <div class="modal-overlay" id="order-modal">
     <div class="order-modal-box">
       <div class="modal-header">
@@ -1274,20 +1036,12 @@
 
   <div id="toast-notification" class="toast-box"></div>
 
-  <!-- MOBILE STICKY CTA BAR -->
   <div class="mobile-sticky-bar">
     <a class="btn btn-gold" href="tel:+919755088022">📞 विशेषज्ञ को कॉल करें</a>
     <a class="btn btn-outline" href="instruments.html">🎵 वाद्य संग्रह देखें</a>
   </div>
 
-  <!-- OPTIONAL EXTERNAL SCRIPTS -->
-  <script src="assets/js/csv.js"></script>
-  <script src="assets/js/cart-ui.js"></script>
-  <script src="assets/js/order-response.js"></script>
-
-  <!-- SELF-CONTAINED FALLBACKS & MAIN PRODUCT ENGINE -->
   <script>
-    /* 1. Built-in Fallback for CSV Parser (if assets/js/csv.js is missing) */
     window.VMCsv = window.VMCsv || {
       parse: function (csvText) {
         const rows = [];
@@ -1299,66 +1053,39 @@
           const ch = text[i];
           const next = text[i + 1];
           if (inQuotes) {
-            if (ch === '"' && next === '"') {
-              cur += '"';
-              i++;
-            } else if (ch === '"') {
-              inQuotes = false;
-            } else {
-              cur += ch;
-            }
+            if (ch === '"' && next === '"') { cur += '"'; i++; }
+            else if (ch === '"') { inQuotes = false; }
+            else { cur += ch; }
           } else {
-            if (ch === '"') {
-              inQuotes = true;
-            } else if (ch === ",") {
-              row.push(cur);
-              cur = "";
-            } else if (ch === "\r" && next === "\n") {
-              row.push(cur);
-              rows.push(row);
-              row = [];
-              cur = "";
-              i++;
-            } else if (ch === "\n" || ch === "\r") {
-              row.push(cur);
-              rows.push(row);
-              row = [];
-              cur = "";
-            } else {
-              cur += ch;
-            }
+            if (ch === '"') { inQuotes = true; }
+            else if (ch === ",") { row.push(cur); cur = ""; }
+            else if (ch === "\r" && next === "\n") { row.push(cur); rows.push(row); row = []; cur = ""; i++; }
+            else if (ch === "\n" || ch === "\r") { row.push(cur); rows.push(row); row = []; cur = ""; }
+            else { cur += ch; }
           }
         }
-        if (cur.length > 0 || row.length > 0) {
-          row.push(cur);
-          rows.push(row);
-        }
+        if (cur.length > 0 || row.length > 0) { row.push(cur); rows.push(row); }
         return rows.filter(r => r.some(cell => String(cell).trim() !== ""));
       }
     };
 
-    /* 2. Built-in Fallback for Cart UI (if assets/js/cart-ui.js is missing) */
     window.VMCartUI = window.VMCartUI || {
       storageKey: "vm_cart_items_v1",
       readCart: function () {
         try {
           const raw = localStorage.getItem(this.storageKey);
           return raw ? this.normalizeItems(JSON.parse(raw)) : [];
-        } catch (e) {
-          return [];
-        }
+        } catch (e) { return []; }
       },
       normalizeItems: function (items) {
         if (!Array.isArray(items)) return [];
-        return items
-          .filter(i => i && i.sku)
-          .map(i => ({
-            sku: String(i.sku).trim(),
-            name: String(i.name || i.sku).trim(),
-            price: Number(i.price) || 0,
-            qty: Math.max(1, Math.min(10000, Number(i.qty) || 1)),
-            weightGrams: Number(i.weightGrams) || 5000
-          }));
+        return items.filter(i => i && i.sku).map(i => ({
+          sku: String(i.sku).trim(),
+          name: String(i.name || i.sku).trim(),
+          price: Number(i.price) || 0,
+          qty: Math.max(1, Math.min(10000, Number(i.qty) || 1)),
+          weightGrams: Number(i.weightGrams) || 5000
+        }));
       },
       canAddQuantity: function (existingQty, addQty) {
         const total = (Number(existingQty) || 0) + (Number(addQty) || 0);
@@ -1396,76 +1123,42 @@
       }
     };
 
-    /* 3. Built-in Fallback for Order Response Handler (if assets/js/order-response.js is missing) */
     window.VMOrderResponse = window.VMOrderResponse || {
       pendingKey: "vm_order_pending_v1",
       beginAttempt: function () {
         try {
-          if (sessionStorage.getItem(this.pendingKey) === "1") {
-            return { started: false, reason: "pending" };
-          }
+          if (sessionStorage.getItem(this.pendingKey) === "1") return { started: false, reason: "pending" };
           sessionStorage.setItem(this.pendingKey, "1");
           return { started: true };
-        } catch (e) {
-          return { started: true };
-        }
+        } catch (e) { return { started: true }; }
       },
       clearPending: function () {
-        try {
-          sessionStorage.removeItem(this.pendingKey);
-          return true;
-        } catch (e) {
-          return true;
-        }
+        try { sessionStorage.removeItem(this.pendingKey); return true; } catch (e) { return true; }
       },
       assess: function (httpOk, data) {
-        const ok = Boolean(httpOk && data && (data.status === "success" || data.ok || data.orderId || data.result === "success"));
-        return {
-          confirmed: ok,
-          orderId: (data && (data.orderId || data.id || "")) || ""
-        };
+        const ok = Boolean(httpOk && data && (data.status === "ok" || data.status === "success" || data.ok || data.orderId || data.result === "success"));
+        return { confirmed: ok, orderId: (data && (data.orderId || data.id || "")) || "" };
       }
     };
 
-    const CATALOG_CSV_URLS = [
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-d_ef6VJovk65nJIr8VtLUFsId9EcruDOw_SYq3vl0_OACxCI-6ikNO8EID76KWFLvFuVpKgZilT1/pub?gid=954670530&single=true&output=csv",
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-d_ef6VJovk65nJIr8VtLUFsId9EcruDOw_SYq3vl0_OACxCI-6ikNO8EID76KWFLvFuVpKgZilT1/pub?output=csv"
-    ];
     const ORDER_API_URL = "https://script.google.com/macros/s/AKfycbxOntEhYAhu3qXTpIjz4fkjXfM7DXjsoM0n40ZnNAikiDacWN1ukj5D8Jge8pcuz_H6/exec";
-    const CACHE_KEY = "vm_catalog_cache_v10";
+    const CATALOG_CSV_URLS = [
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-d_ef6VJovk65nJIr8VtLUFsId9EcruDOw_SYq3vl0_OACxCI-6ikNO8EID76KWFLvFuVpKgZilT1/pub?gid=954670530&single=true&output=csv"
+    ];
+    const CACHE_KEY = "vm_catalog_cache_v17";
     const CACHE_TTL_MS = 5 * 60 * 1000;
 
     const LOGO_EMBLEM_SVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 88">
-        <rect x="3" y="3" width="254" height="82" rx="14" fill="#241107" stroke="#e6b84d" stroke-width="3"/>
-        <text x="130" y="54" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="28" font-weight="bold">🎵 विश्वकर्मा</text>
-      </svg>`
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 88"><rect x="3" y="3" width="254" height="82" rx="14" fill="#241107" stroke="#e6b84d" stroke-width="3"/><text x="130" y="54" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="28" font-weight="bold">🎵 विश्वकर्मा</text></svg>`
     );
 
     const DEFAULT_WORKSHOP_SVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
-        <defs>
-          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#281409"/>
-            <stop offset="100%" stop-color="#140803"/>
-          </linearGradient>
-        </defs>
-        <rect width="900" height="700" fill="url(#bg)"/>
-        <rect x="28" y="28" width="844" height="644" rx="20" fill="none" stroke="#e6b84d" stroke-width="4"/>
-        <text x="450" y="250" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="44" font-weight="bold">विश्वकर्मा म्यूज़िकल्स कार्यशाला</text>
-        <text x="450" y="320" text-anchor="middle" fill="#f5ede0" font-family="sans-serif" font-size="28">अमानगंज (पन्ना), मध्य प्रदेश • स्था. 1990</text>
-        <line x1="250" y1="360" x2="650" y2="360" stroke="#d4a340" stroke-width="2"/>
-        <text x="450" y="420" text-anchor="middle" fill="#fcd777" font-family="sans-serif" font-size="30" font-weight="bold">विशेषज्ञ वाद्ययंत्र निर्माण, मरम्मत एवं स्वर मिलान</text>
-        <text x="450" y="475" text-anchor="middle" fill="#f5ede0" font-family="sans-serif" font-size="22">मास्टर कारीगर: तुलसी दास विश्वकर्मा (+91 97550 88022)</text>
-      </svg>`
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#281409"/><stop offset="100%" stop-color="#140803"/></linearGradient></defs><rect width="900" height="700" fill="url(#bg)"/><rect x="28" y="28" width="844" height="644" rx="20" fill="none" stroke="#e6b84d" stroke-width="4"/><text x="450" y="250" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="44" font-weight="bold">विश्वकर्मा म्यूज़िकल्स कार्यशाला</text><text x="450" y="320" text-anchor="middle" fill="#f5ede0" font-family="sans-serif" font-size="28">अमानगंज (पन्ना), मध्य प्रदेश • स्था. 1990</text><line x1="250" y1="360" x2="650" y2="360" stroke="#d4a340" stroke-width="2"/><text x="450" y="420" text-anchor="middle" fill="#fcd777" font-family="sans-serif" font-size="30" font-weight="bold">विशेषज्ञ वाद्ययंत्र निर्माण, मरम्मत एवं स्वर मिलान</text><text x="450" y="475" text-anchor="middle" fill="#f5ede0" font-family="sans-serif" font-size="22">मास्टर कारीगर: तुलसी दास विश्वकर्मा (+91 97550 88022)</text></svg>`
     );
 
     const logoEl = document.getElementById("site-logo-img");
     if (logoEl) {
-      logoEl.onerror = function () {
-        this.onerror = null;
-        this.src = LOGO_EMBLEM_SVG;
-      };
+      logoEl.onerror = function () { this.onerror = null; this.src = LOGO_EMBLEM_SVG; };
     }
 
     let productData = null;
@@ -1478,7 +1171,9 @@
       value = value.replace(/\u0927\u092e\u094d\u092e\u0928/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
       value = value.replace(/\u092c\u0947\u0932\u094b\u091c\u093c/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
       value = value.replace(/\u092c\u0947\u0932\u094b/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
+      value = value.replace(/\u092d\u093e\u0925\u0940/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
       value = value.replace(/\u0938\u092b\u093c\u093e\u0930\u0940/g, "\u0938\u092b\u093c\u0930\u0940");
+      value = value.replace(/\bsafari\b/gi, "Safri");
       value = value.replace(/\u091d\u0915\u094b\u0930\u093e/g, "\u091d\u0940\u0915\u093e");
       return value;
     }
@@ -1495,9 +1190,7 @@
     function parseBilingualName(rawName) {
       const full = sanitizeTerminology(rawName).trim();
       const match = full.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
-      if (match) {
-        return { full, hindi: match[1].trim(), english: match[2].trim() };
-      }
+      if (match) return { full, hindi: match[1].trim(), english: match[2].trim() };
       return { full, hindi: full, english: "" };
     }
 
@@ -1539,10 +1232,6 @@
       };
     }
 
-    function parseCSV(csvText) {
-      return window.VMCsv.parse(csvText);
-    }
-
     function normalizeHeaderKey(str) {
       return String(str || "")
         .replace(/^\uFEFF/, "")
@@ -1565,7 +1254,6 @@
       }
 
       const headers = rows[headerRowIndex].map(normalizeHeaderKey);
-
       const colIdx = (possibleNames) => {
         for (const name of possibleNames) {
           const normName = normalizeHeaderKey(name);
@@ -1614,11 +1302,11 @@
         if (!sku || normalizeHeaderKey(sku) === "sku" || normalizeHeaderKey(sku) === "sku code") continue;
 
         const status = getVal(r, "status").toLowerCase();
-        const isInactive = ["inactive", "disabled", "hidden", "no", "false", "0", "archived"].includes(status);
-        if (isInactive) continue;
+        if (["inactive", "disabled", "hidden", "no", "false", "0", "archived"].includes(status)) continue;
 
         const rawType = getVal(r, "itemType");
-        const isService = rawType.toLowerCase().includes("service") || sku.toUpperCase().startsWith("VM-R");
+        const skuUpper = sku.toUpperCase();
+        const isService = rawType.toLowerCase().includes("service") || rawType.toLowerCase().includes("repair") || skuUpper.startsWith("VM-R") || skuUpper.startsWith("VM-S");
         const parsedName = parseBilingualName(getVal(r, "name") || sku);
         const rawPrice = Number(getVal(r, "price").replace(/[^\d.]/g, "")) || 0;
         const rawMrp = Number(getVal(r, "mrp").replace(/[^\d.]/g, "")) || 0;
@@ -1653,38 +1341,6 @@
           weightGrams: getEstimatedWeightGrams(sku, isService)
         });
       }
-
-      if (!catalog.some(i => i.sku.toUpperCase() === "VM-R20")) {
-        catalog.push({
-          sku: "VM-R20",
-          name: "तबला रिपेयरिंग, बद्धी खिंचाई व पुड़ी सेटिंग (Tabla Repair & Tuning)",
-          nameHindi: "तबला रिपेयरिंग, बद्धी खिंचाई व पुड़ी सेटिंग",
-          nameEnglish: "Tabla Repair & Tuning",
-          category: "Repair Service",
-          hsn: "998719",
-          gstRate: "18%",
-          price: 708,
-          status: "Active",
-          itemType: "SERVICE",
-          isService: true,
-          liveStock: 0,
-          stockBadge: "कार्यशाला में सेवा उपलब्ध",
-          mainImage: "",
-          galleryImages: "",
-          videoUrl: "",
-          shortDescription: "अमानगंज कार्यशाला में तबला व डग्गा की नई पुड़ी चढ़ाना, बद्धी खिंचाई, गजरा कसाई व सटीक सुर सेटिंग।",
-          keyFeatures: "जाँची हुई बकरे के चमड़े की पुड़ी | मजबूत चमड़े की बद्धी खिंचाई | पक्की काली स्याही व सटीक सुर मिलान",
-          specifications: "सेवा कोड: VM-R20 | SAC कोड: 998719 | सेवा स्थान: अमानगंज कार्यशाला | समय: 24 से 48 घंटे",
-          slug: "vm-r20",
-          formOption: "VM-R20",
-          mrp: 900,
-          subtitle: "कार्यशाला मरम्मत एवं सुर मिलान सेवा",
-          detailedDesc: "विश्वकर्मा म्यूज़िकल्स की अमानगंज कार्यशाला में तबला एवं बायाँ (डग्गा) की संपूर्ण रिपेयरिंग, नई पुड़ी फिटिंग, बद्धी खिंचाई और सटीक सुर मिलान का कार्य किया जाता है।",
-          usesBenefits: "पुराने तबले का संपूर्ण कायाकल्प | शास्त्रीय व भजन संगत हेतु सटीक चाटी खनक",
-          weightGrams: 0
-        });
-      }
-
       return catalog;
     }
 
@@ -1700,17 +1356,36 @@
       } catch (e) {}
 
       let lastErr = null;
+
+      // Primary Source: Live Apps Script Web App JSON API (DEC-02)
+      try {
+        const apiRes = await fetch(ORDER_API_URL, { method: "GET", cache: "no-store" });
+        if (apiRes.ok) {
+          const json = await apiRes.json();
+          if (json && Array.isArray(json.items) && json.items.length > 0) {
+            const headers = Object.keys(json.items[0]);
+            const rows = [headers, ...json.items.map(obj => headers.map(h => obj[h] !== undefined ? String(obj[h]) : ""))];
+            const items = mapCSVToProducts(rows);
+            if (items.length > 1) {
+              try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), items })); } catch (e) {}
+              return items;
+            }
+          }
+        }
+      } catch (err) {
+        lastErr = err;
+      }
+
+      // Secondary Fallback: Published CSV URL
       for (const url of CATALOG_CSV_URLS) {
         try {
           const response = await fetch(url, { cache: "no-store" });
           if (!response.ok) continue;
           const csvText = await response.text();
-          const rows = parseCSV(csvText);
+          const rows = window.VMCsv.parse(csvText);
           const items = mapCSVToProducts(rows);
           if (items.length > 1) {
-            try {
-              sessionStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), items }));
-            } catch (e) {}
+            try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), items })); } catch (e) {}
             return items;
           }
         } catch (err) {
@@ -1718,7 +1393,7 @@
         }
       }
 
-      throw lastErr || new Error("नेटवर्क से कैटलॉग डेटा प्राप्त नहीं हो सका। कृपया इंटरनेट कनेक्शन या शीट पब्लिश सेटिंग जांचें।");
+      throw lastErr || new Error("नेटवर्क से कैटलॉग डेटा प्राप्त नहीं हो सका।");
     }
 
     let cartItems = window.VMCartUI.readCart();
@@ -1741,6 +1416,8 @@
 
       const params = new URLSearchParams(window.location.search);
       const rawParam = (params.get("slug") || params.get("sku") || "vm-h01").trim().toLowerCase();
+      // Support both vm-r01..vm-r19 and vm-s01..vm-s19 aliases for workshop repair services
+      const altServiceParam = rawParam.replace(/^vm-r(0[1-9]|1[0-9])$/, "vm-s$1");
 
       if (!/^[a-z0-9-]+$/.test(rawParam)) {
         loader.style.display = "none";
@@ -1751,7 +1428,12 @@
 
       try {
         const allItems = await fetchCatalogData();
-        const matched = allItems.find(item => item.slug === rawParam || item.sku.toLowerCase() === rawParam) || allItems[0];
+        const matched = allItems.find(item =>
+          item.slug === rawParam ||
+          item.sku.toLowerCase() === rawParam ||
+          item.slug === altServiceParam ||
+          item.sku.toLowerCase() === altServiceParam
+        ) || allItems[0];
 
         if (!matched) {
           throw new Error(`यह वाद्ययंत्र या सेवा (${escapeHTML(rawParam)}) वर्तमान कैटलॉग में उपलब्ध नहीं है।`);
@@ -1775,8 +1457,37 @@
       }
     }
 
+    function updateProductSchema(p) {
+      const schemaEl = document.getElementById("dynamic-product-schema");
+      if (!schemaEl) return;
+      const schemaObj = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": p.nameHindi,
+        "sku": p.sku,
+        "description": p.shortDescription || p.detailedDesc || p.name,
+        "image": p.mainImage || "https://vishwakarmamusicals.in/favicon.webp",
+        "brand": { "@type": "Brand", "name": "विश्वकर्मा म्यूज़िकल्स" },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://vishwakarmamusicals.in/product.html?slug=" + encodeURIComponent(p.slug),
+          "priceCurrency": "INR",
+          "price": String(p.price || 0),
+          "availability": (p.isService || p.liveStock > 0) ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+          "seller": {
+            "@type": "MusicStore",
+            "name": "विश्वकर्मा म्यूज़िकल्स",
+            "telephone": "+919755088022",
+            "email": "info@vishwakarmamusicals.in"
+          }
+        }
+      };
+      schemaEl.textContent = JSON.stringify(schemaObj);
+    }
+
     function renderProductToDOM(p) {
       document.title = `${p.nameHindi}${p.nameEnglish ? " (" + p.nameEnglish + ")" : ""} | विश्वकर्मा म्यूज़िकल्स`;
+      updateProductSchema(p);
 
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
@@ -1815,7 +1526,7 @@
       const purchaseControls = document.querySelector(".purchase-controls");
       const addToCartBtn = document.getElementById("add-to-cart-btn");
       const buyNowBtn = document.getElementById("buy-now-btn");
-      const deliveryCard = document.querySelector(".delivery-card");
+      const deliveryCard = document.getElementById("delivery-card-box");
 
       if (p.isService) {
         document.getElementById("tax-note-text").textContent = `दर में ${p.gstRate} GST शामिल है • यह सेवा केवल अमानगंज (पन्ना) कार्यशाला में उपलब्ध है`;
@@ -1911,7 +1622,7 @@
         ? p.specifications.split("|").map(s => s.trim()).filter(Boolean)
         : [
             `मॉडल / सेवा कोड (SKU): ${p.sku}`,
-            `HSN / SAC कोड: ${p.hsn || (p.isService ? "998719" : "9209")}`,
+            `HSN / SAC कोड: ${p.hsn || (p.isService ? "998726" : "92030090")}`,
             `श्रेणी: ${p.category}`,
             `जीएसटी (GST): ${p.gstRate}`,
             `कार्यशाला स्थान: मकान नं. 109, शाला मोहल्ला, अमानगंज (पन्ना)`
@@ -1951,12 +1662,11 @@
 
     const zoomModal = document.getElementById("zoom-modal");
     const mainImgEl = document.getElementById("main-product-image");
-    function openZoom() {
+    mainImgEl.onclick = () => {
       document.getElementById("zoomed-image").src = mainImgEl.src;
       document.getElementById("zoomed-caption").textContent = mainImgEl.alt;
       zoomModal.classList.add("open");
-    }
-    mainImgEl.onclick = openZoom;
+    };
     document.getElementById("close-zoom-btn").onclick = () => zoomModal.classList.remove("open");
 
     document.getElementById("qty-minus").onclick = () => {
@@ -1993,9 +1703,7 @@
     function renderCart(persist) {
       cartItems = window.VMCartUI.normalizeItems(cartItems);
       if (persist !== false) {
-        try {
-          localStorage.setItem(window.VMCartUI.storageKey, JSON.stringify(cartItems));
-        } catch (e) {}
+        try { localStorage.setItem(window.VMCartUI.storageKey, JSON.stringify(cartItems)); } catch (e) {}
       }
       const summary = window.VMCartUI.summarize(cartItems);
       const countEl = document.getElementById("header-cart-count");
@@ -2036,10 +1744,9 @@
         }
         cartItems = window.VMCartUI.readCart();
         const existing = cartItems.find(i => i.sku === productData.sku);
-
         if (existing) {
           if (!window.VMCartUI.canAddQuantity(existing.qty, qtyToAdd)) {
-            showToast("इस वस्तु की अधिकतम कार्ट मात्रा 10,000 है। मौजूदा कार्ट सुरक्षित रखा गया है।");
+            showToast("इस वस्तु की अधिकतम कार्ट मात्रा 10,000 है।");
             return;
           }
           existing.qty += qtyToAdd;
@@ -2052,7 +1759,6 @@
             weightGrams: productData.weightGrams || 5000
           });
         }
-
         renderCart();
         showToast(`"${productData.nameHindi}" कार्ट में जोड़ दिया गया है!`);
         openCart();
@@ -2066,7 +1772,6 @@
     };
 
     const orderModal = document.getElementById("order-modal");
-
     window.updateModalCourierPreview = function() {
       const pin = document.getElementById("cust-pincode").value.trim();
       const baseTotal = activeOrderItems.reduce((s, i) => s + (Number(i.price || 0) * Number(i.qty || 1)), 0);
@@ -2125,7 +1830,7 @@
         <div style="font-size:2rem;margin-bottom:6px;" aria-hidden="true">⚠️</div>
         <h3 style="color:var(--maroon-title);font-size:1.15rem;margin-bottom:8px;">ऑर्डर की स्थिति की पुष्टि आवश्यक है</h3>
         <p style="font-size:0.95rem;color:var(--text-muted-dark);margin-bottom:14px;">
-          ${storageUnavailable ? "यह ब्राउज़र अनुरोध की स्थिति सुरक्षित रूप से याद नहीं रख सका; ऑनलाइन अनुरोध नहीं भेजा गया।" : "पिछला अनुरोध सर्वर तक पहुँचा हो सकता है। दोबारा भेजने से पहले कृपया फोन पर स्थिति की पुष्टि करें। आपकी भरी हुई जानकारी इसी पृष्ठ पर बनी रहेगी।"}
+          ${storageUnavailable ? "यह ब्राउज़र अनुरोध की स्थिति सुरक्षित रूप से याद नहीं रख सका; ऑनलाइन अनुरोध नहीं भेजा गया।" : "पिछला अनुरोध सर्वर तक पहुँचा हो सकता है। दोबारा भेजने से पहले कृपया फोन पर स्थिति की पुष्टि करें।"}
         </p>
         <a href="tel:+919755088022" class="btn btn-buy-now full-width-btn">📞 +91 97550 88022 पर कॉल करके पुष्टि करें</a>
         <button type="button" id="clear-order-pending" class="btn btn-outline full-width-btn" style="margin-top:10px;">फोन पर पुष्टि के बाद नया प्रयास सक्षम करें</button>
@@ -2163,7 +1868,6 @@
       let acceptedOrderId = "";
 
       try {
-        if (!ORDER_API_URL) throw new Error("Order endpoint is not configured.");
         const attempt = window.VMOrderResponse.beginAttempt();
         if (!attempt.started) {
           showPendingOrderNotice(confBox, submitBtn, attempt.reason);
@@ -2183,12 +1887,10 @@
             notes: notes
           })
         });
-        if (!res.ok) throw new Error("Order endpoint did not return a successful HTTP status.");
+        if (!res.ok) throw new Error("HTTP error");
         const data = await res.json();
         const acceptance = window.VMOrderResponse.assess(res.ok, data);
-        if (!acceptance.confirmed) {
-          throw new Error("Order endpoint response did not confirm acceptance.");
-        }
+        if (!acceptance.confirmed) throw new Error("Unconfirmed");
         acceptedOrderId = acceptance.orderId;
         window.VMOrderResponse.clearPending();
       } catch (err) {
@@ -2227,7 +1929,6 @@
         const rRating = Number(document.getElementById("reviewer-rating").value) || 5;
         const rComment = document.getElementById("reviewer-comment").value.trim();
         if (!rName || !rComment) return;
-
         const starsStr = "★".repeat(rRating) + "☆".repeat(5 - rRating);
         const card = document.createElement("article");
         card.className = "review-card";
@@ -2248,16 +1949,11 @@
           msgEl.textContent = "कृपया सही 6 अंकों का भारतीय पिनकोड दर्ज करें।";
           return;
         }
-
         let deliveryDays = 5;
         const firstDigit = pin.charAt(0);
-        if (pin === "488441") {
-          deliveryDays = 1;
-        } else if (firstDigit === "4" || firstDigit === "2" || firstDigit === "1") {
-          deliveryDays = 3;
-        } else if (firstDigit === "5" || firstDigit === "6" || firstDigit === "7") {
-          deliveryDays = 7;
-        }
+        if (pin === "488441") deliveryDays = 1;
+        else if (firstDigit === "4" || firstDigit === "2" || firstDigit === "1") deliveryDays = 3;
+        else if (firstDigit === "5" || firstDigit === "6" || firstDigit === "7") deliveryDays = 7;
 
         const weight = (productData ? productData.weightGrams : 5000) * currentQty;
         const courierFee = calculateCourierCharge(pin, weight);
