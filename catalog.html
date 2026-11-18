@@ -73,6 +73,9 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; zoom: 80%; }
+    @media (max-width: 768px), print {
+      html { zoom: 100%; }
+    }
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
@@ -388,7 +391,8 @@
     /* UNIFIED CART DRAWER */
     .overlay-backdrop {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
       background: rgba(20, 9, 3, 0.78);
       backdrop-filter: blur(4px);
       display: none;
@@ -399,13 +403,13 @@
       position: fixed;
       top: 0; bottom: 0; right: -420px;
       width: 100%; max-width: 390px;
-      height: 100%;
       background: var(--surface-light);
       z-index: 250;
       display: flex;
       flex-direction: column;
       transition: right 0.3s ease;
       box-shadow: -8px 0 28px rgba(0,0,0,0.5);
+      overflow: hidden;
     }
     .cart-drawer.open { right: 0; }
     .drawer-header {
@@ -453,9 +457,24 @@
     @media (max-width: 768px) {
       .lh-right { text-align: left; width: 100%; }
     }
+    @media (max-width: 860px) {
+      .header-inner { gap: 10px; }
+      .main-nav { min-width: 0; gap: 12px; }
+      .main-nav a { font-size: 0.84rem; }
+      .brand-logo { gap: 8px; }
+      .brand-logo img { height: 40px; }
+    }
+    @media (max-width: 600px) {
+      .header-inner { gap: 8px; }
+      .main-nav { min-width: 0; gap: 10px; }
+      .main-nav a { font-size: 0.8rem; }
+      .brand-logo img { height: 36px; }
+      .brand-name { font-size: 1rem; }
+      .cart-trigger-btn { padding: 6px 9px; font-size: 0.78rem; }
+    }
     @media print {
       html, body { zoom: 100% !important; padding: 0 !important; background: #ffffff !important; }
-      .site-header, .hero, .sec-footer-light-wrap, .mobile-sticky-bar, .no-print { display: none !important; }
+      .site-header, .hero, .sec-footer-light-wrap, .mobile-sticky-bar, .no-print, .cart-drawer, .overlay-backdrop { display: none !important; }
       .catalog-section { padding: 0 !important; }
       .catalog-sheet { border: none !important; box-shadow: none !important; padding: 0 !important; }
     }
@@ -542,38 +561,38 @@
             <tbody id="products-table-body">
               <tr>
                 <td><span class="sku-pill">VM-H01</span></td>
-                <td><strong>स्केल चेंजर कॉन्सर्ट हारमोनियम (Scale Changer Concert Harmonium)</strong></td>
-                <td>सीजन्ड सागौन/शीशम बॉडी, 9 स्केल चेंजर, शुद्ध पीतल रीड्स व एयरटाइट धोंकनी</td>
-                <td class="price-cell">कॉल पर पुष्टि</td>
+                <td><strong>बेस-मेल कॉन्सर्ट हारमोनियम (Bass-Male Concert Harmonium)</strong></td>
+                <td>सीजन्ड सागौन/चीड़ बॉडी, 39 चाबियां, शुद्ध पीतल रीड्स व एयरटाइट धोंकनी</td>
+                <td class="price-cell">₹13,000</td>
                 <td class="no-print"><a class="action-link" href="product.html?slug=vm-h01">देखें →</a></td>
               </tr>
               <tr>
                 <td><span class="sku-pill">VM-H02</span></td>
-                <td><strong>सफ़री हारमोनियम (Safri Harmonium)</strong></td>
-                <td>पोर्टेबल फोल्डिंग डिज़ाइन, हल्की व मज़बूत बॉडी, 440Hz ट्यूनिंग व एयरटाइट धोंकनी</td>
-                <td class="price-cell">कॉल पर पुष्टि</td>
+                <td><strong>सफ़री पोर्टेबल मिनी हारमोनियम (Safri Harmonium)</strong></td>
+                <td>पोर्टेबल कॉम्पैक्ट डिज़ाइन, हल्की व मज़बूत बॉडी, 440Hz ट्यूनिंग व एयरटाइट धोंकनी</td>
+                <td class="price-cell">₹9,900</td>
                 <td class="no-print"><a class="action-link" href="product.html?slug=vm-h02">देखें →</a></td>
               </tr>
               <tr>
                 <td><span class="sku-pill">VM-D01</span></td>
-                <td><strong>शीशम नट-बोल्ट ढोलक (Sheesham Nut-Bolt Dholak)</strong></td>
+                <td><strong>नट-बोल्ट पक्की शीशम ढोलक (Sheesham Nut-Bolt Dholak)</strong></td>
                 <td>पक्की शीशम लकड़ी, ट्यूनिंग की सहित, बकरे की खाल के पुड़े व संतुलित मसाला</td>
-                <td class="price-cell">कॉल पर पुष्टि</td>
+                <td class="price-cell">₹5,800</td>
                 <td class="no-print"><a class="action-link" href="product.html?slug=vm-d01">देखें →</a></td>
               </tr>
               <tr>
                 <td><span class="sku-pill">VM-T01</span></td>
-                <td><strong>प्रोफेशनल तबला सेट (Professional Tabla Set)</strong></td>
-                <td>शीशम चाटी व पीतल/तांबा डग्गा, हाथ की स्याही व मजबूत चमड़े की बद्धी</td>
-                <td class="price-cell">कॉल पर पुष्टि</td>
+                <td><strong>शास्त्रीय कॉन्सर्ट तबला जोड़ी (Professional Tabla Set)</strong></td>
+                <td>शीशम चाटी व भारी पीतल डग्गा, हाथ की स्याही व मजबूत चमड़े की बद्धी</td>
+                <td class="price-cell">₹6,500</td>
                 <td class="no-print"><a class="action-link" href="product.html?slug=vm-t01">देखें →</a></td>
               </tr>
               <tr>
-                <td><span class="sku-pill">VM-O01</span></td>
+                <td><span class="sku-pill">VM-J01</span></td>
                 <td><strong>पारंपरिक बुंदेली झीका (Traditional Jheeka)</strong></td>
-                <td>भजन-कीर्तन व मानस मंडली हेतु मज़बूत काष्ठ फ्रेम व खनकदार झांझर</td>
-                <td class="price-cell">कॉल पर पुष्टि</td>
-                <td class="no-print"><a class="action-link" href="product.html?slug=vm-o01">देखें →</a></td>
+                <td>भजन-कीर्तन व मानस मंडली हेतु मज़बूत काष्ठ फ्रेम व पीतल झिल्लियाँ</td>
+                <td class="price-cell">₹400</td>
+                <td class="no-print"><a class="action-link" href="product.html?slug=vm-j01">देखें →</a></td>
               </tr>
             </tbody>
           </table>
@@ -690,7 +709,7 @@
         <span>कुल वाद्य मूल्य:</span>
         <span id="cart-total-display">₹0</span>
       </div>
-      <a href="instruments.html" class="btn btn-gold" style="width:100%;">वाद्य चुनें व ऑर्डर बुक करें →</a>
+      <a href="product.html?checkout=cart" id="drawer-checkout-link" class="btn btn-gold" style="width:100%;max-width:100% !important;">कार्ट के सभी वाद्य ऑर्डर करें →</a>
     </div>
   </aside>
 
@@ -737,13 +756,22 @@
         const countEl = document.getElementById("header-cart-count");
         const totalEl = document.getElementById("cart-total-display");
         const box = document.getElementById("cart-items-box");
-        const checkoutLink = document.querySelector("#cart-drawer .drawer-footer a.btn");
+        const checkoutLink = document.getElementById("drawer-checkout-link");
         if (countEl) countEl.textContent = String(count);
         if (totalEl) totalEl.textContent = "₹" + Number(total || 0).toLocaleString("en-IN");
         if (checkoutLink) {
-          checkoutLink.href = items.length > 0
-            ? ("product.html?slug=" + encodeURIComponent(String(items[0].sku).toLowerCase()))
-            : "instruments.html";
+          if (items.length > 0) {
+            checkoutLink.href = "product.html?checkout=cart&slug=" + encodeURIComponent(String(items[0].sku).toLowerCase());
+            checkoutLink.style.opacity = "1";
+            checkoutLink.onclick = null;
+          } else {
+            checkoutLink.href = "#";
+            checkoutLink.style.opacity = "0.6";
+            checkoutLink.onclick = function (e) {
+              e.preventDefault();
+              alert("कृपया पहले कार्ट में कोई वाद्य यंत्र जोड़ें।");
+            };
+          }
         }
         if (!box) return;
         if (!items.length) {
@@ -751,17 +779,36 @@
           return;
         }
         box.innerHTML = items.map((item, idx) => `
-          <div class="cart-item-row">
-            <div>
-              <strong style="color:#8a2a0c;display:block;">${escapeHTML(item.name || item.sku)}</strong>
-              <span style="font-size:0.86rem;color:#4a3424;">कोड: ${escapeHTML(item.sku)} | मात्रा: ${item.qty} × ₹${Number(item.price || 0).toLocaleString("en-IN")}</span>
+          <div class="cart-item-row" style="gap:10px;">
+            <div style="flex:1;">
+              <strong style="color:#8a2a0c;display:block;line-height:1.35;">${escapeHTML(item.name || item.sku)}</strong>
+              <span style="font-size:0.84rem;color:#4a3424;display:block;margin:3px 0;">कोड: ${escapeHTML(item.sku)} | दर: ₹${Number(item.price || 0).toLocaleString("en-IN")}</span>
+              <div style="display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:#fcedd8;border:1px solid #e6b84d;border-radius:999px;padding:2px 8px;">
+                <button type="button" data-qty-delta="-1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा घटाएं">−</button>
+                <strong style="font-size:0.9rem;color:#1f1107;">${item.qty}</strong>
+                <button type="button" data-qty-delta="1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा बढ़ाएं">+</button>
+              </div>
             </div>
-            <button type="button" data-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+            <button type="button" data-remove-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
           </div>
         `).join("");
-        box.querySelectorAll("button[data-idx]").forEach(btn => {
+        box.querySelectorAll("button[data-qty-delta]").forEach(btn => {
           btn.onclick = () => {
             const idx = Number(btn.getAttribute("data-idx"));
+            const delta = Number(btn.getAttribute("data-qty-delta"));
+            const current = this.readCart();
+            if (idx >= 0 && idx < current.length) {
+              const nextQty = (Number(current[idx].qty) || 1) + delta;
+              if (nextQty <= 0) current.splice(idx, 1);
+              else current[idx].qty = Math.min(10000, nextQty);
+              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
+              this.syncDrawer();
+            }
+          };
+        });
+        box.querySelectorAll("button[data-remove-idx]").forEach(btn => {
+          btn.onclick = () => {
+            const idx = Number(btn.getAttribute("data-remove-idx"));
             const current = this.readCart();
             if (idx >= 0 && idx < current.length) {
               current.splice(idx, 1);
@@ -854,6 +901,9 @@
       document.getElementById("cart-drawer").classList.remove("open");
       document.getElementById("cart-backdrop").classList.remove("open");
     };
+    window.addEventListener("storage", function (event) {
+      if (event.key === window.VMCartUI.storageKey) window.VMCartUI.syncDrawer();
+    });
 
     document.addEventListener("DOMContentLoaded", () => {
       window.VMCartUI.syncDrawer();

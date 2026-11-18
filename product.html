@@ -43,6 +43,9 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; zoom: 80%; }
+    @media (max-width: 768px), print {
+      html { zoom: 100%; }
+    }
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
@@ -54,7 +57,6 @@
       padding-top: 64px;
       padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
       overflow-x: hidden;
-      perspective: 1400px;
     }
     @media (min-width: 769px) { body { padding-bottom: 0; } }
 
@@ -621,7 +623,8 @@
 
     .overlay-backdrop, .modal-overlay {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
       background: rgba(20, 9, 3, 0.82);
       backdrop-filter: blur(4px);
       display: none;
@@ -632,15 +635,15 @@
     .overlay-backdrop.open, .modal-overlay.open { display: flex; }
     .cart-drawer {
       position: fixed;
-      top: 0; right: -420px;
+      top: 0; bottom: 0; right: -420px;
       width: 100%; max-width: 395px;
-      height: 100vh;
       background: var(--surface-light);
       z-index: 250;
       display: flex;
       flex-direction: column;
       transition: right 0.3s ease;
       box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      overflow: hidden;
     }
     .cart-drawer.open { right: 0; }
     .drawer-header, .modal-header {
@@ -677,7 +680,7 @@
     .order-modal-box {
       background: var(--surface-light);
       width: 92%;
-      max-width: 520px;
+      max-width: 560px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 2.5px solid var(--gold-border);
@@ -689,7 +692,7 @@
       border-left: 5px solid var(--maroon-title);
       padding: 14px;
       border-radius: 8px;
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 18px;
       color: var(--maroon-title);
     }
@@ -1002,7 +1005,7 @@
         <span>कुल वाद्य मूल्य:</span>
         <span id="cart-total-display">₹0</span>
       </div>
-      <button type="button" class="btn btn-buy-now full-width-btn" id="drawer-checkout-btn">ऑर्डर बुक करें →</button>
+      <button type="button" class="btn btn-buy-now full-width-btn" id="drawer-checkout-btn">कार्ट के सभी वाद्य ऑर्डर करें →</button>
     </div>
   </aside>
 
@@ -1017,11 +1020,11 @@
   <div class="modal-overlay" id="order-modal">
     <div class="order-modal-box">
       <div class="modal-header">
-        <h3>ऑनलाइन वाद्ययंत्र ऑर्डर बुकिंग</h3>
+        <h3 id="order-modal-title">ऑनलाइन वाद्ययंत्र ऑर्डर बुकिंग</h3>
         <button type="button" class="close-modal-btn" id="close-order-modal">✕</button>
       </div>
       <div class="modal-body">
-        <p id="order-summary-text" class="order-summary-highlight"></p>
+        <div id="order-summary-text" class="order-summary-highlight"></div>
         <form id="quick-order-form">
           <div class="form-group"><label for="cust-name">1. आपका पूरा नाम *</label><input type="text" id="cust-name" required placeholder="अपना नाम दर्ज करें"></div>
           <div class="form-group"><label for="cust-phone">2. मोबाइल नंबर (10 अंक) *</label><input type="tel" id="cust-phone" required pattern="[6-9][0-9]{9}" maxlength="10" placeholder="98XXXXXXXX"></div>
@@ -1107,18 +1110,30 @@
           return;
         }
         container.innerHTML = list.map((item, idx) => `
-          <div class="cart-item-row">
-            <div>
-              <strong style="color:#8a2a0c;display:block;">${item.name}</strong>
-              <span style="font-size:0.86rem;color:#4a3424;">कोड: ${item.sku} | मात्रा: ${item.qty} × ₹${Number(item.price).toLocaleString("en-IN")}</span>
+          <div class="cart-item-row" style="gap:10px;">
+            <div style="flex:1;">
+              <strong style="color:#8a2a0c;display:block;line-height:1.35;">${item.name}</strong>
+              <span style="font-size:0.84rem;color:#4a3424;display:block;margin:3px 0;">कोड: ${item.sku} | दर: ₹${Number(item.price).toLocaleString("en-IN")}</span>
+              <div style="display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:#fcedd8;border:1px solid #e6b84d;border-radius:999px;padding:2px 8px;">
+                <button type="button" data-qty-delta="-1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा घटाएं">−</button>
+                <strong style="font-size:0.9rem;color:#1f1107;">${item.qty}</strong>
+                <button type="button" data-qty-delta="1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा बढ़ाएं">+</button>
+              </div>
             </div>
-            <button type="button" data-idx="${idx}" data-sku="${item.sku}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+            <button type="button" data-remove-idx="${idx}" data-sku="${item.sku}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
           </div>
         `).join("");
-        container.querySelectorAll("button[data-sku]").forEach(btn => {
+        container.querySelectorAll("button[data-qty-delta]").forEach(btn => {
+          btn.onclick = function () {
+            if (opts && typeof opts.onChangeQty === "function") {
+              opts.onChangeQty(Number(this.getAttribute("data-idx")), Number(this.getAttribute("data-qty-delta")));
+            }
+          };
+        });
+        container.querySelectorAll("button[data-remove-idx]").forEach(btn => {
           btn.onclick = function () {
             if (opts && typeof opts.onRemove === "function") {
-              opts.onRemove(Number(this.getAttribute("data-idx")), this.getAttribute("data-sku"));
+              opts.onRemove(Number(this.getAttribute("data-remove-idx")), this.getAttribute("data-sku"));
             }
           };
         });
@@ -1167,6 +1182,7 @@
     let currentQty = 1;
     let isWishlisted = false;
     let activeOrderItems = [];
+    let isCartCheckoutMode = false;
 
     function sanitizeTerminology(str) {
       let value = String(str || "");
@@ -1408,6 +1424,54 @@
       setTimeout(() => toast.classList.remove("show"), 3200);
     }
 
+    function renderOrderModalItemsSummary() {
+      const summaryEl = document.getElementById("order-summary-text");
+      if (!summaryEl) return;
+      if (!activeOrderItems.length) {
+        summaryEl.innerHTML = "कोई वाद्ययंत्र चयनित नहीं है।";
+        return;
+      }
+      const totalQty = activeOrderItems.reduce((s, i) => s + Number(i.qty || 1), 0);
+      const rowsHtml = activeOrderItems.map(item => {
+        const lineTotal = (Number(item.price) || 0) * (Number(item.qty) || 1);
+        return `
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px dashed rgba(138,42,12,0.25);">
+            <div>
+              <span style="font-weight:700;color:#1f1107;display:block;">${escapeHTML(item.name)}</span>
+              <span style="font-size:0.82rem;color:#4a3424;">कोड: ${escapeHTML(item.sku)} | मात्रा: ${item.qty} × ${formatINR(item.price)}</span>
+            </div>
+            <strong style="color:var(--maroon-title);white-space:nowrap;">${formatINR(lineTotal)}</strong>
+          </div>
+        `;
+      }).join("");
+      summaryEl.innerHTML = `
+        <div style="font-size:0.86rem;color:var(--maroon-title);font-weight:800;margin-bottom:6px;">
+          चयनित वाद्ययंत्र सूची (कुल ${totalQty} नग):
+        </div>
+        ${rowsHtml}
+      `;
+    }
+
+    function openCartCheckoutModal() {
+      cartItems = window.VMCartUI.readCart();
+      renderCart(false);
+      if (!cartItems.length) {
+        showToast("आपका कार्ट अभी खाली है।");
+        return false;
+      }
+      closeCart();
+      isCartCheckoutMode = true;
+      activeOrderItems = cartItems.slice();
+      const modalTitleEl = document.getElementById("order-modal-title");
+      if (modalTitleEl) modalTitleEl.textContent = `कार्ट ऑर्डर बुकिंग (${activeOrderItems.length} प्रकार के वाद्य)`;
+      document.getElementById("quick-order-form").style.display = "block";
+      document.getElementById("order-confirmation-box").style.display = "none";
+      renderOrderModalItemsSummary();
+      updateModalCourierPreview();
+      orderModal.classList.add("open");
+      return true;
+    }
+
     async function loadProductFromMasterSheet() {
       renderCart();
       const loader = document.getElementById("page-loader");
@@ -1415,8 +1479,14 @@
       const mainContent = document.getElementById("product-overview");
 
       const params = new URLSearchParams(window.location.search);
-      const rawParam = (params.get("slug") || params.get("sku") || "vm-h01").trim().toLowerCase();
+      const isCartCheckoutParam = params.get("checkout") === "cart";
+      const fallbackSlugFromCart = (cartItems && cartItems.length > 0) ? cartItems[0].sku.toLowerCase() : "vm-h01";
+      const rawParam = (params.get("slug") || params.get("sku") || fallbackSlugFromCart).trim().toLowerCase();
       const altServiceParam = rawParam.replace(/^vm-r(0[1-9]|1[0-9])$/, "vm-s$1");
+
+      if (isCartCheckoutParam) {
+        openCartCheckoutModal();
+      }
 
       if (!/^[a-z0-9-]+$/.test(rawParam)) {
         loader.style.display = "none";
@@ -1712,6 +1782,15 @@
       const box = document.getElementById("cart-items-box");
       if (!box) return;
       window.VMCartUI.renderItems(box, cartItems, {
+        onChangeQty: function (index, delta) {
+          cartItems = window.VMCartUI.readCart();
+          if (index >= 0 && index < cartItems.length) {
+            const nextQty = cartItems[index].qty + delta;
+            if (nextQty <= 0) cartItems.splice(index, 1);
+            else cartItems[index].qty = Math.min(10000, nextQty);
+            renderCart();
+          }
+        },
         onRemove: function (index, sku) { window.removeCartItem(index, sku); }
       });
     }
@@ -1792,6 +1871,7 @@
         window.location.href = "tel:+919755088022";
         return;
       }
+      isCartCheckoutMode = false;
       activeOrderItems = [{
         sku: productData.sku,
         name: productData.nameHindi,
@@ -1799,25 +1879,16 @@
         qty: currentQty,
         weightGrams: productData.weightGrams
       }];
+      const modalTitleEl = document.getElementById("order-modal-title");
+      if (modalTitleEl) modalTitleEl.textContent = "ऑनलाइन वाद्ययंत्र ऑर्डर बुकिंग";
       document.getElementById("quick-order-form").style.display = "block";
       document.getElementById("order-confirmation-box").style.display = "none";
-      document.getElementById("order-summary-text").textContent = `${productData.sku}: ${productData.nameHindi} (मात्रा: ${currentQty}, मूल्य: ${formatINR(productData.price * currentQty)})`;
+      renderOrderModalItemsSummary();
       updateModalCourierPreview();
       orderModal.classList.add("open");
     };
 
-    document.getElementById("drawer-checkout-btn").onclick = () => {
-      cartItems = window.VMCartUI.readCart();
-      renderCart(false);
-      if (!cartItems.length) return;
-      closeCart();
-      activeOrderItems = cartItems.slice();
-      document.getElementById("quick-order-form").style.display = "block";
-      document.getElementById("order-confirmation-box").style.display = "none";
-      document.getElementById("order-summary-text").textContent = activeOrderItems.map(i => `${i.sku} (${i.name}) × ${i.qty}`).join(", ");
-      updateModalCourierPreview();
-      orderModal.classList.add("open");
-    };
+    document.getElementById("drawer-checkout-btn").onclick = openCartCheckoutModal;
     document.getElementById("close-order-modal").onclick = () => orderModal.classList.remove("open");
 
     function showPendingOrderNotice(confBox, submitBtn, reason) {
@@ -1864,6 +1935,7 @@
       const grandTotal = baseTotal + courier;
       const totalQty = activeOrderItems.reduce((s, i) => s + Number(i.qty || 1), 0);
       const itemStr = activeOrderItems.map(i => `${i.sku}: ${i.name} (x${i.qty})`).join(" | ");
+      const skuStr = activeOrderItems.map(i => i.sku).join(", ");
       let acceptedOrderId = "";
 
       try {
@@ -1879,9 +1951,11 @@
             mobile: phone,
             pincode: pin,
             address: addr,
-            sku: activeOrderItems[0].sku,
+            sku: skuStr,
             selectedItem: itemStr,
             qty: totalQty,
+            totalAmount: grandTotal,
+            courierCharge: courier,
             paymentMode: "UPI / Bank Transfer",
             notes: notes
           })
@@ -1895,6 +1969,11 @@
       } catch (err) {
         showPendingOrderNotice(confBox, submitBtn, "pending");
         return;
+      }
+
+      if (isCartCheckoutMode) {
+        cartItems = [];
+        renderCart(true);
       }
 
       submitBtn.disabled = false;

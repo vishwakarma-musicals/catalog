@@ -96,6 +96,11 @@
       scroll-behavior: smooth;
       zoom: 80%;
     }
+    @media (max-width: 768px), print {
+      html {
+        zoom: 100%;
+      }
+    }
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
@@ -105,7 +110,6 @@
       padding-top: 64px;
       padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
       overflow-x: hidden;
-      perspective: 1400px;
     }
     @media (min-width: 769px) { body { padding-bottom: 0; } }
 
@@ -452,7 +456,7 @@
       transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease;
     }
     .pcard-dark-in-light:hover {
-      transform: translateY(-8px) rotateX(1deg);
+      transform: translateY(-8px);
       box-shadow: 0 26px 46px rgba(35,17,5,.28), 0 0 22px rgba(230,184,77,.38);
     }
     .pcard-img-box-white {
@@ -904,10 +908,11 @@
       padding-top: 16px;
     }
 
-    /* CART DRAWER */
+    /* UNIFIED CART DRAWER */
     .overlay-backdrop {
       position: fixed;
-      inset: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%; height: 100%;
       background: rgba(20, 9, 3, 0.78);
       backdrop-filter: blur(4px);
       display: none;
@@ -918,13 +923,13 @@
       position: fixed;
       top: 0; bottom: 0; right: -420px;
       width: 100%; max-width: 390px;
-      height: 100%;
       background: var(--surface-light);
       z-index: 250;
       display: flex;
       flex-direction: column;
       transition: right 0.3s ease;
       box-shadow: -8px 0 28px rgba(0,0,0,0.5);
+      overflow: hidden;
     }
     .cart-drawer.open { right: 0; }
     .drawer-header {
@@ -1083,7 +1088,7 @@
 
   <hr class="gold-section-divider">
 
-  <!-- 3. FEATURED INSTRUMENTS (ALL 12 CARDS WITH MASTER SHEET PRICES & ADD TO CART CTA) -->
+  <!-- 3. FEATURED INSTRUMENTS (12 CARDS) -->
   <section id="instruments" class="sec-light">
     <div class="container">
       <div class="sec-head">
@@ -1342,7 +1347,7 @@
       <div class="guidance-grid">
         <div class="guide-box-light">
           <img class="guide-card-image" src="https://drive.google.com/thumbnail?id=1yc7UzO9StqzA9rQ78rXwrL_9bu_mKEjQ&sz=w1200" data-drive-id="1yc7UzO9StqzA9rQ78rXwrL_9bu_mKEjQ" alt="शुरुआत व दैनिक रियाज़" width="1200" height="900" loading="lazy" decoding="async">
-          <b>🪗 शुरुआत व दैनिक रियाज़</b>
+          <b>🪕 शुरुआत व दैनिक रियाज़</b>
           <p>सफ़री हारमोनियम या 39-की स्टैंडर्ड 2-लाइन ब्रास हारमोनियम। कोमल स्पर्श, एयरटाइट धोंकनी और सीखने हेतु सुगम वजन।</p>
         </div>
         <div class="guide-box-light">
@@ -1516,7 +1521,7 @@
           <p>चीड़, सागौन, शीशम व आम की पक्की लकड़ी। मौसम बदलने पर भी चाबियां नहीं अटकतीं।</p>
         </div>
         <div class="usp-card-dark">
-          <b>🪗 शुद्ध ब्रास रीड्स व धोंकनी</b>
+          <b>🪕 शुद्ध ब्रास रीड्स व धोंकनी</b>
           <p>हारमोनियम में भारी पीतल रीड्स, एयरटाइट धोंकनी की मधुर खनक और ढोलक-तबले में हाथ से संतुलित पुड़े।</p>
         </div>
         <div class="usp-card-dark">
@@ -1671,7 +1676,7 @@
         <span>कुल वाद्य मूल्य:</span>
         <span id="cart-total-display">₹0</span>
       </div>
-      <a href="instruments.html" class="btn btn-gold" style="width:100%;max-width:100% !important;">वाद्य चुनें व ऑर्डर बुक करें →</a>
+      <a href="product.html?checkout=cart" id="drawer-checkout-link" class="btn btn-gold" style="width:100%;max-width:100% !important;">कार्ट के सभी वाद्य ऑर्डर करें →</a>
     </div>
   </aside>
 
@@ -1687,10 +1692,10 @@
 
     const MASTER_BASELINE_PRICES = {
       "VM-H01": 13000, "VM-H02": 9900, "VM-H03": 14800, "VM-H04": 17500, "VM-H05": 22000,
-      "VM-D01": 5800,  "VM-D02": 3500, "VM-D03": 6200,  "VM-T01": 6500,  "VM-T02": 3800,
-      "VM-F01": 250,   "VM-F02": 350,  "VM-F03": 450,   "VM-F04": 400,   "VM-J01": 400,
-      "VM-J02": 250,   "VM-O01": 300,  "VM-K01": 350,   "VM-K02": 250,   "VM-M01": 450,
-      "VM-M02": 750,   "VM-G01": 350,  "VM-O02": 450,   "VM-O03": 649,   "VM-O04": 5310,
+      "VM-D01": 5800, "VM-D02": 3500, "VM-D03": 6200, "VM-T01": 6500, "VM-T02": 3800,
+      "VM-F01": 250, "VM-F02": 350, "VM-F03": 450, "VM-F04": 400, "VM-J01": 400,
+      "VM-J02": 250, "VM-O01": 300, "VM-K01": 350, "VM-K02": 250, "VM-M01": 450,
+      "VM-M02": 750, "VM-G01": 350, "VM-O02": 450, "VM-O03": 649, "VM-O04": 5310,
       "VM-A01": 472
     };
 
@@ -1743,11 +1748,22 @@
         const countEl = document.getElementById("header-cart-count");
         const totalEl = document.getElementById("cart-total-display");
         const box = document.getElementById("cart-items-box");
-        const checkoutLink = document.querySelector("#cart-drawer .drawer-footer a.btn");
+        const checkoutLink = document.getElementById("drawer-checkout-link");
         if (countEl) countEl.textContent = String(summary.count);
         if (totalEl) totalEl.textContent = "₹" + Number(summary.total || 0).toLocaleString("en-IN");
-        if (checkoutLink && items.length > 0) {
-          checkoutLink.href = "product.html?slug=" + encodeURIComponent(items[0].sku.toLowerCase());
+        if (checkoutLink) {
+          if (items.length > 0) {
+            checkoutLink.href = "product.html?checkout=cart&slug=" + encodeURIComponent(items[0].sku.toLowerCase());
+            checkoutLink.style.opacity = "1";
+            checkoutLink.onclick = null;
+          } else {
+            checkoutLink.href = "#";
+            checkoutLink.style.opacity = "0.6";
+            checkoutLink.onclick = function (e) {
+              e.preventDefault();
+              alert("कृपया पहले कार्ट में कोई वाद्य यंत्र जोड़ें।");
+            };
+          }
         }
         if (!box) return;
         if (!items.length) {
@@ -1755,17 +1771,36 @@
           return;
         }
         box.innerHTML = items.map((item, idx) => `
-          <div class="cart-item-row">
-            <div>
-              <strong style="color:#8a2a0c;display:block;">${item.name}</strong>
-              <span style="font-size:0.86rem;color:#4a3424;">कोड: ${item.sku} | मात्रा: ${item.qty} × ₹${Number(item.price).toLocaleString("en-IN")}</span>
+          <div class="cart-item-row" style="gap:10px;">
+            <div style="flex:1;">
+              <strong style="color:#8a2a0c;display:block;line-height:1.35;">${item.name}</strong>
+              <span style="font-size:0.84rem;color:#4a3424;display:block;margin:3px 0;">कोड: ${item.sku} | दर: ₹${Number(item.price).toLocaleString("en-IN")}</span>
+              <div style="display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:#fcedd8;border:1px solid #e6b84d;border-radius:999px;padding:2px 8px;">
+                <button type="button" data-qty-delta="-1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा घटाएं">−</button>
+                <strong style="font-size:0.9rem;color:#1f1107;">${item.qty}</strong>
+                <button type="button" data-qty-delta="1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा बढ़ाएं">+</button>
+              </div>
             </div>
-            <button type="button" data-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+            <button type="button" data-remove-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
           </div>
         `).join("");
-        box.querySelectorAll("button[data-idx]").forEach(btn => {
+        box.querySelectorAll("button[data-qty-delta]").forEach(btn => {
           btn.onclick = () => {
             const idx = Number(btn.getAttribute("data-idx"));
+            const delta = Number(btn.getAttribute("data-qty-delta"));
+            const current = this.readCart();
+            if (idx >= 0 && idx < current.length) {
+              const nextQty = current[idx].qty + delta;
+              if (nextQty <= 0) current.splice(idx, 1);
+              else current[idx].qty = Math.min(10000, nextQty);
+              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
+              this.syncDrawer();
+            }
+          };
+        });
+        box.querySelectorAll("button[data-remove-idx]").forEach(btn => {
+          btn.onclick = () => {
+            const idx = Number(btn.getAttribute("data-remove-idx"));
             const current = this.readCart();
             if (idx >= 0 && idx < current.length) {
               current.splice(idx, 1);
@@ -1777,7 +1812,6 @@
       }
     };
 
-    // Card Interaction: Clicking "कार्ट में जोड़ें" button adds to cart & opens drawer; clicking anywhere else on card opens product page
     document.querySelectorAll('.pcard-dark-in-light').forEach(card => {
       const sku = (card.getAttribute("data-sku") || "").trim().toUpperCase();
       const btn = card.querySelector('.pcard-act a.btn');
