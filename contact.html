@@ -469,6 +469,75 @@
       justify-content: center;
     }
 
+    /* SAFE CUSTOMER STATUS LOOKUP SECTION */
+    .status-lookup-card {
+      background: var(--surface-dark-card);
+      border: 2.5px solid var(--gold-border);
+      border-radius: 22px;
+      padding: clamp(24px, 4vw, 38px);
+      max-width: 880px;
+      margin: 0 auto;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28), 0 0 16px rgba(230, 184, 77, 0.16);
+      color: var(--text-light);
+    }
+    .status-form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .status-field label {
+      display: block;
+      font-weight: 700;
+      color: var(--gold-bright);
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+    .status-field input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--gold-border);
+      background: #190c05;
+      color: #ffffff;
+      font-size: 0.98rem;
+      font-family: inherit;
+    }
+    .status-field input:focus {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 2px;
+    }
+    .status-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+    }
+    .status-result-box {
+      margin-top: 20px;
+      display: none;
+      border-radius: 14px;
+      padding: 16px 18px;
+      line-height: 1.7;
+    }
+    .status-result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px 14px;
+      font-size: 0.94rem;
+      margin-top: 8px;
+    }
+    .status-policy-note {
+      margin-top: 18px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(252, 215, 119, 0.08);
+      border-left: 4px solid var(--gold-bright);
+      color: var(--text-muted-light);
+      font-size: 0.9rem;
+    }
+
     /* 3. GOOGLE MAPS LOCATION */
     .map-card-light {
       background: #ffffff;
@@ -760,6 +829,7 @@
         <div class="btn-wrap-center" style="margin-bottom: 30px;">
           <a class="btn btn-gold" href="tel:+919755088022">📞 +91 97550 88022 पर कॉल करें</a>
           <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Maps नेविगेशन खोलें</a>
+          <a class="btn btn-outline" href="#customer-status-lookup">🔎 स्टेटस जाँचें</a>
         </div>
 
         <div class="hero-trust-strip">
@@ -830,8 +900,66 @@
 
   <hr class="gold-section-divider">
 
+  <!-- 2B. SAFE CUSTOMER STATUS LOOKUP SECTION -->
+  <section id="customer-status-lookup" class="sec-dark">
+    <div class="container">
+      <div class="sec-head">
+        <span class="badge-tag">❖ सुरक्षित ऑनलाइन स्टेटस जाँच ❖</span>
+        <h2>ऑर्डर, रिटर्न, रिफंड या मरम्मत कार्य की स्थिति</h2>
+        <p>गोपनीयता के लिए अपना ऑर्डर / इनवॉइस / जॉब ID और पंजीकृत मोबाइल नंबर के अंतिम 4 अंक दर्ज करें।</p>
+      </div>
+
+      <div class="status-lookup-card">
+        <form id="vm-status-form">
+          <div class="status-form-grid">
+            <div class="status-field">
+              <label for="vm-lookup-id">ऑर्डर / इनवॉइस / जॉब ID *</label>
+              <input
+                type="text"
+                id="vm-lookup-id"
+                name="lookupId"
+                placeholder="जैसे: WR-2026-001 या ORD-2026-..."
+                required
+                autocomplete="off"
+              >
+            </div>
+
+            <div class="status-field">
+              <label for="vm-mobile-last4">मोबाइल नंबर के अंतिम 4 अंक *</label>
+              <input
+                type="text"
+                id="vm-mobile-last4"
+                name="mobileLast4"
+                placeholder="जैसे: 3450"
+                maxlength="4"
+                minlength="4"
+                pattern="\d{4}"
+                inputmode="numeric"
+                required
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+          <div class="status-actions">
+            <button type="submit" id="vm-status-submit" class="btn btn-gold">🔍 स्थिति देखें</button>
+            <a href="tel:+919755088022" class="btn btn-outline">📞 सहायता हेतु कॉल करें: +91 97550 88022</a>
+          </div>
+
+          <div id="vm-status-result" class="status-result-box" role="region" aria-live="polite"></div>
+        </form>
+
+        <div class="status-policy-note">
+          <strong>सेवा नियम:</strong> कूरियर शिपिंग केवल नए वाद्य यंत्रों पर लागू है। मरम्मत व ट्यूनिंग के लिए वाद्य लेकर अमानगंज कार्यशाला में स्वयं आना अनिवार्य है।
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="gold-section-divider">
+
   <!-- 3. GOOGLE MAPS LOCATION -->
-  <section class="sec-dark">
+  <section class="sec-light">
     <div class="container">
       <div class="sec-head">
         <span class="badge-tag">❖ गूगल मैप्स लोकेशन ❖</span>
@@ -860,7 +988,7 @@
   <hr class="gold-section-divider">
 
   <!-- 4. FAQ SECTION -->
-  <section class="sec-light">
+  <section class="sec-dark">
     <div class="container">
       <div class="sec-head">
         <span class="badge-tag">❖ अक्सर पूछे जाने वाले सवाल ❖</span>
@@ -974,6 +1102,118 @@
     <a class="btn btn-gold" href="tel:+919755088022">📞 विशेषज्ञ को कॉल करें</a>
     <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(180deg,#3d2315 0%,#201109 100%);color:#fbf6ee !important;border:2px solid var(--gold-border);">🗺️ रास्ता देखें</a>
   </div>
+
+  <!-- SAFE CUSTOMER STATUS LOOKUP ENGINE -->
+  <script>
+    (function () {
+      const VM_STATUS_API_URL = "https://script.google.com/macros/s/AKfycbzgrr_lrnBM_TQ9UmBgGSACRG0cSL-H0CWGIEk2-ynufNkq_mJ4IsiMGHpAVQ4PuF1g/exec";
+      const form = document.getElementById("vm-status-form");
+      const idInput = document.getElementById("vm-lookup-id");
+      const last4Input = document.getElementById("vm-mobile-last4");
+      const btn = document.getElementById("vm-status-submit");
+      const resultBox = document.getElementById("vm-status-result");
+
+      if (!form || !idInput || !last4Input || !btn || !resultBox) return;
+
+      function escapeText(val) {
+        return String(val == null ? "" : val)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function formatRupees(val) {
+        const str = String(val == null ? "" : val).trim();
+        if (!str) return "₹0";
+        return str.indexOf("₹") === 0 ? str : "₹" + str;
+      }
+
+      function showResult(html, isError) {
+        resultBox.style.display = "block";
+        resultBox.style.background = isError ? "#2b0d0d" : "#0e2618";
+        resultBox.style.border = isError ? "1.5px solid #ef4444" : "1.5px solid #22c55e";
+        resultBox.style.color = isError ? "#fecaca" : "#dcfce7";
+        resultBox.innerHTML = html;
+      }
+
+      function renderPayload(payload) {
+        const d = payload.data || {};
+        if (payload.recordType === "repair") {
+          return `
+            <div style="font-weight:800;font-size:1.02rem;color:#fcd777;">🛠️ मरम्मत / सुधार कार्य की स्थिति</div>
+            <div class="status-result-grid">
+              <div><strong>जॉब ID:</strong> ${escapeText(d.id)}</div>
+              <div><strong>कार्य स्थिति:</strong> ${escapeText(d.workStatus)}</div>
+              <div><strong>वाद्य:</strong> ${escapeText(d.instrument)}</div>
+              <div><strong>संभावित पूर्ण तिथि:</strong> ${escapeText(d.promisedDate || "—")}</div>
+              <div><strong>वापसी तिथि:</strong> ${escapeText(d.deliveredDate || "—")}</div>
+              <div><strong>अनुमानित शुल्क:</strong> ${escapeText(formatRupees(d.estimatedCost))}</div>
+              <div><strong>एडवांस प्राप्त:</strong> ${escapeText(formatRupees(d.advancePaid))}</div>
+              <div><strong>शेष बकाया:</strong> ${escapeText(formatRupees(d.balanceDue))}</div>
+            </div>
+            ${d.policyNote ? `<div style="margin-top:10px;font-size:0.88rem;color:#f5ede0;">${escapeText(d.policyNote)}</div>` : ""}
+          `;
+        }
+
+        return `
+          <div style="font-weight:800;font-size:1.02rem;color:#fcd777;">📦 ऑर्डर / बिल / रिटर्न / रिफंड स्थिति</div>
+          <div class="status-result-grid">
+            <div><strong>रिकॉर्ड ID:</strong> ${escapeText(d.id)}</div>
+            <div><strong>भुगतान स्थिति:</strong> ${escapeText(d.paymentStatus || "—")}</div>
+            <div><strong>डिलीवरी / फुलफिलमेंट:</strong> ${escapeText(d.fulfillmentStatus || "—")}</div>
+            <div><strong>रिटर्न स्थिति:</strong> ${escapeText(d.returnStatus || "None")}</div>
+            <div><strong>रिफंड राशि:</strong> ${escapeText(formatRupees(d.refundAmount))}</div>
+            <div><strong>रिफंड संदर्भ:</strong> ${escapeText(d.refundRef || "—")}</div>
+            <div><strong>कूरियर ट्रैकिंग नं.:</strong> ${escapeText(d.courierTrackingNo || "—")}</div>
+            <div><strong>कुल राशि / शेष बकाया:</strong> ${escapeText(formatRupees(d.totalAmount))} / ${escapeText(formatRupees(d.balanceDue))}</div>
+          </div>
+          ${d.itemsSummary ? `<div style="margin-top:8px;font-size:0.9rem;"><strong>वाद्य विवरण:</strong> ${escapeText(d.itemsSummary)}</div>` : ""}
+          ${d.deliveryRemarks ? `<div style="margin-top:4px;font-size:0.88rem;"><strong>विवरण:</strong> ${escapeText(d.deliveryRemarks)}</div>` : ""}
+          ${d.policyNote ? `<div style="margin-top:8px;font-size:0.88rem;color:#f5ede0;">${escapeText(d.policyNote)}</div>` : ""}
+        `;
+      }
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const lookupId = idInput.value.trim().toUpperCase();
+        const mobileLast4 = last4Input.value.replace(/\D/g, "").slice(-4);
+
+        if (!lookupId || mobileLast4.length !== 4) {
+          showResult("कृपया मान्य ऑर्डर / इनवॉइस / जॉब ID और मोबाइल नंबर के सही 4 अंक दर्ज करें।", true);
+          return;
+        }
+
+        const origText = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "⏳ स्थिति जाँची जा रही है...";
+
+        try {
+          const endpoint = `${VM_STATUS_API_URL}?action=statusLookup&lookupId=${encodeURIComponent(lookupId)}&mobileLast4=${encodeURIComponent(mobileLast4)}`;
+          const res = await fetch(endpoint, { method: "GET", cache: "no-store" });
+          if (!res.ok) throw new Error("Network response error");
+          const data = await res.json();
+          if (data && data.found) {
+            showResult(renderPayload(data), false);
+          } else {
+            showResult(
+              escapeText((data && data.message) || "दिए गए ID और मोबाइल के अंतिम 4 अंकों से कोई रिकॉर्ड मेल नहीं खाया। सहायता के लिए +91 97550 88022 पर कॉल करें।"),
+              true
+            );
+          }
+        } catch (err) {
+          showResult(
+            "अभी ऑनलाइन स्थिति देखने में समस्या आ रही है। कृपया सीधे +91 97550 88022 पर कॉल करके स्थिति जानें।",
+            true
+          );
+        } finally {
+          btn.disabled = false;
+          btn.textContent = origText;
+        }
+      });
+    })();
+  </script>
 
   <!-- SELF-CONTAINED LOGO FALLBACK & CART ENGINE -->
   <script>
