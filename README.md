@@ -1,6 +1,6 @@
 # विश्वकर्मा म्यूज़िकल्स (Vishwakarma Musicals) — आधिकारिक ई-कॉमर्स वेबसाइट
 
-**वर्तमान लाइव वेबसाइट (GitHub Pages):** [https://vishwakarma-musicals.github.io/catalog/](https://vishwakarma-musicals.github.io/catalog/)  
+**वर्तमान लाइव वेबसाइट (GitHub Pages):** [https://vishwakarma-musicals.github.io/home/](https://vishwakarma-musicals.github.io/home/)  
 **प्रस्तावित कस्टम डोमेन (डोमेन खरीद के बाद सक्रिय होगा):** `https://vishwakarmamusicals.in`  
 **स्थापना:** 1990 (35+ वर्षों की काष्ठ एवं सुर शिल्प परंपरा)  
 **संस्थापक एवं मुख्य शिल्पकार:** तुलसी दास विश्वकर्मा (Tulsidas Vishwakarma)  
@@ -13,7 +13,7 @@
 
 - **Frontend:** HTML5, CSS3, Vanilla JavaScript (Mobile-First, Royal Traditional Indian Heritage UI, Hybrid Zoom: Desktop `80%` / Mobile & Print `100%`)
 - **Backend & Live Price Sync:** Google Apps Script Web App API + Google Sheets (`Vishwakarma Musicals - Master Business System 2026-27` -> `Website_Catalog` tab)
-- **Hosting & Repository:** GitHub Pages (`vishwakarma-musicals/catalog` repository; डोमेन खरीद के बाद `vishwakarmamusicals.in` + Cloudflare CDN Full SSL से जोड़ा जाएगा)
+- **Hosting & Repository:** GitHub Pages (`vishwakarma-musicals/home` repository; डोमेन खरीद के बाद `vishwakarmamusicals.in` + Cloudflare CDN Full SSL से जोड़ा जाएगा)
 - **Email & Invoicing:** वर्तमान कार्यशील ईमेल `vishwakarmamusicals@gmail.com` (डोमेन सक्रिय होने पर `info@vishwakarmamusicals.in` Zoho Mail) + Zoho Invoice (GST-compliant Invoices & Quotes with HDFC UPI QR)
 - **Logistics:** Delhivery One (B2C Nationwide Courier — केवल नए वाद्य यंत्रों के लिए)
 
@@ -60,4 +60,4 @@
 1. स्थानीय फ़ोल्डर में `.html` या `README.md` फ़ाइल पर Right-Click करें -> **Open with -> Notepad** चुनें।
 2. पूरा अपडेटेड कोड पेस्ट करें और **`Ctrl + S`** दबाकर UTF-8 एन्कोडिंग में सेव करें।
 3. Google Chrome में संबंधित `.html` फ़ाइल खोलकर Desktop (`80%`) और Mobile (`100%`) ज़ूम, कार्ट ड्रॉअर, मल्टी-आइटम चेकआउट और फुटर सोशल आइकन्स की जाँच करें।
-4. सत्यापन के बाद अपडेटेड फ़ाइलों को GitHub Repository (`vishwakarma-musicals/catalog`) और Google Drive के `03_Website_Code_&_Backups` फ़ोल्डर में अपलोड करें।
+4. सत्यापन के बाद अपडेटेड फ़ाइलों को GitHub Repository (`vishwakarma-musicals/home`) और Google Drive के `03_Website_Code_&_Backups` फ़ोल्डर में अपलोड करें।

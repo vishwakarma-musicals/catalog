@@ -523,7 +523,7 @@
     </div>
   </section>
 
-  <!-- PRINTABLE CATALOG SHEET -->
+  <!-- 100% DYNAMIC PRINTABLE CATALOG SHEET FROM MASTER GOOGLE SHEET -->
   <main class="catalog-section">
     <div class="container">
       <div class="catalog-sheet">
@@ -541,11 +541,11 @@
           </div>
         </div>
 
-        <p id="catalog-sync-note" class="no-print" style="font-size:0.9rem;color:#0b6b36;font-weight:700;margin-bottom:10px;">
-          ✓ आधिकारिक मास्टर कैटलॉग सूची प्रदर्शित है।
+        <p id="catalog-sync-note" class="no-print" style="font-size:0.92rem;color:var(--maroon-title);font-weight:700;margin-bottom:10px;">
+          ⏳ मास्टर Google Sheet से आधिकारिक कैटलॉग लोड हो रहा है...
         </p>
 
-        <!-- SECTION A: INSTRUMENTS -->
+        <!-- SECTION A: INSTRUMENTS (NO PREFILLED ROWS - 100% LOADED FROM GOOGLE SHEET) -->
         <h3 class="catalog-block-title">१. हस्तनिर्मित वाद्य यंत्र संग्रह (Musical Instruments)</h3>
         <div class="table-wrap">
           <table class="catalog-table">
@@ -560,45 +560,15 @@
             </thead>
             <tbody id="products-table-body">
               <tr>
-                <td><span class="sku-pill">VM-H01</span></td>
-                <td><strong>बेस-मेल कॉन्सर्ट हारमोनियम (Bass-Male Concert Harmonium)</strong></td>
-                <td>सीजन्ड सागौन/चीड़ बॉडी, 39 चाबियां, शुद्ध पीतल रीड्स व एयरटाइट धोंकनी</td>
-                <td class="price-cell">₹13,000</td>
-                <td class="no-print"><a class="action-link" href="product.html?slug=vm-h01">देखें →</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-H02</span></td>
-                <td><strong>सफ़री पोर्टेबल मिनी हारमोनियम (Safri Harmonium)</strong></td>
-                <td>पोर्टेबल कॉम्पैक्ट डिज़ाइन, हल्की व मज़बूत बॉडी, 440Hz ट्यूनिंग व एयरटाइट धोंकनी</td>
-                <td class="price-cell">₹9,900</td>
-                <td class="no-print"><a class="action-link" href="product.html?slug=vm-h02">देखें →</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-D01</span></td>
-                <td><strong>नट-बोल्ट पक्की शीशम ढोलक (Sheesham Nut-Bolt Dholak)</strong></td>
-                <td>पक्की शीशम लकड़ी, ट्यूनिंग की सहित, बकरे की खाल के पुड़े व संतुलित मसाला</td>
-                <td class="price-cell">₹5,800</td>
-                <td class="no-print"><a class="action-link" href="product.html?slug=vm-d01">देखें →</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-T01</span></td>
-                <td><strong>शास्त्रीय कॉन्सर्ट तबला जोड़ी (Professional Tabla Set)</strong></td>
-                <td>शीशम चाटी व भारी पीतल डग्गा, हाथ की स्याही व मजबूत चमड़े की बद्धी</td>
-                <td class="price-cell">₹6,500</td>
-                <td class="no-print"><a class="action-link" href="product.html?slug=vm-t01">देखें →</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-J01</span></td>
-                <td><strong>पारंपरिक बुंदेली झीका (Traditional Jheeka)</strong></td>
-                <td>भजन-कीर्तन व मानस मंडली हेतु मज़बूत काष्ठ फ्रेम व पीतल झिल्लियाँ</td>
-                <td class="price-cell">₹400</td>
-                <td class="no-print"><a class="action-link" href="product.html?slug=vm-j01">देखें →</a></td>
+                <td colspan="5" style="text-align:center;padding:24px;color:var(--text-muted-dark);font-weight:700;">
+                  ⏳ मास्टर Google Sheet से वाद्य यंत्रों की लाइव सूची लोड हो रही है...
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <!-- SECTION B: WORKSHOP REPAIR SERVICES -->
+        <!-- SECTION B: WORKSHOP REPAIR SERVICES (NO PREFILLED ROWS - 100% LOADED FROM GOOGLE SHEET) -->
         <h3 class="catalog-block-title">२. कार्यशाला मरम्मत एवं सुर मिलान सेवाएँ (केवल अमानगंज कार्यशाला में उपलब्ध)</h3>
         <div class="table-wrap">
           <table class="catalog-table">
@@ -607,38 +577,15 @@
                 <th>सेवा कोड</th>
                 <th>मरम्मत / ट्यूनिंग सेवा का नाम</th>
                 <th>कार्य विवरण</th>
-                <th>सेवा शुल्क</th>
+                <th>सेवा शुल्क (GST सहित)</th>
                 <th class="no-print">परामर्श</th>
               </tr>
             </thead>
             <tbody id="services-table-body">
               <tr>
-                <td><span class="sku-pill">VM-S01</span></td>
-                <td><strong>हारमोनियम 440Hz सुर मिलान (Tuning)</strong></td>
-                <td>सभी रीड्स की सटीक 440Hz ट्यूनिंग, वॉल्व जाँच व वायु प्रवाह संतुलन</td>
-                <td class="price-cell">जाँच के अनुसार</td>
-                <td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-S02</span></td>
-                <td><strong>धोंकनी लीकेज मरम्मत व सीलिंग</strong></td>
-                <td>धोंकनी के कोनों व चमड़े की एयरटाइट सीलिंग तथा स्प्रिंग सेटिंग</td>
-                <td class="price-cell">जाँच के अनुसार</td>
-                <td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-S03</span></td>
-                <td><strong>ढोलक पुड़ी फिटिंग व मसाला भराई</strong></td>
-                <td>बकरे की खाल का नया पुड़ा चढ़ाना, गजरा खिंचाई व बेस मसाला संतुलन</td>
-                <td class="price-cell">जाँच के अनुसार</td>
-                <td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td>
-              </tr>
-              <tr>
-                <td><span class="sku-pill">VM-R20</span></td>
-                <td><strong>तबला रिपेयरिंग व पुड़ी सेटिंग (Tabla Repairing)</strong></td>
-                <td>दायाँ-बायाँ पुड़ी प्रतिस्थापन, चमड़े की बद्धी खिंचाई, गट्टी व सुर सेटिंग</td>
-                <td class="price-cell">जाँच के अनुसार</td>
-                <td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td>
+                <td colspan="5" style="text-align:center;padding:24px;color:var(--text-muted-dark);font-weight:700;">
+                  ⏳ मास्टर Google Sheet से कार्यशाला सेवाओं की लाइव सूची लोड हो रही है...
+                </td>
               </tr>
             </tbody>
           </table>
@@ -719,9 +666,13 @@
     <a class="btn btn-outline" href="instruments.html">🎵 वाद्य संग्रह देखें</a>
   </div>
 
-  <!-- SELF-CONTAINED CART, TERMINOLOGY & LIVE SHEET SYNC SCRIPT -->
+  <!-- 100% DYNAMIC MASTER SHEET CATALOG ENGINE + CART SCRIPT -->
   <script>
     const ORDER_API_URL = "https://script.google.com/macros/s/AKfycbxOntEhYAhu3qXTpIjz4fkjXfM7DXjsoM0n40ZnNAikiDacWN1ukj5D8Jge8pcuz_H6/exec";
+    const CATALOG_CSV_URLS = [
+      "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-d_ef6VJovk65nJIr8VtLUFsId9EcruDOw_SYq3vl0_OACxCI-6ikNO8EID76KWFLvFuVpKgZilT1/pub?gid=954670530&single=true&output=csv"
+    ];
+    const CATALOG_ALL_CACHE_KEY = "vm_dynamic_catalog_all_v19";
 
     function sanitizeTerminology(str) {
       let value = String(str || "");
@@ -737,7 +688,203 @@
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    window.VMCsv = {
+      parse: function (csvText) {
+        const rows = [];
+        let row = [];
+        let cur = "";
+        let inQuotes = false;
+        const text = String(csvText || "").replace(/^\uFEFF/, "");
+        for (let i = 0; i < text.length; i++) {
+          const ch = text[i];
+          const next = text[i + 1];
+          if (inQuotes) {
+            if (ch === '"' && next === '"') { cur += '"'; i++; }
+            else if (ch === '"') { inQuotes = false; }
+            else { cur += ch; }
+          } else {
+            if (ch === '"') { inQuotes = true; }
+            else if (ch === ",") { row.push(cur); cur = ""; }
+            else if (ch === "\r" && next === "\n") { row.push(cur); rows.push(row); row = []; cur = ""; i++; }
+            else if (ch === "\n" || ch === "\r") { row.push(cur); rows.push(row); row = []; cur = ""; }
+            else { cur += ch; }
+          }
+        }
+        if (cur.length > 0 || row.length > 0) { row.push(cur); rows.push(row); }
+        return rows.filter(r => r.some(cell => String(cell).trim() !== ""));
+      }
+    };
+
+    function normalizeHeaderKey(str) {
+      return String(str || "")
+        .replace(/^\uFEFF/, "")
+        .replace(/_/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .toLowerCase();
+    }
+
+    function mapRowsToCatalogItems(rows) {
+      if (!rows || rows.length < 2) return null;
+      let headerRowIndex = 0;
+      for (let rIdx = 0; rIdx < Math.min(5, rows.length); rIdx++) {
+        const candidate = rows[rIdx].map(normalizeHeaderKey);
+        if (candidate.some(h => h.includes("sku") || h.includes("item name"))) {
+          headerRowIndex = rIdx;
+          break;
+        }
+      }
+      const headers = rows[headerRowIndex].map(normalizeHeaderKey);
+      const colIdx = (names) => {
+        for (const n of names) {
+          const idx = headers.indexOf(normalizeHeaderKey(n));
+          if (idx !== -1) return idx;
+        }
+        for (const n of names) {
+          const idx = headers.findIndex(h => h.includes(normalizeHeaderKey(n)));
+          if (idx !== -1) return idx;
+        }
+        return -1;
+      };
+
+      const idxMap = {
+        sku: colIdx(["sku code", "sku", "item code"]),
+        name: colIdx(["item name", "product title", "name"]),
+        category: colIdx(["category"]),
+        price: colIdx(["final customer price (₹)", "live price", "selling price", "price"]),
+        status: colIdx(["product status", "status"]),
+        itemType: colIdx(["item type", "type"]),
+        shortDesc: colIdx(["short description", "short desc", "product subtitle"]),
+        slug: colIdx(["page slug", "slug"])
+      };
+
+      const getVal = (r, key) => (idxMap[key] !== -1 && r[idxMap[key]] !== undefined) ? sanitizeTerminology(r[idxMap[key]]).trim() : "";
+
+      const products = [];
+      const services = [];
+
+      for (let i = headerRowIndex + 1; i < rows.length; i++) {
+        const r = rows[i];
+        const sku = getVal(r, "sku").toUpperCase();
+        if (!sku || normalizeHeaderKey(sku) === "sku" || normalizeHeaderKey(sku) === "sku code") continue;
+
+        const status = getVal(r, "status").toLowerCase();
+        if (["inactive", "disabled", "hidden", "no", "false", "0", "archived"].includes(status)) continue;
+
+        const itemType = getVal(r, "itemType").toLowerCase();
+        if (itemType.includes("raw") || itemType.includes("pack") || sku.startsWith("VM-RM") || sku.startsWith("VM-PK")) {
+          continue;
+        }
+
+        const isService = itemType.includes("service") || itemType.includes("repair") || sku.startsWith("VM-S") || sku.startsWith("VM-R");
+        const name = getVal(r, "name") || sku;
+        const desc = getVal(r, "shortDesc") || getVal(r, "category") || "";
+        const rawPrice = Number(getVal(r, "price").replace(/[^\d.]/g, "")) || 0;
+        const slug = (getVal(r, "slug") || sku).toLowerCase();
+
+        const itemObj = { sku, name, desc, rawPrice, slug, isService };
+        if (isService) services.push(itemObj);
+        else products.push(itemObj);
+      }
+
+      if (!products.length && !services.length) return null;
+      return { products, services };
+    }
+
+    function renderCatalogTables(data) {
+      const prodBody = document.getElementById("products-table-body");
+      const svcBody = document.getElementById("services-table-body");
+      const note = document.getElementById("catalog-sync-note");
+
+      if (!data || (!data.products.length && !data.services.length)) {
+        const errRow = `
+          <tr>
+            <td colspan="5" style="text-align:center;padding:24px;color:#b91c1c;font-weight:700;">
+              ⚠️ अभी मास्टर Google Sheet से डेटा लोड नहीं हो सका। कृपया पेज रीलोड करें या +91 97550 88022 पर कॉल करें।
+            </td>
+          </tr>
+        `;
+        if (prodBody) prodBody.innerHTML = errRow;
+        if (svcBody) svcBody.innerHTML = errRow;
+        if (note) {
+          note.style.color = "#b91c1c";
+          note.textContent = "⚠️ नेटवर्क त्रुटि: कृपया इंटरनेट जाँचकर पेज रीलोड करें।";
+        }
+        return;
+      }
+
+      if (prodBody) {
+        prodBody.innerHTML = data.products.length
+          ? data.products.map(p => `
+              <tr>
+                <td><span class="sku-pill">${escapeHTML(p.sku)}</span></td>
+                <td><strong>${escapeHTML(p.name)}</strong></td>
+                <td>${escapeHTML(p.desc || "हस्तनिर्मित प्रामाणिक वाद्य यंत्र")}</td>
+                <td class="price-cell">${p.rawPrice > 0 ? ("₹" + p.rawPrice.toLocaleString("en-IN")) : "कॉल पर पुष्टि"}</td>
+                <td class="no-print"><a class="action-link" href="product.html?slug=${encodeURIComponent(p.slug)}">देखें →</a></td>
+              </tr>
+            `).join("")
+          : '<tr><td colspan="5" style="text-align:center;padding:18px;">कोई सक्रिय वाद्य यंत्र उपलब्ध नहीं है।</td></tr>';
+      }
+
+      if (svcBody) {
+        svcBody.innerHTML = data.services.length
+          ? data.services.map(s => `
+              <tr>
+                <td><span class="sku-pill">${escapeHTML(s.sku)}</span></td>
+                <td><strong>${escapeHTML(s.name)}</strong></td>
+                <td>${escapeHTML(s.desc || "अमानगंज कार्यशाला में विशेषज्ञ मरम्मत व ट्यूनिंग")}</td>
+                <td class="price-cell">${s.rawPrice > 0 ? ("₹" + s.rawPrice.toLocaleString("en-IN")) : "जाँच के अनुसार"}</td>
+                <td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td>
+              </tr>
+            `).join("")
+          : '<tr><td colspan="5" style="text-align:center;padding:18px;">कोई सक्रिय कार्यशाला सेवा उपलब्ध नहीं है।</td></tr>';
+      }
+
+      if (note) {
+        note.style.color = "#0b6b36";
+        note.textContent = `✓ मास्टर Google Sheet से लाइव कैटलॉग सिंक हो चुका है (${data.products.length} वाद्य यंत्र एवं ${data.services.length} कार्यशाला सेवाएँ)।`;
+      }
+    }
+
+    async function fetchLiveCatalogFromSheet() {
+      // 1. Primary Apps Script Web App API
+      try {
+        const res = await fetch(ORDER_API_URL, { method: "GET", cache: "no-store" });
+        if (res.ok) {
+          const json = await res.json();
+          if (json && Array.isArray(json.items) && json.items.length > 0) {
+            const headers = Object.keys(json.items[0]);
+            const rows = [headers, ...json.items.map(obj => headers.map(h => obj[h] !== undefined ? String(obj[h]) : ""))];
+            const parsed = mapRowsToCatalogItems(rows);
+            if (parsed) {
+              try { localStorage.setItem(CATALOG_ALL_CACHE_KEY, JSON.stringify(parsed)); } catch (e) {}
+              return parsed;
+            }
+          }
+        }
+      } catch (e) {}
+
+      // 2. Fallback Published Website_Catalog CSV
+      for (const csvUrl of CATALOG_CSV_URLS) {
+        try {
+          const res = await fetch(csvUrl, { cache: "no-store" });
+          if (!res.ok) continue;
+          const csvText = await res.text();
+          const rows = window.VMCsv.parse(csvText);
+          const parsed = mapRowsToCatalogItems(rows);
+          if (parsed) {
+            try { localStorage.setItem(CATALOG_ALL_CACHE_KEY, JSON.stringify(parsed)); } catch (e) {}
+            return parsed;
+          }
+        } catch (e) {}
+      }
+
+      return null;
     }
 
     window.VMCartUI = {
@@ -832,60 +979,27 @@
       logoEl.onerror = function () { this.onerror = null; this.src = LOGO_EMBLEM_SVG; };
     }
 
-    async function hydrateCatalogTables() {
+    async function initDynamicCatalogSheet() {
+      window.VMCartUI.syncDrawer();
+
+      let renderedFromCache = false;
       try {
-        const res = await fetch(ORDER_API_URL, { method: "GET", cache: "no-store" });
-        if (!res.ok) return;
-        const json = await res.json();
-        if (!json || !Array.isArray(json.items) || !json.items.length) return;
-
-        const products = [];
-        const services = [];
-
-        json.items.forEach(row => {
-          const sku = String(row["SKU Code"] || row["SKU"] || "").trim();
-          const name = sanitizeTerminology(row["Item Name"] || row["Product Title"] || sku).trim();
-          const status = String(row["Product Status"] || row["Status"] || "Active").toLowerCase();
-          if (!sku || ["inactive", "disabled", "hidden", "archived"].includes(status)) return;
-
-          const typeStr = String(row["Item Type"] || "").toLowerCase();
-          const isService = typeStr.includes("service") || typeStr.includes("repair") || sku.toUpperCase().startsWith("VM-R") || sku.toUpperCase().startsWith("VM-S");
-          const desc = sanitizeTerminology(row["Short Description"] || row["Category"] || "").trim();
-          const rawPrice = Number(String(row["Final Customer Price (₹)"] || row["Live Price"] || row["Price"] || "0").replace(/[^\d.]/g, "")) || 0;
-          const slug = String(row["Page Slug"] || sku).trim().toLowerCase();
-
-          const itemObj = { sku, name, desc, rawPrice, slug, isService };
-          if (isService) services.push(itemObj);
-          else products.push(itemObj);
-        });
-
-        if (products.length) {
-          document.getElementById("products-table-body").innerHTML = products.map(p => `
-            <tr>
-              <td><span class="sku-pill">${escapeHTML(p.sku)}</span></td>
-              <td><strong>${escapeHTML(p.name)}</strong></td>
-              <td>${escapeHTML(p.desc || "हस्तनिर्मित प्रामाणिक वाद्य यंत्र")}</td>
-              <td class="price-cell">${p.rawPrice > 0 ? ("₹" + p.rawPrice.toLocaleString("en-IN")) : "कॉल पर पुष्टि"}</td>
-              <td class="no-print"><a class="action-link" href="product.html?slug=${encodeURIComponent(p.slug)}">देखें →</a></td>
-            </tr>
-          `).join("");
+        const cachedRaw = localStorage.getItem(CATALOG_ALL_CACHE_KEY);
+        if (cachedRaw) {
+          const cachedData = JSON.parse(cachedRaw);
+          if (cachedData && (Array.isArray(cachedData.products) || Array.isArray(cachedData.services))) {
+            renderCatalogTables(cachedData);
+            renderedFromCache = true;
+          }
         }
-
-        if (services.length) {
-          document.getElementById("services-table-body").innerHTML = services.map(s => `
-            <tr>
-              <td><span class="sku-pill">${escapeHTML(s.sku)}</span></td>
-              <td><strong>${escapeHTML(s.name)}</strong></td>
-              <td>${escapeHTML(s.desc || "अमानगंज कार्यशाला में विशेषज्ञ मरम्मत व ट्यूनिंग")}</td>
-              <td class="price-cell">${s.rawPrice > 0 ? ("₹" + s.rawPrice.toLocaleString("en-IN")) : "जाँच के अनुसार"}</td>
-              <td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td>
-            </tr>
-          `).join("");
-        }
-
-        const note = document.getElementById("catalog-sync-note");
-        if (note) note.textContent = "✓ लाइव मास्टर कैटलॉग डेटा सिंक हो चुका है (" + (products.length + services.length) + " प्रविष्टियाँ)।";
       } catch (e) {}
+
+      const liveData = await fetchLiveCatalogFromSheet();
+      if (liveData) {
+        renderCatalogTables(liveData);
+      } else if (!renderedFromCache) {
+        renderCatalogTables(null);
+      }
     }
 
     document.getElementById("open-cart-btn").onclick = () => {
@@ -905,10 +1019,7 @@
       if (event.key === window.VMCartUI.storageKey) window.VMCartUI.syncDrawer();
     });
 
-    document.addEventListener("DOMContentLoaded", () => {
-      window.VMCartUI.syncDrawer();
-      hydrateCatalogTables();
-    });
+    document.addEventListener("DOMContentLoaded", initDynamicCatalogSheet);
   </script>
 </body>
 </html>
