@@ -583,7 +583,6 @@
       box-shadow: 0 4px 0 #734c0a;
     }
 
-    /* UNIFIED FOOTER WITH SOCIAL ICONS (WHATSAPP INCLUDED WITH SOCIAL BUTTONS) */
     .sec-footer-light-wrap { background-color: var(--bg-light); padding: 40px 0 24px; border-top: none; }
     .page-footer-nav-dark {
       padding: 38px 24px 32px;
@@ -824,7 +823,7 @@
           <div class="rating-summary">
             <span class="stars">★★★★★</span>
             <strong>5.0</strong>
-            <a href="#customer-reviews" class="review-link">(<span id="total-reviews-count">38</span> प्रमाणित समीक्षाएं)</a>
+            <a href="#customer-reviews" class="review-link">(<span id="total-reviews-count">12</span> प्रमाणित समीक्षाएं)</a>
           </div>
         </div>
 
@@ -878,7 +877,7 @@
             <button type="button" id="check-pincode-btn">जांचें</button>
           </div>
           <p class="pincode-result" id="pincode-result-msg">
-            Delhivery कूरियर द्वारा पूरे भारत में सुरक्षित डोरस्टेप डिलीवरी।
+            Delhivery कूरियर द्वारा पूरे भारत में सुरक्षित डोरस्टेप डिलीवरी (UPI / बैंक अग्रिम भुगतान पर)।
           </p>
         </div>
 
@@ -895,7 +894,7 @@
         <button type="button" class="tab-btn active" data-tab="tab-description">विस्तृत विवरण</button>
         <button type="button" class="tab-btn" data-tab="tab-benefits">उपयोग और फायदे</button>
         <button type="button" class="tab-btn" data-tab="tab-specs" id="tech-specs-section">तकनीकी स्पेसिफिकेशन्स</button>
-        <button type="button" class="tab-btn" data-tab="tab-reviews">ग्राहक समीक्षाएं (<span id="tab-reviews-count">38</span>)</button>
+        <button type="button" class="tab-btn" data-tab="tab-reviews">ग्राहक समीक्षाएं (<span id="tab-reviews-count">12</span>)</button>
       </div>
 
       <div class="tab-panel active" id="tab-description">
@@ -919,7 +918,7 @@
             <h2>ग्राहक रेटिंग और अनुभव</h2>
             <div class="big-rating-score">
               <span class="score-number">5.0</span>
-              <div><div class="stars">★★★★★</div><p>कुल <span id="review-box-count">38</span> ग्राहकों के मूल्यांकन पर आधारित</p></div>
+              <div><div class="stars">★★★★★</div><p>कुल <span id="review-box-count">12</span> प्रमाणित Google समीक्षाओं पर आधारित</p></div>
             </div>
             <form class="add-review-form" id="review-form">
               <h3>अपनी समीक्षा लिखें</h3>
@@ -1112,15 +1111,15 @@
         container.innerHTML = list.map((item, idx) => `
           <div class="cart-item-row" style="gap:10px;">
             <div style="flex:1;">
-              <strong style="color:#8a2a0c;display:block;line-height:1.35;">${item.name}</strong>
-              <span style="font-size:0.84rem;color:#4a3424;display:block;margin:3px 0;">कोड: ${item.sku} | दर: ₹${Number(item.price).toLocaleString("en-IN")}</span>
+              <strong style="color:#8a2a0c;display:block;line-height:1.35;">${escapeHTML(item.name)}</strong>
+              <span style="font-size:0.84rem;color:#4a3424;display:block;margin:3px 0;">कोड: ${escapeHTML(item.sku)} | दर: ₹${Number(item.price).toLocaleString("en-IN")}</span>
               <div style="display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:#fcedd8;border:1px solid #e6b84d;border-radius:999px;padding:2px 8px;">
                 <button type="button" data-qty-delta="-1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा घटाएं">−</button>
                 <strong style="font-size:0.9rem;color:#1f1107;">${item.qty}</strong>
                 <button type="button" data-qty-delta="1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा बढ़ाएं">+</button>
               </div>
             </div>
-            <button type="button" data-remove-idx="${idx}" data-sku="${item.sku}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
+            <button type="button" data-remove-idx="${idx}" data-sku="${escapeHTML(item.sku)}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
           </div>
         `).join("");
         container.querySelectorAll("button[data-qty-delta]").forEach(btn => {
@@ -1186,13 +1185,10 @@
 
     function sanitizeTerminology(str) {
       let value = String(str || "");
-      value = value.replace(/\u0927\u092e\u094d\u092e\u0928/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
-      value = value.replace(/\u092c\u0947\u0932\u094b\u091c\u093c/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
-      value = value.replace(/\u092c\u0947\u0932\u094b/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
-      value = value.replace(/\u092d\u093e\u0925\u0940/g, "\u0927\u094b\u0902\u0915\u0928\u0940");
-      value = value.replace(/\u0938\u092b\u093c\u093e\u0930\u0940/g, "\u0938\u092b\u093c\u0930\u0940");
+      value = value.replace(/धम्मन|बेलोज़|बेलो|भाथी/g, "धोंकनी");
+      value = value.replace(/सफ़ारी/g, "सफ़री");
       value = value.replace(/\bsafari\b/gi, "Safri");
-      value = value.replace(/\u091d\u0915\u094b\u0930\u093e/g, "\u091d\u0940\u0915\u093e");
+      value = value.replace(/झकोरा/g, "झीका");
       return value;
     }
 
@@ -1617,7 +1613,7 @@
           `;
         }
       } else {
-        document.getElementById("tax-note-text").textContent = (isZeroGst ? "0% GST (कर-मुक्त मूल्य)" : `मूल्य में ${p.gstRate} GST शामिल है`) + " • पिनकोड के अनुसार वास्तविक कूरियर भाड़ा अलग से जोड़ा जाएगा";
+        document.getElementById("tax-note-text").textContent = (isZeroGst ? "0% GST (कर-मुक्त मूल्य)" : `मूल्य में ${p.gstRate} GST शामिल है`) + " • UPI / बैंक अग्रिम भुगतान व Delhivery कूरियर लागू";
         document.getElementById("stock-status-text").textContent = p.stockBadge || (p.liveStock > 0 ? `स्टॉक में उपलब्ध: ${p.liveStock} पीस` : "ऑर्डर पर निर्माण (बुकिंग चालू)");
         stockBar.classList.toggle("out-of-stock", Number(p.liveStock) <= 0);
 
@@ -1854,13 +1850,14 @@
       const pin = document.getElementById("cust-pincode").value.trim();
       const baseTotal = activeOrderItems.reduce((s, i) => s + (Number(i.price || 0) * Number(i.qty || 1)), 0);
       const totalWeight = activeOrderItems.reduce((s, i) => s + ((i.weightGrams || 5000) * Number(i.qty || 1)), 0);
-      const courier = /^[1-9][0-9]{5}$/.test(pin) ? calculateCourierCharge(pin, totalWeight) : 0;
+      const hasValidPin = /^[1-9][0-9]{5}$/.test(pin);
+      const courier = hasValidPin ? calculateCourierCharge(pin, totalWeight) : 0;
       const grandTotal = baseTotal + courier;
       document.getElementById("modal-courier-breakdown").innerHTML = `
         <div>वाद्ययंत्र मूल्य: <strong>${formatINR(baseTotal)}</strong></div>
-        <div>कूरियर शुल्क (${/^[1-9][0-9]{5}$/.test(pin) ? "पिनकोड " + escapeHTML(pin) : "पिनकोड दर्ज करने पर"}): <strong>${formatINR(courier)}</strong></div>
+        <div>अनुमानित Delhivery कूरियर (${hasValidPin ? "पिनकोड " + escapeHTML(pin) : "पिनकोड दर्ज करने पर"}): <strong>${formatINR(courier)}</strong></div>
         <div style="font-size:1.05rem;color:var(--maroon-title);margin-top:4px;border-top:1px dashed var(--gold-border);padding-top:4px;">
-          कुल देय योग (Grand Total): <strong>${formatINR(grandTotal)}</strong>
+          कुल देय योग (Grand Total — UPI / बैंक अग्रिम भुगतान): <strong>${formatINR(grandTotal)}</strong>
         </div>
       `;
     };
@@ -1991,7 +1988,7 @@
           कुल देय राशि (कूरियर सहित): <strong>${formatINR(grandTotal)}</strong>
         </p>
         <div style="background:#fffdf8;border:1.5px dashed var(--maroon-title);padding:12px;border-radius:10px;margin-bottom:16px;font-size:0.9rem;color:var(--text-dark);">
-          कृपया अपना ऑर्डर कन्फर्म करने और अधिकृत Zoho GST कोटेशन व भुगतान विवरण प्राप्त करने के लिए अभी मुख्य कारीगर श्री तुलसी दास विश्वकर्मा जी को सीधे कॉल करें:
+          कृपया अपना ऑर्डर कन्फर्म करने और अधिकृत Zoho कोटेशन व UPI/बैंक अग्रिम भुगतान विवरण प्राप्त करने के लिए अभी मुख्य कारीगर श्री तुलसी दास विश्वकर्मा जी को सीधे कॉल करें:
         </div>
         <a href="tel:+919755088022" class="btn btn-buy-now full-width-btn">📞 +91 97550 88022 पर अभी कॉल करें</a>
       `;

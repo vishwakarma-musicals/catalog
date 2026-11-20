@@ -104,6 +104,8 @@
     body {
       font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
       background-color: var(--bg-light);
+      background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.92), transparent 66%),
+                        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
       color: var(--text-dark);
       line-height: 1.8;
       -webkit-font-smoothing: antialiased;
@@ -1159,7 +1161,7 @@
       <div class="guidance-grid">
         <div class="guide-box-light">
           <img class="guide-card-image" src="https://drive.google.com/thumbnail?id=1yc7UzO9StqzA9rQ78rXwrL_9bu_mKEjQ&sz=w1200" data-drive-id="1yc7UzO9StqzA9rQ78rXwrL_9bu_mKEjQ" alt="शुरुआत व दैनिक रियाज़" width="1200" height="900" loading="lazy" decoding="async">
-          <b>🪗 शुरुआत व दैनिक रियाज़</b>
+          <b>🎹 शुरुआत व दैनिक रियाज़</b>
           <p>सफ़री हारमोनियम या 39-की स्टैंडर्ड 2-लाइन ब्रास हारमोनियम। कोमल स्पर्श, एयरटाइट धोंकनी और सीखने हेतु सुगम वजन।</p>
         </div>
         <div class="guide-box-light">
@@ -1288,7 +1290,7 @@
             <span class="review-rating-pill">5.0 ★</span>
           </div>
           <div class="stars" aria-label="5 स्टार">★★★★★</div>
-          <p class="review-text-light">“अमानगंज में संगीत वाद्ययंत्र खरीदने या मरम्मत करने के लिए सबसे अच्छी जगह।”</p>
+          <p class="review-text-light">“अमानगंज में संगीत वाद्ययंत्र खरीदने या मरम्मत करने के लिए सबसे अच्छी जगह。”</p>
         </article>
 
         <article class="review-card-dark">
@@ -1333,7 +1335,7 @@
           <p>चीड़, सागौन, शीशम व आम की पक्की लकड़ी। मौसम बदलने पर भी चाबियां नहीं अटकतीं।</p>
         </div>
         <div class="usp-card-dark">
-          <b>🪕 शुद्ध ब्रास रीड्स व धोंकनी</b>
+          <b>🪗 शुद्ध ब्रास रीड्स व धोंकनी</b>
           <p>हारमोनियम में भारी पीतल रीड्स, एयरटाइट धोंकनी की मधुर खनक और ढोलक-तबले में हाथ से संतुलित पुड़े।</p>
         </div>
         <div class="usp-card-dark">
@@ -1516,6 +1518,7 @@
       value = value.replace(/सफ़ारी/g, "सफ़री");
       value = value.replace(/\bsafari\b/gi, "Safri");
       value = value.replace(/झकोरा/g, "झीका");
+      value = value.replace(/काष्ठ डमरू/g, "लकड़ी का डमरू");
       return value;
     }
 
@@ -1859,7 +1862,6 @@
         `;
       }).join("");
 
-      // Bind image fallbacks
       grid.querySelectorAll("img[data-drive-id]").forEach(img => {
         img.addEventListener("error", function () {
           const id = this.getAttribute("data-drive-id");
@@ -1873,7 +1875,6 @@
         });
       });
 
-      // Bind card interaction: "कार्ट में जोड़ें" opens cart drawer; clicking anywhere else on card opens product page
       grid.querySelectorAll(".pcard-dark-in-light").forEach(card => {
         const sku = card.getAttribute("data-sku");
         const productUrl = card.getAttribute("data-url");
@@ -1900,7 +1901,6 @@
     }
 
     async function fetchLiveProductsFromSheet() {
-      // 1. Primary Apps Script Web App API
       try {
         const res = await fetch(ORDER_API_URL, { method: "GET", cache: "no-store" });
         if (res.ok) {
@@ -1917,7 +1917,6 @@
         }
       } catch (e) {}
 
-      // 2. Fallback Published Website_Catalog CSV
       for (const csvUrl of CATALOG_CSV_URLS) {
         try {
           const res = await fetch(csvUrl, { cache: "no-store" });
@@ -1938,7 +1937,6 @@
     async function initDynamicHome() {
       window.VMCartUI.syncDrawer();
 
-      // Instant render from browser cache if previously loaded from Google Sheet
       let renderedFromCache = false;
       try {
         const cachedRaw = localStorage.getItem(CATALOG_CACHE_KEY);
@@ -1951,7 +1949,6 @@
         }
       } catch (e) {}
 
-      // Always fetch latest live rows from Master Google Sheet
       const liveProducts = await fetchLiveProductsFromSheet();
       if (liveProducts && liveProducts.length > 0) {
         renderHomeFeaturedProducts(liveProducts);
@@ -1960,7 +1957,6 @@
       }
     }
 
-    // Two-tier fallback for static non-product images (craftsman headshot & buyer's guidance)
     document.querySelectorAll("img[data-drive-id]").forEach(img => {
       img.addEventListener("error", function () {
         const id = this.getAttribute("data-drive-id");
